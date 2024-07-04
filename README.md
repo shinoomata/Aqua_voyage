@@ -62,7 +62,6 @@ Figma:https://www.figma.com/design/9KOe99CAQy78HR7I4VEbbG/shino-omata's-team-lib
   * 施設名
   * 地域
   * タグ（生き物・推しポイント）
-* 水族館登録
 * 水族館詳細
   * 推しポイント投稿・タグ付け
   * レーティング（大人向けかファミリー向けか等）
