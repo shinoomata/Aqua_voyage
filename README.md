@@ -51,9 +51,6 @@ Aqua Voyage（アクア・ボヤージュ） ~水族館めぐり〜は、訪れ�
 - **推しポイント検索機能**: 全国の水族館を「推しポイント」で検索できる機能を提供。特定の特徴や見どころに興味があるユーザーにとって非常に便利なユニークな機能です。
 - **ユーザー報酬システム**: 水族館の口コミやレビューを投稿することでバッジや称号を獲得できる報酬システムを搭載。これにより、水族館愛好者としての自尊心を高め、リピーターを増やすことができる。
 
-### 画面遷移図
-Figma:https://www.figma.com/design/9KOe99CAQy78HR7I4VEbbG/shino-omata's-team-library?node-id=2325-5&t=9a97svZ1hqTKppuB-1]
-
 ### ER図
 [![Image from Gyazo](https://i.gyazo.com/9b9837f0d2d78531d88105e56df94ea0.png)](https://gyazo.com/9b9837f0d2d78531d88105e56df94ea0)
 https://drive.google.com/file/d/1r17ruJXx3ZinofIrMx_hzifHFkDK7_Pr/view?usp=sharing
