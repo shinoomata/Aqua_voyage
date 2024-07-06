@@ -75,4 +75,4 @@ https://drive.google.com/file/d/1r17ruJXx3ZinofIrMx_hzifHFkDK7_Pr/view?usp=shari
 ### その後の機能
 * おすすめの水族館表示（レコメンド）
 * 写真投稿（画像加工）
-* 位置情報から検索
+* 位置情報から検索 
