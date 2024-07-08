@@ -54,6 +54,10 @@ Aqua Voyage（アクア・ボヤージュ） ~水族館めぐり〜は、訪れ�
 ### 画面遷移図
 Figma:https://www.figma.com/design/9KOe99CAQy78HR7I4VEbbG/shino-omata's-team-library?node-id=2325-5&t=9a97svZ1hqTKppuB-1]
 
+### ER図
+[![Image from Gyazo](https://i.gyazo.com/37fe718b1e9c57b42790e58b4bbf0109.png)](https://gyazo.com/37fe718b1e9c57b42790e58b4bbf0109)
+https://drive.google.com/file/d/1r17ruJXx3ZinofIrMx_hzifHFkDK7_Pr/view?usp=sharing
+
 ## 実装を予定している機能
 ### MVP
 * 会員登録
