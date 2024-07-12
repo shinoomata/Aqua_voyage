@@ -1,0 +1,32 @@
+<div>
+  <h1>Welcome to Aqua Voyage</h1>
+
+<% if session[:user_id] %>
+  <p>Logged in as <%= User.find(session[:user_id]).name %></p>
+  <%= link_to 'Logout', logout_path, method: :delete %>
+<% else %>
+  <%= link_to 'Login with Google', '/auth/google_oauth2' %>
+<% end %>
+
+
+  <!-- クライアントライブラリの読み込み 下記1行を追加 -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+
+  <!-- Googleログインボタンの表示 ここから追加 -->
+  <div id="g_id_onload"
+    data-client_id="<%= ENV['GOOGLE_CLIENT_ID'] %>"
+    data-login_uri="http://localhost:3000/google_login_api/callback"
+    data-auto_prompt="false">
+  </div>
+  <div class="g_id_signin"
+    data-type="standard"
+    data-size="large"
+    data-theme="outline"
+    data-text="sign_in_with"
+    data-shape="rectangular"
+    data-logo_alignment="left">
+  </div>
+  <!-- ここまで追加 -->
+
+</div>

@@ -92,3 +92,10 @@ group :production do
 end
 
 gem "dockerfile-rails", ">= 1.6", :group => :development
+
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
+gem 'googleauth'
+
+gem 'dotenv-rails', groups: [:development, :test]
