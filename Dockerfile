@@ -25,6 +25,12 @@ COPY . /app_name
 # Yarnインストール
 RUN yarn install --check-files
 
+# Fly.io CLIのインストール
+RUN curl -L https://fly.io/install.sh | sh
+
+# Fly.io CLIをパスに追加
+ENV PATH="/root/.fly/bin:${PATH}"
+
 # ポートを指定
 EXPOSE 3000
 

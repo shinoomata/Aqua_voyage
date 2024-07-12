@@ -90,3 +90,5 @@ end
 group :production do
   gem "rails_12factor"
 end
+
+gem "dockerfile-rails", ">= 1.6", :group => :development
