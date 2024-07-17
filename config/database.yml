@@ -20,7 +20,10 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  url: <%= ENV["DATABASE_URL"] %>
+  username: postgres
+  host: db
+  port: 5432
+  
 
 development:
   <<: *default
@@ -83,3 +86,4 @@ test:
 production:
   <<: *default
   database: aqua_voyage_production
+  url: <%= ENV['DATABASE_URL'] %>
