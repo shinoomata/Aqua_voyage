@@ -1,6 +1,14 @@
 # ベースイメージ
 FROM ruby:3.1.2
 
+ENV TZ Asia/Tokyo
+ENV LANG ja_JP.UTF-8
+ENV LC_ALL C.UTF-8
+ENV EDITOR=vim
+
+#dbにpostgreSQLを使用するので対象のパッケージをインストール
+RUN apt-get update && apt-get install -y postgresql-client vim
+
 # Node.jsとYarnをインストール
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
@@ -26,13 +34,18 @@ COPY . /app_name
 RUN yarn install --check-files
 
 # Fly.io CLIのインストール
-RUN curl -L https://fly.io/install.sh | sh
+#RUN curl -L https://fly.io/install.sh | sh
 
 # Fly.io CLIをパスに追加
-ENV PATH="/root/.fly/bin:${PATH}"
+#ENV PATH="/root/.fly/bin:${PATH}"
 
 # ポートを指定
 EXPOSE 3000
 
 # サーバー起動コマンド
 CMD ["bin/rails", "server", "-b", "0.0.0.0"]
+
+#後述のentrypoint.shを実行するための記述
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
