@@ -8,6 +8,8 @@ primary_region = 'nrt'
 console_command = '/rails/bin/rails console'
 
 [build]
+  [build.args]
+    SECRET_KEY_BASE = "YOUR_PLACEHOLDER"
 
 [http_service]
   internal_port = 3000

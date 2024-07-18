@@ -6,8 +6,13 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
+      POSTGRES_DB: aqua_voyage_production # データベース名を明示的に指定
+
   web:
-    build: .
+    build: 
+      context: .
+      args:
+        SECRET_KEY_BASE: ${SECRET_KEY_BASE} # これでDockerfileに引数を渡す
     command: /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -b '0.0.0.0'"
     volumes:
       - .:/app_name
@@ -18,5 +23,7 @@ services:
     environment:
       DATABASE_URL: postgres://postgres:password@db:5432/postgres
       EDITOR: vim
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE} # 環境変数を設定
+      RAILS_ENV: production # RAILS_ENVを明示的に指定
 volumes:
   db-data:

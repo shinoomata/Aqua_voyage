@@ -92,4 +92,10 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Allow requests from localhost
+  config.hosts << "localhost"
+
+  # In case you are using a specific port, add it too
+  config.hosts << "localhost:3000"
 end
