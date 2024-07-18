@@ -1,6 +1,7 @@
 # ベースイメージ
 FROM ruby:3.1.2
 
+ENV RAILS_ENV=production
 ENV TZ Asia/Tokyo
 ENV LANG ja_JP.UTF-8
 ENV LC_ALL C.UTF-8
@@ -32,6 +33,19 @@ COPY . /app_name
 
 # Yarnインストール
 RUN yarn install --check-files
+
+# アセットをプリコンパイルするための環境変数を設定
+ARG SECRET_KEY_BASE
+ENV SECRET_KEY_BASE=$SECRET_KEY_BASE
+
+# アセットをプリコンパイル
+RUN bundle exec rake assets:precompile
+
+# TailwindCSSをインストール
+RUN yarn add tailwindcss
+
+# TailwindCSSの初期化
+RUN npx tailwindcss init
 
 # Fly.io CLIのインストール
 #RUN curl -L https://fly.io/install.sh | sh
