@@ -7,11 +7,11 @@ ENV LANG ja_JP.UTF-8
 ENV LC_ALL C.UTF-8
 ENV EDITOR=vim
 
-#dbにpostgreSQLを使用するので対象のパッケージをインストール
+# dbにpostgreSQLを使用するので対象のパッケージをインストール
 RUN apt-get update && apt-get install -y postgresql-client vim
 
 # Node.jsとYarnをインストール
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - && \
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
     apt-get update && \
@@ -34,6 +34,18 @@ COPY . /app_name
 # Yarnインストール
 RUN yarn install --check-files
 
+# TailwindCSSをインストール
+RUN yarn add tailwindcss postcss autoprefixer
+
+# TailwindCSSの初期化
+RUN npx tailwindcss init
+
+# Tailwind CSSの設定
+RUN echo 'module.exports = { content: ["./app/views/**/*.html.erb", "./app/helpers/**/*.rb", "./app/assets/stylesheets/**/*.css", "./app/javascript/**/*.js"], theme: { extend: {}, }, plugins: [], }' > tailwind.config.js
+
+# PostCSSの設定
+RUN echo 'module.exports = { plugins: [ require("tailwindcss"), require("autoprefixer"), ], }' > postcss.config.js
+
 # アセットをプリコンパイルするための環境変数を設定
 ARG SECRET_KEY_BASE
 ENV SECRET_KEY_BASE=$SECRET_KEY_BASE
@@ -41,25 +53,13 @@ ENV SECRET_KEY_BASE=$SECRET_KEY_BASE
 # アセットをプリコンパイル
 RUN bundle exec rake assets:precompile
 
-# TailwindCSSをインストール
-RUN yarn add tailwindcss
-
-# TailwindCSSの初期化
-RUN npx tailwindcss init
-
-# Fly.io CLIのインストール
-#RUN curl -L https://fly.io/install.sh | sh
-
-# Fly.io CLIをパスに追加
-#ENV PATH="/root/.fly/bin:${PATH}"
-
 # ポートを指定
 EXPOSE 3000
 
 # サーバー起動コマンド
 CMD ["bin/rails", "server", "-b", "0.0.0.0"]
 
-#後述のentrypoint.shを実行するための記述
+# entrypoint.shを実行するための記述
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
