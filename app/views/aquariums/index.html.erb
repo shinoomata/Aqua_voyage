@@ -4,6 +4,11 @@
     <%= f.search_field :name_or_location_or_description_cont %>
   </div>
 
+  <div class="field">
+    <%= f.label :region_eq, "地域" %>
+    <%= f.select :region_eq, options_for_select(@regions), { include_blank: '選択してください' } %>
+  </div>
+
   <div class="actions">
     <%= f.submit "検索" %>
   </div>
