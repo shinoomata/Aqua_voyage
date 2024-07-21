@@ -1,4 +1,5 @@
-<div>
-  <h1 class="font-bold text-4xl">Aquariums#show</h1>
-  <p>Find me in app/views/aquariums/show.html.erb</p>
-</div>
+<h1><%= @aquarium.name %></h1>
+<p><%= @aquarium.location %></p>
+<p><%= @aquarium.description %></p>
+<p>地域: <%= @aquarium.region %></p>
+<p>公式サイト: <%= link_to @aquarium.website, @aquarium.website, target: '_blank' %></p>
