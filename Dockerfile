@@ -34,8 +34,8 @@ COPY . /app_name
 # Yarnインストール
 RUN yarn install --check-files
 
-# TailwindCSSをインストール
-RUN yarn add tailwindcss postcss autoprefixer
+# TailwindCSSとesbuildをインストール
+RUN yarn add tailwindcss postcss autoprefixer esbuild
 
 # TailwindCSSの初期化
 RUN npx tailwindcss init
