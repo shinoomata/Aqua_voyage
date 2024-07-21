@@ -8,8 +8,11 @@ class AquariumsController < ApplicationController
   end
 
   def show
-    @aquariums = Aquarium.find(params[:id])
-    unless @aquarium
+    @aquarium = Aquarium.find_by(id: params[:id])
+    if @aquarium
+      Rails.logger.debug "Aquarium found: #{@aquarium.inspect}"
+    else
+      Rails.logger.debug "Aquarium not found for id: #{params[:id]}"
       flash[:alert] = "Aquarium not found"
       redirect_to aquariums_path
     end
