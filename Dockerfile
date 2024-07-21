@@ -50,16 +50,19 @@ RUN echo 'module.exports = { plugins: [ require("tailwindcss"), require("autopre
 ARG SECRET_KEY_BASE
 ENV SECRET_KEY_BASE=$SECRET_KEY_BASE
 
+# TailwindCSSのビルド
+RUN yarn build:css
+
 # アセットをプリコンパイル
 RUN bundle exec rake assets:precompile
 
 # ポートを指定
 EXPOSE 3000
 
-# サーバー起動コマンド
-CMD ["bin/rails", "server", "-b", "0.0.0.0"]
-
 # entrypoint.shを実行するための記述
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
+
+# サーバー起動コマンド
+CMD ["bin/rails", "server", "-b", "0.0.0.0"]
