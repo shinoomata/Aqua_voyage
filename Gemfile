@@ -15,8 +15,9 @@ gem "pg", "~> 1.1"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
-# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem "importmap-rails", "~> 1.0"
+# Use cssbundling-rails and jsbundling-rails for CSS and JS bundling
+gem 'cssbundling-rails'
+gem 'jsbundling-rails'
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
@@ -59,9 +60,6 @@ gem "cloudinary", "~> 1.20.0"
 gem "chartkick", "~> 4.0"
 gem "groupdate", "~> 5.2" # Chartkickに必要
 
-# CSS Framework
-gem "tailwindcss-rails", "~> 2.0"
-
 # バージョン制限付きのrubyzip
 gem "rubyzip", "~> 2.3"
 
@@ -100,5 +98,3 @@ gem 'omniauth-rails_csrf_protection'
 
 gem 'ransack', '~> 4.2.0'
 
-gem 'cssbundling-rails'
-gem 'jsbundling-rails'
