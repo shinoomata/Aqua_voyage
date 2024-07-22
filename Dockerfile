@@ -37,7 +37,7 @@ yarn add tailwindcss postcss autoprefixer esbuild daisyui && \
 npx tailwindcss init
 
 # TailwindCSSの初期化と設定
-RUN echo 'module.exports = { content: ["./app/views/**/*.html.erb", "./app/helpers/**/*.rb", "./app/assets/stylesheets/**/*.css", "./app/javascript/**/*.js"], theme: { extend: {}, }, plugins: [require("daisyui")], }' > tailwind.config.js
+RUN echo 'module.exports = { content: ["./app/views/**/*.html.erb", "./app/helpers/**/*.rb", "./app/assets/stylesheets/**/*.css", "./app/javascript/**/*.js"], theme: { extend: {}, }, plugins: [require("daisyui")], daisyui: { themes: ["cupcake"] }, }' > tailwind.config.js
 
 # PostCSSの設定
 RUN echo 'module.exports = { plugins: [ require("tailwindcss"), require("autoprefixer"), ], }' > postcss.config.js

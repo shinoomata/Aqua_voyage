@@ -1,28 +1,61 @@
-<h1><%= @aquarium.name %></h1>
-<p><%= @aquarium.location %></p>
-<p><%= @aquarium.description %></p>
-<p>地域: <%= @aquarium.region %></p>
-<p>公式サイト: <%= link_to @aquarium.website, @aquarium.website, target: '_blank' %></p>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AppName</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&libraries=places&callback=initMap" async defer></script>
+</head>
+<body>
+  <h1><%= @aquarium.name %></h1>
+  <p><%= @aquarium.location %></p>
+  <div id="map" style="height: 400px; width: 100%; margin-top: 20px;"></div>
+  <p>地域: <%= @aquarium.region %></p>
+  <p>公式サイト: <%= link_to @aquarium.website, @aquarium.website, target: '_blank' %></p>
 
-<div role="tablist" class="tabs tabs-lifted">
-  <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="Tab 1" />
-  <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
-    Tab content 1
+  <div role="tablist" class="tabs tabs-lifted">
+    <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="基本情報" checked="checked" />
+    <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+      <h1><%= @aquarium.name %></h1>
+      <p><%= @aquarium.location %></p>
+      <p><%= @aquarium.description %></p>
+      <p>地域: <%= @aquarium.region %></p>
+      <p>公式サイト: <%= link_to @aquarium.website, @aquarium.website, target: "_blank" %></p>
+    </div>
+
+    <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="推しポイント" />
+    <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+      Tab content 2
+    </div>
   </div>
 
-  <input
-    type="radio"
-    name="my_tabs_2"
-    role="tab"
-    class="tab"
-    aria-label="Tab 2"
-    checked="checked" />
-  <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
-    Tab content 2
-  </div>
+  <script>
+    function initMap() {
+    const address = "<%= @aquarium.location %>";
 
-  <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="Tab 3" />
-  <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
-    Tab content 3
-  </div>
-</div>
+    const geocoder = new google.maps.Geocoder();
+
+    geocoder.geocode({ 'address': address }, function(results, status) {
+      if (status === 'OK') {
+        const map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: results[0].geometry.location
+        });
+
+        new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+  }
+</script>
+
+  </script>
+</body>
+</html>
