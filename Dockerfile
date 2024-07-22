@@ -31,24 +31,19 @@ RUN bundle install
 # ソースコードをコピー
 COPY . /app_name
 
-# Yarnインストール
-RUN yarn install --check-files
+# # YarnインストールとTailwindCSSの設定
+RUN yarn install --check-files && \
+yarn add tailwindcss postcss autoprefixer esbuild daisyui && \
+npx tailwindcss init
 
-# TailwindCSSとesbuildをインストール
-RUN yarn add tailwindcss postcss autoprefixer esbuild
-
-# TailwindCSSの初期化
-RUN npx tailwindcss init
-
-# Tailwind CSSの設定
-RUN echo 'module.exports = { content: ["./app/views/**/*.html.erb", "./app/helpers/**/*.rb", "./app/assets/stylesheets/**/*.css", "./app/javascript/**/*.js"], theme: { extend: {}, }, plugins: [], }' > tailwind.config.js
+# TailwindCSSの初期化と設定
+RUN echo 'module.exports = { content: ["./app/views/**/*.html.erb", "./app/helpers/**/*.rb", "./app/assets/stylesheets/**/*.css", "./app/javascript/**/*.js"], theme: { extend: {}, }, plugins: [require("daisyui")], }' > tailwind.config.js
 
 # PostCSSの設定
 RUN echo 'module.exports = { plugins: [ require("tailwindcss"), require("autoprefixer"), ], }' > postcss.config.js
 
 # TailwindCSSのビルド
-RUN yarn run tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify
-
+RUN yarn run tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/stylesheets/application.css --minify
 
 # アセットをプリコンパイルするための環境変数を設定
 ARG SECRET_KEY_BASE
