@@ -46,6 +46,10 @@ RUN echo 'module.exports = { content: ["./app/views/**/*.html.erb", "./app/helpe
 # PostCSSの設定
 RUN echo 'module.exports = { plugins: [ require("tailwindcss"), require("autoprefixer"), ], }' > postcss.config.js
 
+# TailwindCSSのビルド
+RUN yarn run tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify
+
+
 # アセットをプリコンパイルするための環境変数を設定
 ARG SECRET_KEY_BASE
 ENV SECRET_KEY_BASE=$SECRET_KEY_BASE
