@@ -28,18 +28,25 @@
 
     <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="推しポイント" />
     <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
-      <% @aquarium.reviews.each do |review| %>
-        <p><strong><%= review.user.name %>:</strong></p>
-        <p><%= review.content %></p>
-        <p>対象年齢: <%= review.target_audience.content %></p>
-        <p>サイズ評価: <%= review.size_rating.size %></p>
-        <p>推しポイント: <%= review.highlight.highlight_kind %></p>
-        <% if review.image_url.present? %>
-          <p><img src="<%= review.image_url %>" alt="Review Image" style="max-width: 200px;"></p>
-        <% end %>
+    <% @reviews.each do |review| %>
+      <p><strong><%= review.user.name %>:</strong></p>
+      <p><%= review.content %></p>
+      <p>対象年齢: <%= review.target_audience.content %></p>
+      <p>サイズ評価: <%= review.size_rating.size %></p>
+      <p>推しポイント: <%= review.highlight.highlight_kind %></p>
+      <% if review.image_url.present? %>
+        <p><img src="<%= review.image_url %>" alt="Review Image" style="max-width: 200px;"></p>
       <% end %>
+      <% if review.user == current_user %>
+        <%= link_to '編集', edit_aquarium_review_path(@aquarium, review) %>
+      <% end %>
+    <% end %>
 
-      <%= link_to 'レビューを追加', new_aquarium_review_path(@aquarium) %>
+      <% if user_signed_in? %>
+        <%= link_to 'レビューを追加', new_aquarium_review_path(@aquarium) %>
+      <% else %>
+        <p><%= link_to 'ログインしてレビューを投稿する', new_user_session_path %></p>
+      <% end %>
     </div>
   </div>
 
@@ -68,3 +75,5 @@
   </script>
 </body>
 </html>
+
+

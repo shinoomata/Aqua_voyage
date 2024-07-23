@@ -1,9 +1,11 @@
 class Review < ApplicationRecord
   belongs_to :user
-  belongs_to :aquarium
+  belongs_to :aquarium, class_name: 'Aquarium', foreign_key: 'aquaria_id'
   belongs_to :target_audience
   belongs_to :size_rating
   belongs_to :highlight
+
+  validates :user_id, uniqueness: { scope: :aquaria_id, message: "はこの水族館に既にレビューを投稿しています" }
 end
 
 class User < ApplicationRecord
