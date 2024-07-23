@@ -1,29 +1,62 @@
-<h1><%= @aquarium.name %>へのレビューを作成</h1>
+<h1><%= @aquarium.name %>にレビューを投稿</h1>
 
 <%= form_with(model: [@aquarium, @review], local: true) do |form| %>
+  <% if @review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+      <ul>
+        <% @review.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div>
     <%= form.label :content, "レビュー内容" %>
     <%= form.text_area :content %>
   </div>
+
   <div>
-    <%= form.label :target_audience_id, "対象年齢" %>
-    <%= form.collection_select :target_audience_id, TargetAudience.all, :id, :content %>
-  </div>
-  <div>
-    <%= form.label :size_rating_id, "サイズ評価" %>
-    <%= form.collection_select :size_rating_id, SizeRating.all, :id, :size %>
-  </div>
-  <div>
-    <%= form.label :highlight_id, "推しポイント" %>
-    <%= form.collection_select :highlight_id, Highlight.all, :id, :highlight_kind %>
-  </div>
+  <p>対象年齢:</p>
+  <% @target_audiences.each do |audience| %>
+    <label>
+      <%= form.radio_button :target_audience_id, audience.id, class: "radio radio-info" %>
+      <%= audience.content %>
+    </label>
+  <% end %>
+</div>
+
+<div>
+  <p>サイズ評価:</p>
+  <% @size_ratings.each do |rating| %>
+    <label>
+      <%= form.radio_button :size_rating_id, rating.id, class: "radio radio-info" %>
+      <%= rating.size %>
+    </label>
+  <% end %>
+</div>
+
+<div>
+  <p>推しポイント:</p>
+  <% @highlights.each do |highlight| %>
+    <label>
+      <%= form.radio_button :highlight_id, highlight.id, class: "radio radio-info" %>
+      <%= highlight.highlight_kind %>
+    </label>
+  <% end %>
+</div>
+
   <div>
     <%= form.label :image_url, "画像URL" %>
     <%= form.text_field :image_url %>
   </div>
+
   <div>
     <%= form.submit "レビューを投稿" %>
   </div>
 <% end %>
 
 <%= link_to '戻る', aquarium_path(@aquarium) %>
+
+  

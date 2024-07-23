@@ -1,18 +1,44 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!
   before_action :set_aquarium
+  before_action :set_review, only: [:edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def new
     @review = Review.new
+    @target_audiences = TargetAudience.all
+    @size_ratings = SizeRating.all
+    @highlights = Highlight.all
   end
 
   def create
-    @review = @aquarium.reviews.build(review_params)
+    @review = @aquarium.reviews.new(review_params)
     @review.user = current_user
+
     if @review.save
-      redirect_to @aquarium, notice: 'レビューが作成されました。'
+      redirect_to @aquarium, notice: 'レビューが正常に投稿されました。'
     else
+      @target_audiences = TargetAudience.all
+      @size_ratings = SizeRating.all
+      @highlights = Highlight.all
       render :new
+    end
+  end
+
+  def edit
+    @target_audiences = TargetAudience.all
+    @size_ratings = SizeRating.all
+    @highlights = Highlight.all
+  end
+
+  def update
+    if @review.update(review_params)
+      redirect_to @aquarium, notice: 'レビューが更新されました。'
+    else
+      @target_audiences = TargetAudience.all
+      @size_ratings = SizeRating.all
+      @highlights = Highlight.all
+      render :edit
     end
   end
 
@@ -20,6 +46,16 @@ class ReviewsController < ApplicationController
 
   def set_aquarium
     @aquarium = Aquarium.find(params[:aquarium_id])
+  end
+
+  def set_review
+    @review = @aquarium.reviews.find(params[:id])
+  end
+
+  def correct_user
+    unless @review.user == current_user
+      redirect_to @aquarium, alert: "編集権限がありません。"
+    end
   end
 
   def review_params
