@@ -28,34 +28,43 @@
 
     <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="推しポイント" />
     <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
-      Tab content 2
+      <% @aquarium.reviews.each do |review| %>
+        <p><strong><%= review.user.name %>:</strong></p>
+        <p><%= review.content %></p>
+        <p>対象年齢: <%= review.target_audience.content %></p>
+        <p>サイズ評価: <%= review.size_rating.size %></p>
+        <p>推しポイント: <%= review.highlight.highlight_kind %></p>
+        <% if review.image_url.present? %>
+          <p><img src="<%= review.image_url %>" alt="Review Image" style="max-width: 200px;"></p>
+        <% end %>
+      <% end %>
+
+      <%= link_to 'レビューを追加', new_aquarium_review_path(@aquarium) %>
     </div>
   </div>
 
   <script>
     function initMap() {
-    const address = "<%= @aquarium.location %>";
+      const address = "<%= @aquarium.location %>";
 
-    const geocoder = new google.maps.Geocoder();
+      const geocoder = new google.maps.Geocoder();
 
-    geocoder.geocode({ 'address': address }, function(results, status) {
-      if (status === 'OK') {
-        const map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 15,
-          center: results[0].geometry.location
-        });
+      geocoder.geocode({ 'address': address }, function(results, status) {
+        if (status === 'OK') {
+          const map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: results[0].geometry.location
+          });
 
-        new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location
-        });
-      } else {
-        alert('Geocode was not successful for the following reason: ' + status);
-      }
-    });
-  }
-</script>
-
+          new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+          });
+        } else {
+          alert('Geocode was not successful for the following reason: ' + status);
+        }
+      });
+    }
   </script>
 </body>
 </html>
