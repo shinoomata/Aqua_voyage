@@ -28,6 +28,17 @@
 
     <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="推しポイント" />
     <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+
+    <h2>レビューの集計データ</h2>
+      <h3>対象年齢の選択</h3>
+      <%= pie_chart @target_audience_data.transform_keys { |id| TargetAudience.find(id).content } %>
+
+      <h3>サイズ評価の選択</h3>
+      <%= pie_chart @size_rating_data.transform_keys { |id| SizeRating.find(id).size } %>
+
+      <h3>推しポイントの選択</h3>
+      <%= pie_chart @highlight_data.transform_keys { |id| Highlight.find(id).highlight_kind } %>
+
     <% @reviews.each do |review| %>
       <p><strong><%= review.user.name %>:</strong></p>
       <p><%= review.content %></p>

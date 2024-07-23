@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.19",
+    "chart.js": "^4.4.3",
+    "chartkick": "^5.0.1",
     "daisyui": "^4.12.10",
     "esbuild": "^0.14.0",
     "postcss": "^8.4.39",

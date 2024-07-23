@@ -1,0 +1,32 @@
+<h1><%= @aquarium.name %>のレビュー</h1>
+
+<h2>対象年齢の選択</h2>
+<%= pie_chart @target_audience_data.transform_keys { |id| TargetAudience.find(id).content } %>
+
+<h2>サイズ評価の選択</h2>
+<%= pie_chart @size_rating_data.transform_keys { |id| SizeRating.find(id).size } %>
+
+<h2>推しポイントの選択</h2>
+<%= pie_chart @highlight_data.transform_keys { |id| Highlight.find(id).highlight_kind } %>
+
+<% @reviews.each do |review| %>
+  <p><strong><%= review.user.name %>:</strong></p>
+  <p><%= review.content %></p>
+  <p>対象年齢: <%= review.target_audience.content %></p>
+  <p>サイズ評価: <%= review.size_rating.size %></p>
+  <p>推しポイント: <%= review.highlight.highlight_kind %></p>
+  <% if review.image_url.present? %>
+    <p><img src="<%= review.image_url %>" alt="Review Image" style="max-width: 200px;"></p>
+  <% end %>
+  <% if review.user == current_user %>
+    <%= link_to '編集', edit_aquarium_review_path(@aquarium, review) %>
+    <%= link_to '削除', aquarium_review_path(@aquarium, review), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+  <% end %>
+<% end %>
+
+<%= link_to '戻る', aquarium_path(@aquarium) %>
+<% if user_signed_in? %>
+  <%= link_to 'レビューを追加', new_aquarium_review_path(@aquarium) %>
+<% else %>
+  <p><%= link_to 'ログインしてレビューを投稿する', new_user_session_path %></p>
+<% end %>
