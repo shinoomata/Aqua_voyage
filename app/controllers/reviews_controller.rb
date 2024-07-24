@@ -4,6 +4,13 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: [:edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
+  def index
+    @reviews = @aquarium.reviews
+    @target_audience_data = @reviews.group(:target_audience_id).count
+    @size_rating_data = @reviews.group(:size_rating_id).count
+    @highlight_data = @reviews.group(:highlight_id).count
+  end
+
   def new
     @review = Review.new
     @target_audiences = TargetAudience.all
