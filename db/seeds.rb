@@ -9,13 +9,6 @@ aquariums = [
       region: '沖縄'
     },
     {
-      name: '海遊館',
-      location: '大阪府大阪市港区海岸通1丁目1-10',
-      description: '海遊館は、大阪の天保山にある大型水族館で、環太平洋の生態系を再現しています。',
-      website: 'https://www.kaiyukan.com/',
-      region: '近畿'
-    },
-    {
       name: 'あわしまマリンパーク',
       location: '静岡県沼津市内浦重寺186',
       description: 'あわしまマリンパークは、島全体がテーマパークになっており、カエル館や釣り体験も楽しめます。ユニークな生物展示が魅力です。',
@@ -329,14 +322,119 @@ aquariums = [
     description: '横浜フォーチュンアクアリウムは、占いをテーマにした水族館で、“開運魚”を展示しています。訪れることで運気アップが期待できます。',
     website: 'https://fortune-aquarium.com/',
     region: '関東'
+  },
+  {
+    name: '滋賀県立琵琶湖博物館',
+    location: '滋賀県草津市下物町1091',
+    description: '琵琶湖博物館は、琵琶湖の自然や生態系を展示しており、特に琵琶湖の固有種や淡水魚の展示が充実しています。',
+    website: 'https://www.biwahaku.jp/',
+    region: '近畿'
+  },
+  {
+    name: '京都水族館',
+    location: '京都府京都市下京区観喜寺町35-1',
+    description: '京都水族館は、オオサンショウウオや京の里山を再現した展示が特徴で、内陸型の大規模水族館です。',
+    website: 'https://www.kyoto-aquarium.com/',
+    region: '近畿'
+  },
+  {
+    name: '奈良金魚ミュージアム',
+    location: '奈良県奈良市三条大路1丁目8-1',
+    description: '奈良金魚ミュージアムは、日本最大級の金魚のミュージアムで、約3000匹の金魚を展示しています。アートと金魚のコラボレーションが特徴です。',
+    website: 'https://kingyomuseum.com/',
+    region: '近畿'
+  },
+  {
+    name: 'アドベンチャーワールド',
+    location: '和歌山県西牟婁郡白浜町堅田2399',
+    description: 'アドベンチャーワールドは、動物園・水族館・遊園地が一体になったテーマパークで、イルカやクジラのショーが人気です。',
+    website: 'https://www.aws-s.com/',
+    region: '近畿'
+  },
+  {
+    name: '京都大学白浜水族館',
+    location: '和歌山県西牟婁郡白浜町459',
+    description: '京都大学白浜水族館は、白浜周辺の無脊椎動物と魚を展示しており、カニやヒトデなど約500種が観察できます。',
+    website: 'https://www.seto.kyoto-u.ac.jp/shirahama_aqua/',
+    region: '近畿'
+  },
+  {
+    name: '串本海中公園',
+    location: '和歌山県東牟婁郡串本町有田1157',
+    description: '串本海中公園は、日本で最初に指定された海中公園で、海中展望塔やウミガメパークが人気です。',
+    website: 'https://www.kushimoto.co.jp/',
+    region: '近畿'
+  },
+  {
+    name: 'エビとカニの水族館',
+    location: '和歌山県西牟婁郡すさみ町江住808-1',
+    description: 'エビとカニの水族館は、エビとカニだけに特化したユニークな水族館で、世界中から集められた150種以上の甲殻類を展示しています。',
+    website: 'https://ebikani-aquarium.com/',
+    region: '近畿'
+  },
+  {
+    name: 'くじらの博物館',
+    location: '和歌山県東牟婁郡太地町太地2934-2',
+    description: 'くじらの博物館は、鯨の生態や捕鯨に関する資料を展示しており、鯨のショーも楽しめます。世界一の規模を誇る鯨専門の博物館です。',
+    website: 'http://www.kujirakan.jp/',
+    region: '近畿'
+  },
+  {
+    name: '海遊館',
+    location: '大阪府大阪市港区海岸通1丁目1-10',
+    description: '海遊館は、太平洋を中心に自然環境を再現し、ジンベエザメやイトマキエイを含む約620種3,000点の海洋生物を展示しています。',
+    website: 'https://www.kaiyukan.com/',
+    region: '近畿'
+  },
+  {
+    name: '生きているミュージアム ニフレル',
+    location: '大阪府吹田市千里万博公園2-1',
+    description: 'ニフレルは、「感性にふれる」をコンセプトに、水族館と動物園、美術館を融合したアーティスティックな展示が特徴です。',
+    website: 'https://www.nifrel.jp/',
+    region: '近畿'
+  },
+  {
+    name: '城崎マリンワールド',
+    location: '兵庫県豊岡市瀬戸1090',
+    description: '城崎マリンワールドは、ユニークなアトラクションやイルカ、アシカのショーが人気で、釣り体験も楽しめます。',
+    website: 'https://marineworld.hiyoriyama.co.jp/',
+    region: '近畿'
+  },
+  {
+    name: '神戸須磨シーワールド',
+    location: '兵庫県神戸市須磨区若宮町1丁目3-5',
+    description: '神戸須磨シーワールドは、シャチとイルカのショーが特徴で、2024年6月にリニューアルオープンしました。',
+    website: 'https://www.kobesuma-seaworld.jp/',
+    region: '近畿'
+  },
+  {
+    name: '姫路市立水族館',
+    location: '兵庫県姫路市西延末440',
+    description: '姫路市立水族館は、播磨地方の里地・里海の生き物を展示し、山頂付近に位置するため「山の上の水族館」としても知られています。',
+    website: 'https://www.city.himeji.lg.jp/aqua/',
+    region: '近畿'
+  },
+  {
+    name: 'átoa（アトア）',
+    location: '兵庫県神戸市中央区新港町7-2',
+    description: 'アトアは、アクアリウムと舞台美術やデジタルアートの演出を融合させた新感覚の劇場型アクアリウムです。',
+    website: 'https://atoa-kobe.jp/',
+    region: '近畿'
+  },
+  {
+    name: 'アクア東条',
+    location: '兵庫県加東市黒谷1216',
+    description: 'アクア東条は、淡水魚類の展示や釣り針製造工程の紹介があり、東条湖畔観光の合間に気軽に立ち寄れる癒しの空間です。',
+    website: 'https://www.hyoturi.or.jp/aqua/',
+    region: '近畿'
   }
 ]
 
 aquariums.each do |aquarium|
-  Aquarium.find_or_create_by!(name: aquarium[:name]) do |a|
-    a.location = aquarium[:location]
+  Aquarium.find_or_initialize_by(name: aquarium[:name], location: aquarium[:location]).tap do |a|
     a.description = aquarium[:description]
     a.website = aquarium[:website]
     a.region = aquarium[:region]
+    a.save!
   end
 end
