@@ -1,9 +1,6 @@
 # db/seeds.rb
 
-# db/seeds.rb
-
-Aquarium.create!(
-  [
+aquariums = [
     {
       name: '沖縄美ら海水族館',
       location: '沖縄県国頭郡本部町字石川424',
@@ -17,20 +14,6 @@ Aquarium.create!(
       description: '海遊館は、大阪の天保山にある大型水族館で、環太平洋の生態系を再現しています。',
       website: 'https://www.kaiyukan.com/',
       region: '近畿'
-    },
-    {
-      name: 'アクアパーク品川',
-      location: '東京都港区高輪4丁目10-30',
-      description: 'アクアパーク品川は、最新のデジタル技術を駆使した展示と、イルカショーが楽しめる都市型水族館です。',
-      website: 'https://www.aqua-park.jp/',
-      region: '関東'
-    },
-    {
-      name: 'サンシャイン水族館',
-      location: '東京都豊島区東池袋3丁目1-3',
-      description: 'サンシャイン水族館は、池袋のサンシャインシティ内にあり、都市のオアシスとして親しまれています。',
-      website: 'https://www.sunshinecity.co.jp/aquarium/',
-      region: '関東'
     },
     {
       name: 'あわしまマリンパーク',
@@ -199,8 +182,161 @@ Aquarium.create!(
     description: '伊勢シーパラダイスは、触れ合い体験が充実した水族館で、アシカやカワウソとの近距離体験が人気です。',
     website: 'https://ise-seaparadise.com/',
     region: '東海'
+  },
+  {
+    name: 'アクアワールド茨城県大洗水族館',
+    location: '茨城県東茨城郡大洗町磯浜町8252-3',
+    description: 'アクアワールド茨城県大洗水族館は、日本トップクラスの規模を誇り、50種類以上のサメと日本一のマンボウ専用水槽があります。',
+    website: 'https://www.aquaworld-oarai.com/',
+    region: '関東'
+  },
+  {
+    name: 'かすみがうら市水族館',
+    location: '茨城県かすみがうら市坂910-1',
+    description: 'かすみがうら市水族館は、霞ヶ浦に生息する魚や水辺の生物約100種類を飼育・展示しています。タッチ水槽やパノラマ展示が特徴です。',
+    website: 'https://www.city.kasumigaura.lg.jp/page/page014376.html',
+    region: '関東'
+  },
+  {
+    name: 'なかがわ水遊園',
+    location: '栃木県大田原市佐良土2686',
+    description: 'なかがわ水遊園は、淡水魚の展示が中心で、関東に生息する淡水魚を観察することができます。',
+    website: 'http://tnap.jp/',
+    region: '関東'
+  },
+  {
+    name: 'さかなと森の観察園',
+    location: '栃木県日光市中宮祠2482',
+    description: 'さかなと森の観察園は、中禅寺湖のほとりにあり、淡水魚の研究と展示を行う施設で、自然の中で魚を観察できます。',
+    website: 'https://www.fra.go.jp/nikko/',
+    region: '関東'
+  },
+  {
+    name: '山梨県立富士湧水の里水族館',
+    location: '山梨県南都留郡忍野村忍草3098-1',
+    description: '山梨県立富士湧水の里水族館は、湧水に生息する魚を中心に展示し、特にメダカの種類が豊富です。湧水を利用したクリアな水槽が特徴です。',
+    website: 'http://www.morinonakano-suizokukan.com/index.html',
+    region: '関東'
+  },
+  {
+    name: '蓼科アミューズメント水族館',
+    location: '長野県茅野市北山4035-2409',
+    description: '蓼科アミューズメント水族館は、高原の自然を活かした展示が特徴で、季節ごとのイベントも開催されます。自然体験と水族館の融合が魅力です。',
+    website: 'https://www.tateshina-aquarium.jp/',
+    region: '関東'
+  },
+  {
+    name: '県営さいたま水族館',
+    location: '埼玉県羽生市三田ヶ谷751-1',
+    description: '県営さいたま水族館は、淡水魚専門の水族館で亀や山椒魚、水性昆虫の展示があります。外の池にはカワウソも飼育されています。',
+    website: 'https://www.parks.or.jp/suizokukan/guide/001/001080.html',
+    region: '関東'
+  },
+  {
+    name: '鴨川シーワールド',
+    location: '千葉県鴨川市東町1464-18',
+    description: '鴨川シーワールドは、シャチやイルカのショーが大人気で、トロピカルアイランドではダイバー気分で南の海の水中散歩が楽しめます。',
+    website: 'https://www.kamogawa-seaworld.jp/',
+    region: '関東'
+  },
+  {
+    name: '世界一ちっちゃな水族館',
+    location: '千葉県銚子市潮見町15-9',
+    description: '世界一ちっちゃな水族館は、19坪の小さなスペースにクラゲなどの海の生き物を展示するユニークな水族館です。',
+    website: 'https://choshi-aquarium.jimdofree.com/',
+    region: '関東'
+  },
+  {
+    name: 'すみだ水族館',
+    location: '東京都墨田区押上1-1-2 東京スカイツリータウン・ソラマチ5F・6F',
+    description: 'すみだ水族館は、東京スカイツリータウンに位置し、仕切りのない水槽展示やスタッフとのコミュニケーションが魅力の水族館です。',
+    website: 'https://www.sumida-aquarium.com/',
+    region: '関東'
+  },
+  {
+    name: 'マクセル アクアパーク品川',
+    location: '東京都港区高輪4-10-30',
+    description: 'マクセル アクアパーク品川は、品川駅から徒歩約2分の場所にあり、デジタルアートを駆使した展示空間とイルカのショーが見どころです。',
+    website: 'https://www.aqua-park.jp/',
+    region: '関東'
+  },
+  {
+    name: 'サンシャイン水族館',
+    location: '東京都豊島区東池袋3-1-3 サンシャインシティ',
+    description: 'サンシャイン水族館は、“天空のオアシス”をコンセプトに、屋上にある非日常空間で多種多様な生き物が展示されています。',
+    website: 'https://sunshinecity.jp/aquarium/',
+    region: '関東'
+  },
+  {
+    name: 'しながわ水族館',
+    location: '東京都品川区勝島3-2-1',
+    description: 'しながわ水族館は、「海と川とのふれあい」をコンセプトに、約450種4,000点の海の生き物たちを展示する本格水族館です。',
+    website: 'http://www.aquarium.gr.jp/',
+    region: '関東'
+  },
+  {
+    name: '葛西臨海水族園',
+    location: '東京都江戸川区臨海町6-2-3',
+    description: '葛西臨海水族園は、1989年に開園し、建築面積11129平方メートル、総水量3,160トンを誇り、マグロの展示が見どころです。',
+    website: 'https://www.tokyo-zoo.net/zoo/kasai/',
+    region: '関東'
+  },
+  {
+    name: '小笠原水産センター',
+    location: '東京都小笠原村父島字清瀬',
+    description: '小笠原水産センターは、小笠原諸島の海洋生物を中心に展示しており、独自の生態系を学べる施設です。',
+    website: 'https://www.soumu.metro.tokyo.lg.jp/07ogasawara/fish/',
+    region: '関東'
+  },
+  {
+    name: '新江ノ島水族館',
+    location: '神奈川県藤沢市片瀬海岸2-19-1',
+    description: '新江ノ島水族館は、江の島と富士山をバックにイルカショーや相模湾大水槽が見どころで、遊びながら学べる水族館です。',
+    website: 'https://www.enosui.com/',
+    region: '関東'
+  },
+  {
+    name: 'カワスイ 川崎水族館',
+    location: '神奈川県川崎市川崎区日進町1-11',
+    description: 'カワスイ 川崎水族館は、「世界の美しい水辺」をテーマに、多摩川からアマゾンまでの生き物を展示しています。',
+    website: 'https://kawa-sui.com/',
+    region: '関東'
+  },
+  {
+    name: '横浜・八景島シーパラダイス',
+    location: '神奈川県横浜市金沢区八景島',
+    description: '横浜・八景島シーパラダイスは、テーマの異なる4つの水族館とさまざまなアトラクションがあり、一日中楽しめるテーマパークです。',
+    website: 'https://www.seaparadise.co.jp/',
+    region: '関東'
+  },
+  {
+    name: '相模川ふれあい科学館 アクアリウムさがみはら',
+    location: '神奈川県相模原市中央区水郷田名1-5-1',
+    description: '相模川ふれあい科学館 アクアリウムさがみはらは、相模川に生息する淡水魚を展示し、全長40ｍの水槽「流れのアクアリウム」が見どころです。',
+    website: 'https://sagamigawa-fureai.com/',
+    region: '関東'
+  },
+  {
+    name: '箱根園水族館',
+    location: '神奈川県足柄下郡箱根町元箱根139',
+    description: '箱根園水族館は、標高723メートルに位置し、世界中の魚450種類32,000匹が展示されています。ベーリング海のアザラシが見どころです。',
+    website: 'https://www.princehotels.co.jp/amuse/hakone-en/suizokukan/',
+    region: '関東'
+  },
+  {
+    name: '横浜フォーチュンアクアリウム',
+    location: '神奈川県横浜市中区山下町106-2',
+    description: '横浜フォーチュンアクアリウムは、占いをテーマにした水族館で、“開運魚”を展示しています。訪れることで運気アップが期待できます。',
+    website: 'https://fortune-aquarium.com/',
+    region: '関東'
   }
 ]
 
-
-)
+aquariums.each do |aquarium|
+  Aquarium.find_or_create_by!(name: aquarium[:name]) do |a|
+    a.location = aquarium[:location]
+    a.description = aquarium[:description]
+    a.website = aquarium[:website]
+    a.region = aquarium[:region]
+  end
+end
