@@ -644,6 +644,62 @@ aquariums = [
     description: '厚岸グルメパークミニ水族館プティは、厚岸湖、厚岸湾に生息する海水魚、淡水魚たちが観察できるほか、牡蠣や厚岸について知ることが出来ます。',
     website: 'https://www.conchiglie.net/facility',
     region: '北海道'
+  },
+  {
+    name: '青森県営浅虫水族館',
+    location: '青森県青森市大字浅虫字馬場山1-25',
+    description: '浅虫水族館は、イルカショーや青森の海の生物を展示し、特にホタテガイの養殖展示が人気です。',
+    website: 'http://asamushi-aqua.com/',
+    region: '東北'
+  },
+  {
+    name: 'もぐらんぴあ水族館',
+    location: '岩手県久慈市侍浜町麦生1-43-7',
+    description: '三陸の海の生物や「南部もぐり」「北限の海女」の技術、震災復興に関する展示もある水族館です。',
+    website: 'https://www.moguranpia.com/',
+    region: '東北'
+  },
+  {
+    name: '仙台うみの杜水族館',
+    location: '宮城県仙台市宮城野区中野4丁目6',
+    description: '仙台うみの杜水族館は、イルカやアシカのショーが人気で、東北の海の生物を展示しています。',
+    website: 'https://www.uminomori.jp/umino/',
+    region: '東北'
+  },
+  {
+    name: 'アクアテラス錦ケ丘',
+    location: '宮城県仙台市青葉区錦ケ丘1丁目3-1',
+    description: 'アクアテラス錦ケ丘は、熱帯魚や水草を展示する水族館で、美しいアクアリウムが見どころです。',
+    website: 'https://aquaterrace.co.jp/',
+    region: '東北'
+  },
+  {
+    name: '男鹿水族館',
+    location: '秋田県男鹿市戸賀塩浜壺ケ沢93',
+    description: '男鹿水族館は、日本海の生態系を展示し、特にアザラシやクラゲの展示が見どころです。',
+    website: 'https://www.gao-aqua.jp/',
+    region: '東北'
+  },
+  {
+    name: '加茂水族館',
+    location: '山形県鶴岡市今泉字大久保656',
+    description: '加茂水族館は、クラゲの展示が充実しており、世界一のクラゲ展示数を誇ります。クラゲドームが見どころです。',
+    website: 'https://kamo-kurage.jp/',
+    region: '東北'
+  },
+  {
+    name: 'アクアマリンふくしま',
+    location: '福島県いわき市小名浜字辰巳町50',
+    description: 'アクアマリンふくしまは、太平洋の生態系をテーマにした展示が特徴で、シーラカンスの標本展示もあります。',
+    website: 'https://www.aquamarine.or.jp/',
+    region: '東北'
+  },
+  {
+    name: 'アクアマリンいなわしろカワセミ水族館',
+    location: '福島県耶麻郡猪苗代町長田東中丸3443-4',
+    description: 'アクアマリンいなわしろカワセミ水族館は、猪苗代湖の淡水魚を展示し、特にカワセミの生態展示が見どころです。',
+    website: 'https://www.aquamarine.or.jp/kawasemi/',
+    region: '東北'
   }
 ]
 
