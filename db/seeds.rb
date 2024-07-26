@@ -553,6 +553,97 @@ aquariums = [
     description: 'タツノオトシゴハウスは、タツノオトシゴの養殖を行う珍しい施設で、タツノオトシゴの生態を学ぶことができます。',
     website: 'http://www.seahorseways.com/html/t_house.html',
     region: '九州'
+  },
+  {
+    name: '登別マリンパークニクス',
+    location: '北海道登別市登別東町1丁目22',
+    description: '登別マリンパークニクスは、デンマークに実在する「イーエスコー城」を模した水族館で、イルカショーやオットセイショーが楽しめます。',
+    website: 'https://www.nixe.co.jp/',
+    region: '北海道'
+  },
+  {
+    name: 'おたる水族館',
+    location: '北海道小樽市祝津3丁目303',
+    description: 'おたる水族館は、海の生き物たちのショーや展示が充実しており、特にアザラシやネズミイルカの展示が人気です。',
+    website: 'http://otaru-aq.jp/',
+    region: '北海道'
+  },
+  {
+    name: 'AOAO SAPPORO（札幌大通り水族館）',
+    location: '北海道札幌市中央区大通西3丁目',
+    description: 'AOAO SAPPOROは、都会の中で海洋生物と触れ合える水族館で、多彩な展示が楽しめます。',
+    website: 'https://aoao-sapporo.blue/',
+    region: '北海道'
+  },
+  {
+    name: 'サンピアザ水族館',
+    location: '北海道札幌市厚別区厚別中央2条5丁目7-5',
+    description: 'サンピアザ水族館は、約200種1万匹の生物を展示し、特に熱帯魚やペンギンの展示が見どころです。',
+    website: 'https://www.sunpiazza-aquarium.com/',
+    region: '北海道'
+  },
+  {
+    name: 'サケのふるさと千歳水族館',
+    location: '北海道千歳市花園2丁目312',
+    description: 'サケのふるさと千歳水族館は、サケの生態を学べる施設で、遡上するサケを観察できる施設です。',
+    website: 'https://chitose-aq.jp/',
+    region: '北海道'
+  },
+  {
+    name: '市立室蘭水族館',
+    location: '北海道室蘭市日向町3丁目1-12',
+    description: '市立室蘭水族館は、地域の海洋生物を展示し、特にトドのショーやフンボルトペンギンの行進が人気です。',
+    website: 'http://iburi.net/murosui/index.html',
+    region: '北海道'
+  },
+  {
+    name: '北の大地の水族館',
+    location: '北海道北見市留辺蘂町松山1丁目4-4',
+    description: '北の大地の水族館は、滝つぼ水槽などユニークな展示が特徴で、淡水魚の生態が学べます。',
+    website: 'http://onneyu-aq.com/',
+    region: '北海道'
+  },
+  {
+    name: 'アザラシシーパラダイス',
+    location: '北海道紋別市元紋別11',
+    description: 'アザラシシーパラダイスは、アザラシの観察やふれあい体験ができる施設です。',
+    website: 'https://o-tower.co.jp/seaparadise.html',
+    region: '北海道'
+  },
+  {
+    name: '標津サーモン科学館',
+    location: '北海道標津郡標津町南三条西4丁目1-1',
+    description: '標津サーモン科学館は、サケの生態や遡上を学べる施設で、展示と体験が充実しています。',
+    website: 'http://shibetsu-salmon.org/',
+    region: '北海道'
+  },
+  {
+    name: 'くしろ水族館ぷくぷく',
+    location: '北海道釧路市新富士町4丁目5-2',
+    description: 'くしろ水族館ぷくぷくは、釧路湿原に生息する生物を中心に展示しており、地域の生態系を学べる施設です。',
+    website: 'https://www.sennosuke.net/pukupuku/',
+    region: '北海道'
+  },
+  {
+    name: 'ノシャップ寒流水族館',
+    location: '北海道稚内市ノシャップ2丁目2-17',
+    description: 'ノシャップ寒流水族館は、寒流に生息する魚を展示し、アザラシの餌やり体験も人気です。',
+    website: 'https://www.city.wakkanai.hokkaido.jp/suizokukan/',
+    region: '北海道'
+  },
+  {
+    name: '美深チョウザメ館',
+    location: '北海道中川郡美深町字敷島',
+    description: '美深チョウザメ館は、チョウザメを無料で見学することのできる施設です。',
+    website: 'https://www.bifuka-kankou.com/attractions/tyozamekan/',
+    region: '北海道'
+  },
+  {
+    name: '厚岸グルメパークミニ水族館プティ',
+    location: '北海道厚岸郡厚岸町住の江2丁目2',
+    description: '厚岸グルメパークミニ水族館プティは、厚岸湖、厚岸湾に生息する海水魚、淡水魚たちが観察できるほか、牡蠣や厚岸について知ることが出来ます。',
+    website: 'https://www.conchiglie.net/facility',
+    region: '北海道'
   }
 ]
 
