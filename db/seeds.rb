@@ -427,6 +427,132 @@ aquariums = [
     description: 'アクア東条は、淡水魚類の展示や釣り針製造工程の紹介があり、東条湖畔観光の合間に気軽に立ち寄れる癒しの空間です。',
     website: 'https://www.hyoturi.or.jp/aqua/',
     region: '近畿'
+  },
+  {
+    name: 'マリンワールド海の中道',
+    location: '福岡県福岡市東区大字西戸崎18-28',
+    description: 'マリンワールド海の中道は、九州の海をテーマにした水族館で、イルカショーやペンギンの展示が人気です。',
+    website: 'https://marine-world.jp/',
+    region: '九州'
+  },
+  {
+    name: 'アクアリウム',
+    location: '福岡県福岡市博多区築港本町１３−６',
+    description: '無料で楽しめる円柱型大水槽が特徴で、ウミガメやカラフルな海水魚など約30種類の魚が展示されています。',
+    website: 'https://www.baysideplace.jp/entertainment/aqua/',
+    region: '九州'
+  },
+  {
+    name: 'やながわ有明水族館',
+    location: '福岡県柳川市稲荷町29',
+    description: 'やながわ有明水族館は、有明海と柳川の掘割の生物を展示し、地域特有の淡水生物を見ることができます。',
+    website: 'https://kamesukeiyuu.wixsite.com/yanasui',
+    region: '九州'
+  },
+  {
+    name: '玄海海中展望塔',
+    location: '佐賀県唐津市鎮西町波戸',
+    description: '玄海海中展望塔は、日本海の海中生物を自然のままに観察できる施設で、30種類の魚が遊泳する様子を楽しめます。',
+    website: 'https://hadomisaki.jp/',
+    region: '九州'
+  },
+  {
+    name: '長崎ペンギン水族館',
+    location: '長崎県長崎市宿町3-16',
+    description: '長崎ペンギン水族館は、ペンギン飼育種類数が世界一で、国内最大級のペンギンプールを有します。',
+    website: 'https://penguin-aqua.jp/',
+    region: '九州'
+  },
+  {
+    name: '九十九島水族館海きらら',
+    location: '長崎県佐世保市鹿子前町1008',
+    description: '九十九島水族館海きららは、西海国立公園九十九島の海を再現した水族館で、クラゲシンフォニードームが見どころです。',
+    website: 'https://www.umikirara.jp/',
+    region: '九州'
+  },
+  {
+    name: '海中水族館シードーナツ',
+    location: '熊本県上天草市松島町合津6074-1',
+    description: '海中水族館シードーナツは、西日本唯一の海に浮かぶ水族館で、5つの展示ゾーンに分かれています。',
+    website: 'https://amakusapearl.com/sea/',
+    region: '九州'
+  },
+  {
+    name: '大分マリーンパレス水族館「うみたまご」',
+    location: '大分県大分市高崎山下海岸',
+    description: 'うみたまごは、大分市の海沿いに位置し、イルカのショーや「あそびーち」での動物たちとのふれあいが人気の水族館です。',
+    website: 'https://www.umitamago.jp/',
+    region: '九州'
+  },
+  {
+    name: 'つくみイルカ島',
+    location: '大分県津久見市大字四浦2218-10',
+    description: 'つくみイルカ島は、イルカと触れ合える水族館で、イルカショーや体験プログラムが充実しています。',
+    website: 'https://www.tsukumi-irukajima.jp/',
+    region: '九州'
+  },
+  {
+    name: '道の駅 やよい 番匠おさかな館',
+    location: '大分県佐伯市弥生大字弥生200-1',
+    description: '番匠おさかな館は、番匠川の淡水魚を中心に展示し、地域の自然環境を学べる施設です。',
+    website: 'https://www.michinoeki-yayoi.com/banjou-osakanakan',
+    region: '九州'
+  },
+  {
+    name: '白池地獄 熱帯魚館',
+    location: '大分県別府市鉄輪559-1',
+    description: '白池地獄 熱帯魚館は、温泉熱を利用して熱帯魚を展示するユニークな施設で、ピラルクやアロワナなどが見られます。',
+    website: 'https://shiraikejigoku.com/nettaigyokan.html',
+    region: '九州'
+  },
+  {
+    name: 'すみえファミリー水族館',
+    location: '宮崎県日南市南郷町中村乙417-11',
+    description: 'すみえファミリー水族館は、五ヶ瀬川水系の淡水魚や日向灘の珍魚を展示しており、シンプルな展示が特徴です。',
+    website: 'http://sunbeach-sumie.com/%E3%81%99%E3%81%BF%E3%81%88%E3%83%95%E3%82%A1%E3%83%9F%E3%83%AA%E3%83%BC%E6%B0%B4%E6%97%8F%E9%A4%A8/',
+    region: '九州'
+  },
+  {
+    name: '出の山淡水魚水族館',
+    location: '宮崎県小林市出の山町412',
+    description: '名水百選の湧水を利用し、チョウザメや特別天然記念物のオオサンショウウオなど100種1500匹の淡水魚を展示しています。',
+    website: 'https://idenoyama-aquarium.weebly.com/',
+    region: '九州'
+  },
+  {
+    name: '高千穂峡淡水魚水族館',
+    location: '宮崎県西臼杵郡高千穂町三田井御塩井',
+    description: '高千穂峡淡水魚水族館は、五ヶ瀬川水系の淡水魚を展示し、玉垂の滝の湧水を利用した水族館です。',
+    website: 'https://takachiho-kanko.info/sightseeing/11/',
+    region: '九州'
+  },
+  {
+    name: '志布志湾大黒イルカランド',
+    location: '宮崎県串間市志布志町志布志321-1',
+    description: '志布志湾大黒イルカランドは、イルカと触れ合える体験型施設で、ペンギンやウミガメとのふれあいも楽しめます。',
+    website: 'http://irukaland.com/',
+    region: '九州'
+  },
+  {
+    name: 'いおワールドかごしま水族館',
+    location: '鹿児島県鹿児島市本港新町3-1',
+    description: 'いおワールドかごしま水族館は、ジンベエザメやエイが泳ぐ黒潮大水槽が見どころで、イルカのショーも人気です。',
+    website: 'https://ioworld.jp/',
+    region: '九州'
+  },
+  {
+    name: '奄美海洋展示館',
+    location: '鹿児島県奄美市名瀬長浜町17-3',
+    description: '奄美海洋展示館は、奄美の海中を模した生態系を展示し、ウミガメの餌やりも楽しめます。',
+    website: 'https://www.ohama.marutani-amami.com/ocean-exhibition-hall',
+    region: '九州'
+  },
+  {
+    name: 'タツノオトシゴハウス',
+    location: '鹿児島県南九州市川辺町宮4210-3',
+    description: 'タツノオトシゴハウスは、タツノオトシゴの養殖を行う珍しい施設で、タツノオトシゴの生態を学ぶことができます。',
+    website: 'http://www.seahorseways.com/html/t_house.html',
+    region: '九州'
   }
 ]
 
