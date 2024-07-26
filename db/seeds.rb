@@ -700,6 +700,69 @@ aquariums = [
     description: 'アクアマリンいなわしろカワセミ水族館は、猪苗代湖の淡水魚を展示し、特にカワセミの生態展示が見どころです。',
     website: 'https://www.aquamarine.or.jp/kawasemi/',
     region: '東北'
+  },
+  {
+    name: 'とっとり賀露かにっこ館',
+    location: '鳥取県鳥取市賀露町西3丁目27-2',
+    description: 'かにっこ館は、カニを中心とした海洋生物の展示が特徴で、特に地元のカニの種類を学べます。',
+    website: 'https://www.kanikko.jp/',
+    region: '中国'
+  },
+  {
+    name: '島根県立しまね海洋館アクアス',
+    location: '島根県浜田市久代町1117-2',
+    description: 'しまね海洋館アクアスは、シロイルカのショーが人気で、山陰地方の海洋生物を展示しています。',
+    website: 'https://aquas.or.jp/',
+    region: '中国'
+  },
+  {
+    name: '島根県立宍道湖自然館 ゴビウス',
+    location: '島根県出雲市園町1659-5',
+    description: 'ゴビウスは、宍道湖の淡水魚を中心に展示し、地元の生態系を学べる施設です。',
+    website: 'https://www.gobius.jp/',
+    region: '中国'
+  },
+  {
+    name: '渋川マリン水族館（玉野海洋博物館）',
+    location: '岡山県玉野市宇野2丁目4490',
+    description: '玉野海洋博物館は、瀬戸内海の生物を中心に展示し、特に魚の飼育体験が人気です。',
+    website: 'https://www.city.tamano.lg.jp/site/kaihaku/',
+    region: '中国'
+  },
+  {
+    name: '宮島水族館',
+    location: '広島県廿日市市宮島町10-3',
+    description: '宮島水族館は、瀬戸内海の生物を中心に展示し、特にアシカショーやペンギンの展示が人気です。',
+    website: 'http://www.miyajima-aqua.jp/',
+    region: '中国'
+  },
+  {
+    name: 'マリホ水族館',
+    location: '広島県広島市西区草津南4丁目7-1',
+    description: 'マリホ水族館は、都市型水族館として様々な海洋生物を展示し、特に熱帯魚の展示が見どころです。',
+    website: 'https://mariho-aquarium.com/',
+    region: '中国'
+  },
+  {
+    name: '福山大学マリンバイオセンター水族館',
+    location: '広島県福山市鞆町後地523',
+    description: '福山大学マリンバイオセンター水族館は、教育施設としての役割を持ち、海洋生物の研究と展示が行われています。',
+    website: 'https://www.fukuyama-u.ac.jp/research/marine-bio-center/',
+    region: '中国'
+  },
+  {
+    name: 'しものせき水族館「海響館」',
+    location: '山口県下関市あるかぽーと6-1',
+    description: '大水槽で再現した関門海峡の潮流やシロナガスクジラの骨格標本、約100種類のフグの展示が特徴の水族館です。',
+    website: 'http://www.kaikyokan.com/',
+    region: '中国'
+  },
+  {
+    name: 'なぎさ水族館',
+    location: '山口県柳井市南町6丁目5-8',
+    description: '日本最大級のタッチングプールで、ヒトデやサメなどに触れられ、子供から大人まで楽しめる水族館です。',
+    website: 'https://nagisapark.jimdofree.com/%E3%81%AA%E3%81%8E%E3%81%95%E6%B0%B4%E6%97%8F%E9%A4%A8/',
+    region: '中国'
   }
 ]
 
