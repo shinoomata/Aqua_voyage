@@ -3,7 +3,11 @@ class AquariumsController < ApplicationController
 
   def index
     @q = Aquarium.ransack(params[:q])
-    @regions = Aquarium.distinct.pluck(:region)
+    # まずはすべての地域を取得して一意にします
+    @regions = Aquarium.distinct.pluck(:region).compact
+    # 北から南の順にソートします
+    region_order = %w[北海道 東北 関東 東海 北陸 近畿 中国 四国 九州 沖縄]
+    @regions = @regions.sort_by { |region| region_order.index(region) || Float::INFINITY }
     @aquariums = @q.result(distinct: true)
   end
 
