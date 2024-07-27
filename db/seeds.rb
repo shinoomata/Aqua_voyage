@@ -116,7 +116,7 @@ aquariums = [
   {
     name: '新潟市水族館 マリンピア日本海',
     location: '新潟県新潟市中央区西船見町5932-445',
-    description: '新潟市水族館 マリンピア日本海は、日本海に生息する生物を中心に展示し、イルカショーや触れ合い体験が人気です。特に大型のトンネル水槽が見どころです。',
+    description: '新潟市水族館 マリンピア日本海は、日本海に生息する生物を中心に展示し、イルカショーや触れ合い体験が人気です。',
     website: 'https://www.marinepia.or.jp/',
     region: '北陸'
   },
@@ -130,14 +130,14 @@ aquariums = [
   {
     name: '長岡市寺泊水族博物館',
     location: '新潟県長岡市寺泊花立9353-158',
-    description: '長岡市寺泊水族博物館は、地元の海洋生物を展示し、季節ごとの特別展示が行われます。特に冬季のクラゲ展示が見どころです。',
+    description: '長岡市寺泊水族博物館は、日本海に浮かんでいるように建てられており、地元の海洋生物を展示しています。',
     website: 'https://aquarium-teradomari.jp/',
     region: '北陸'
   },
   {
     name: '上越市立水族博物館 うみがたり',
     location: '新潟県上越市五智2丁目15-15',
-    description: '上越市立水族博物館 うみがたりは、雄大な日本海を望むロケーションで、ペンギンやクラゲの展示が充実しています。夜間のライトアップイベントも人気です。',
+    description: '上越市立水族博物館 うみがたりは、雄大な日本海を望むロケーションで、ペンギンやクラゲの展示が充実しています。',
     website: 'https://umigatari.jp/',
     region: '北陸'
   },
@@ -193,7 +193,7 @@ aquariums = [
   {
     name: 'なかがわ水遊園',
     location: '栃木県大田原市佐良土2686',
-    description: 'なかがわ水遊園は、淡水魚の展示が中心で、関東に生息する淡水魚を観察することができます。',
+    description: 'なかがわ水遊園は、那珂川からアマゾン川まで、約60の水槽で川の生態系を展示し、自然光を活かした川底の情景を再現しています。',
     website: 'http://tnap.jp/',
     region: '関東'
   },
@@ -221,7 +221,7 @@ aquariums = [
   {
     name: '県営さいたま水族館',
     location: '埼玉県羽生市三田ヶ谷751-1',
-    description: '県営さいたま水族館は、淡水魚専門の水族館で亀や山椒魚、水性昆虫の展示があります。外の池にはカワウソも飼育されています。',
+    description: '県営さいたま水族館は、淡水魚専門の水族館でチョウザメや山椒魚、水性昆虫の展示があります。外の池にはカワウソも飼育されています。',
     website: 'https://www.parks.or.jp/suizokukan/guide/001/001080.html',
     region: '関東'
   },
@@ -312,7 +312,7 @@ aquariums = [
   {
     name: '箱根園水族館',
     location: '神奈川県足柄下郡箱根町元箱根139',
-    description: '箱根園水族館は、標高723メートルに位置し、世界中の魚450種類32,000匹が展示されています。ベーリング海のアザラシが見どころです。',
+    description: '箱根園水族館は、標高723メートルに位置し、世界中の魚450種類32,000匹が展示されています。バイカルアザラシが見どころです。',
     website: 'https://www.princehotels.co.jp/amuse/hakone-en/suizokukan/',
     region: '関東'
   },
@@ -763,6 +763,83 @@ aquariums = [
     description: '日本最大級のタッチングプールで、ヒトデやサメなどに触れられ、子供から大人まで楽しめる水族館です。',
     website: 'https://nagisapark.jimdofree.com/%E3%81%AA%E3%81%8E%E3%81%95%E6%B0%B4%E6%97%8F%E9%A4%A8/',
     region: '中国'
+  },
+  {
+    name: '四国水族館',
+    location: '香川県綾歌郡宇多津町浜一番丁4',
+    description: '四国水族館は、四国の海や川の生物をテーマにした展示が充実しており、大型水槽でのダイナミックな展示が特徴です。',
+    website: 'https://shikoku-aquarium.jp/',
+    region: '四国'
+  },
+  {
+    name: '虹の森公園 おさかな館',
+    location: '愛媛県北宇和郡松野町松丸1661',
+    description: 'おさかな館は、四万十川の淡水魚を中心に展示しており、自然の中で川魚を観察できる施設です。',
+    website: 'https://morinokuni.or.jp/publics/index/27/',
+    region: '四国'
+  },
+  {
+    name: 'ドルフィンファームしまなみ',
+    location: '愛媛県今治市伯方町高井淡崎甲1-1',
+    description: 'ドルフィンファームしまなみは、イルカと直接触れ合える体験型施設です。',
+    website: 'https://www.df-shimanami.com/facility_information/',
+    region: '四国'
+  },
+  {
+    name: '桂浜水族館',
+    location: '高知県高知市浦戸778',
+    description: '桂浜水族館は、高知の名勝「桂浜」公園の浜辺にあり、歴史を活かしたローカル色豊かな水族館です。',
+    website: 'https://katurahama-aq.jp/',
+    region: '四国'
+  },
+  {
+    name: 'むろと廃校水族館',
+    location: '高知県室戸市室戸岬町533-2',
+    description: '廃校を改装して作られた水族館で、ユニークな展示方法が特徴。地元の海洋生物が多数展示されています。',
+    website: 'https://www.city.muroto.kochi.jp/pages/page0343.php',
+    region: '四国'
+  },
+  {
+    name: '高知県立足摺海洋館 SATOUMI',
+    location: '高知県土佐清水市三崎字今芝4032',
+    description: 'SATOUMIは、足摺岬の足摺周辺の生態系をリアルに再現し、約350種15,000点の生き物を展示しています。',
+    website: 'https://www.kaiyoukan.jp/',
+    region: '四国'
+  },
+  {
+    name: '海洋自然博物館マリンジャム',
+    location: '徳島県海部郡海陽町宍喰浦字三津231',
+    description: 'マリンジャムは、サンゴや熱帯魚の展示が充実しており、シュノーケリング体験も楽しめる施設です。',
+    website: 'https://marine.kaiyo-kankou.jp/index.php',
+    region: '四国'
+  },
+  {
+    name: '沖縄美ら海水族館',
+    location: '沖縄県国頭郡本部町字石川424',
+    description: '沖縄美ら海水族館は、沖縄の海をテーマにした大型水族館で、世界最大級の水槽を誇ります。',
+    website: 'https://churaumi.okinawa/',
+    region: '沖縄'
+  },
+  {
+    name: 'もとぶ元気村',
+    location: '沖縄県国頭郡本部町浜元410',
+    description: 'もとぶ元気村は、イルカや海洋生物と触れ合える体験型施設です。',
+    website: 'https://owf.jp/',
+    region: '沖縄'
+  },
+  {
+    name: 'DMMかりゆし水族館',
+    location: '沖縄県豊見城市豊崎3-35',
+    description: 'DMMかりゆし水族館は、最新の映像表現と空間演出を駆使した新しいカタチのエンタテインメント水族館です。',
+    website: 'https://kariyushi-aquarium.com/',
+    region: '沖縄'
+  },
+  {
+    name: '久米島ウミガメ館',
+    location: '沖縄県島尻郡久米島町字奥武3',
+    description: '久米島ウミガメ館は、ウミガメの保護と研究を行い、ウミガメの生態展示が充実しています。',
+    website: 'https://kumejimataro.okinawa/',
+    region: '沖縄'
   }
 ]
 
