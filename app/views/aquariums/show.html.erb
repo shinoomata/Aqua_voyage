@@ -30,14 +30,27 @@
     <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
 
     <h2>レビューの集計データ</h2>
-      <h3>対象年齢の選択</h3>
-      <%= pie_chart @target_audience_data.transform_keys { |id| TargetAudience.find(id).content } %>
+    
+    <div class="flex flex-wrap justify-around">
+      <div class="w-1/3 p-2">
+        <h3>対象年齢の選択</h3>
+        <% target_audience_keys = @target_audience_data.keys.map { |id| TargetAudience.find(id).content } %>
+        <%= pie_chart @target_audience_data.transform_keys { |id| TargetAudience.find(id).content }, colors: daisyui_colors_1 %>
+      </div>
 
-      <h3>サイズ評価の選択</h3>
-      <%= pie_chart @size_rating_data.transform_keys { |id| SizeRating.find(id).size } %>
+      <div class="w-1/3 p-2">
+        <h3>サイズ評価の選択</h3>
+        <% size_rating_keys = @size_rating_data.keys.map { |id| SizeRating.find(id).size } %>
+        <%= pie_chart @size_rating_data.transform_keys { |id| SizeRating.find(id).size }, colors: daisyui_colors_2 %>
+      </div>
+      
+      <div class="w-1/3 p-2">
+        <h3>推しポイントの選択</h3>
+        <% highlight_keys = @highlight_data.keys.map { |id| Highlight.find(id).highlight_kind } %>
+        <%= pie_chart @highlight_data.transform_keys { |id| Highlight.find(id).highlight_kind }, colors: daisyui_colors_3 %>
+      </div>
+    </div>
 
-      <h3>推しポイントの選択</h3>
-      <%= pie_chart @highlight_data.transform_keys { |id| Highlight.find(id).highlight_kind } %>
 
     <% @reviews.each do |review| %>
       <p><strong><%= review.user.name %>:</strong></p>
