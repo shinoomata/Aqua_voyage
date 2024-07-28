@@ -1,4 +1,4 @@
-# db/seeds.rb
+
 
 aquariums = [
     {
@@ -14,6 +14,7 @@ aquariums = [
       description: 'あわしまマリンパークは、島全体がテーマパークになっており、カエル館や釣り体験も楽しめます。ユニークな生物展示が魅力です。',
       website: 'http://www.marinepark.jp/',
       region: '東海'
+
     },
     {
       name: '沼津港深海水族館',
@@ -549,7 +550,7 @@ aquariums = [
   },
   {
     name: 'タツノオトシゴハウス',
-    location: '鹿児島県南九州市川辺町宮4210-3',
+    location: '鹿児島県南九州市頴娃町別府5202',
     description: 'タツノオトシゴハウスは、タツノオトシゴの養殖を行う珍しい施設で、タツノオトシゴの生態を学ぶことができます。',
     website: 'http://www.seahorseways.com/html/t_house.html',
     region: '九州'
@@ -843,11 +844,21 @@ aquariums = [
   }
 ]
 
+
+# 水族館データをデータベースに保存
 aquariums.each do |aquarium|
-  Aquarium.find_or_initialize_by(name: aquarium[:name], location: aquarium[:location]).tap do |a|
-    a.description = aquarium[:description]
-    a.website = aquarium[:website]
-    a.region = aquarium[:region]
-    a.save!
-  end
+  # nameで検索してレコードを見つけ、見つからなければ初期化
+  a = Aquarium.find_or_initialize_by(name: aquarium[:name])
+  # locationを上書き
+  a.location = aquarium[:location]
+  # descriptionを上書き
+  a.description = aquarium[:description]
+  # websiteを上書き
+  a.website = aquarium[:website]
+  # regionを上書き
+  a.region = aquarium[:region]
+  # レコードを保存
+  a.save!
 end
+
+  puts "Aquariums seeded successfully!"

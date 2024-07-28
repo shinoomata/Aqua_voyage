@@ -6,7 +6,12 @@ module.exports = {
     "./app/javascript/**/*.js"
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        customBackground: '#96C9F4',
+        customFormBackground: '#FAFFAF',
+      },
+    },
   },
   plugins: [
     require('daisyui'),
