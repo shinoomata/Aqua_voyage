@@ -3,6 +3,7 @@ class AquariumsController < ApplicationController
 
   def index
     @q = Aquarium.ransack(params[:q])
+
     # まずはすべての地域を取得して一意にし、nilを除外します
     @regions = Aquarium.distinct.pluck(:region).compact
     # 北から南の順にソートします
