@@ -1,19 +1,38 @@
-<%= search_form_for @q, url: aquariums_path, method: :get do |f| %>
-  <div class="form-control w-full max-w-xs">
-  <div class="label">
-    <%= f.label :name_or_location_or_description_cont, "キーワード検索", class: "label-text" %>
-  </div>
-  <%= f.search_field :name_or_location_or_description_cont, placeholder: "ここに入力", class: "input input-bordered w-full max-w-xs" %>
-  </div>
+<div class="flex items-center justify-center min-h-[50vh] bg-customBackground">
+  <div class="rounded-box bg-customFormBackground p-8 shadow-lg w-1/2 max-w-1/2">
+    <%= search_form_for @q, url: aquariums_path, method: :get do |f| %>
+      <div class="form-control w-full mb-2">
+        <div class="label">
+          <%= f.label :name_or_location_or_description_cont, "キーワード検索", class: "label-text mb-2" %>
+        </div>
+        <%= f.search_field :name_or_location_or_description_cont, placeholder: "ここに入力 見たい生き物・所在地", class: "input input-bordered w-full mb-4" %>
+      </div>
 
+      <div class="form-control w-full mb-2">
+        <div class="label">
+          <%= f.label :region_eq, "地域", class: "label-text mb-2" %>
+        </div>
+        <%= f.select :region_eq, options_for_select(@regions), { include_blank: '選択してください' }, class: "select select-bordered w-full mb-4" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :region_eq, "地域" , class: "block text-sm font-medium text-gray-700" %>
-    <%= f.select :region_eq, options_for_select(@regions), { include_blank: '選択してください' }, class: "select select-bordered w-full max-w-xs" %>
+      <div class="actions">
+        <%= f.submit "検索", class: "btn btn-outline btn-primary w-2/3 mb-2" %>
+      </div>
+    <% end %>
   </div>
+</div>
 
-  <div class="actions">
-  <%= f.submit "検索", class: "btn btn-outline btn-primary" %>
+<% if @search_keyword.present? || @selected_region.present? %>
+  <div class="search-summary mb-4">
+    <p>
+      検索結果:
+      <% if @search_keyword.present? %>
+        キーワード "<%= @search_keyword %>"
+      <% end %>
+      <% if @selected_region.present? %>
+        , 地域 "<%= @selected_region %>"
+      <% end %>
+    </p>
   </div>
 <% end %>
 
