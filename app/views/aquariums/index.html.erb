@@ -1,38 +1,34 @@
 <%= search_form_for @q, url: aquariums_path, method: :get do |f| %>
-  <div class="field">
-    <%= f.label :name_or_location_or_description_cont, "キーワード検索" %>
-    <%= f.search_field :name_or_location_or_description_cont %>
+  <div class="form-control w-full max-w-xs">
+  <div class="label">
+    <%= f.label :name_or_location_or_description_cont, "キーワード検索", class: "label-text" %>
+  </div>
+  <%= f.search_field :name_or_location_or_description_cont, placeholder: "ここに入力", class: "input input-bordered w-full max-w-xs" %>
   </div>
 
+
   <div class="field">
-    <%= f.label :region_eq, "地域" %>
-    <%= f.select :region_eq, options_for_select(@regions), { include_blank: '選択してください' } %>
+    <%= f.label :region_eq, "地域" , class: "block text-sm font-medium text-gray-700" %>
+    <%= f.select :region_eq, options_for_select(@regions), { include_blank: '選択してください' }, class: "select select-bordered w-full max-w-xs" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "検索" %>
+  <%= f.submit "検索", class: "btn btn-outline btn-primary" %>
   </div>
 <% end %>
 
 <% if @aquariums.any? %>
   <% @aquariums.each do |aquarium| %>
-    <div>
-      <h2><%= link_to aquarium.name, aquarium_path(aquarium) %></h2>
-      <p><%= aquarium.location %></p>
-      <p><%= aquarium.description %></p>
+    <div class="card bg-base-100 w-96 shadow-xl m-4">
+      <div class="card-body">
+        <h2 class="card-title"><%= link_to aquarium.name, aquarium_path(aquarium) %></h2>
+        <p><%= aquarium.description %></p>
+        <div class="card-actions justify-end">
+          <%= link_to '詳細を見る', aquarium_path(aquarium), class: "btn btn-primary" %>
+        </div>
+      </div>
     </div>
   <% end %>
 <% else %>
   <p>検索結果が見つかりませんでした。</p>
 <% end %>
-
-<h1 class="text-3xl font-bold underline">
-    Hello world!
-</h1>
-
-<button class="bg-gray-900 hover:bg-gray-800 text-white rounded px-4 py-2">tailwind</button>
-
-<button class="btn">daisyUI</button>
-
-<button class="btn btn-secondary">btn btn-secondary</button>
-
