@@ -97,4 +97,4 @@ gem 'dotenv-rails'
 gem 'omniauth-rails_csrf_protection'
 
 gem 'ransack', '~> 4.2.0'
-
+gem 'google_places'
