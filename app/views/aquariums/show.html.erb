@@ -26,6 +26,15 @@
       <p>公式サイト: <%= link_to @aquarium.website, @aquarium.website, target: "_blank" %></p>
     </div>
 
+    <% if @photo_urls.any? %>
+    <h2>Photos</h2>
+    <% @photo_urls.each do |photo_url| %>
+      <%= image_tag photo_url %>
+    <% end %>
+    <% else %>
+    <p>No photos available.</p>
+    <% end %>
+
     <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="推しポイント" />
     <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
 
