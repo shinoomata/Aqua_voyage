@@ -1,8 +1,6 @@
 module ApplicationHelper
   def daisyui_colors_1
   [
-    "#3b82f6",  # primary
-    "#60a5fa",  # secondary
     "#ec4899",  # accent
     "#f87171",  # red
     "#facc15",  # yellow

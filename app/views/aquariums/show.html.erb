@@ -9,78 +9,91 @@
   <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&libraries=places&callback=initMap" async defer></script>
 </head>
-<body>
-  <h1><%= @aquarium.name %></h1>
-  <p><%= @aquarium.location %></p>
-  <div id="map" style="height: 400px; width: 100%; margin-top: 20px;"></div>
-  <p>地域: <%= @aquarium.region %></p>
-  <p>公式サイト: <%= link_to @aquarium.website, @aquarium.website, target: '_blank' %></p>
+<body class="bg-customBackground flex items-center justify-center min-h-screen">
+  <div class="container mx-auto p-4 bg-customFormBackground rounded-lg shadow-lg">
+    <div class="flex justify-between items-center">
+      <h1 class="text-3xl text-center"><%= @aquarium.name %></h1>
+      <!-- Xシェアボタン -->
+      <% share_text = "私のおすすめの水族館は「#{@aquarium.name}」。詳細はこちら:" %>
+      <% share_url = "https://aqua-voyage.fly.dev/aquariums/#{@aquarium.id}" %> <!-- ここを実際のURLに置き換えてください -->
+      <a href="https://twitter.com/intent/tweet?text=<%= ERB::Util.url_encode(share_text) %>&url=<%= ERB::Util.url_encode(share_url) %>" target="_blank" class="btn btn-primary ml-4">
+        Share on X
+      </a>
+    </div>
+  
+  <% if @photo_urls.any? %>
+      <div class="flex flex-wrap justify-center">
+        <% @photo_urls.each do |photo_url| %>
+          <div class="m-2">
+            <%= image_tag photo_url %>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="text-center">No photos available.</p>
+    <% end %>
+  
 
-  <div role="tablist" class="tabs tabs-lifted">
+  <div role="tablist" class="tabs tabs-lifted grid grid-cols-2 w-full">
     <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="基本情報" checked="checked" />
     <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
-      <h1><%= @aquarium.name %></h1>
-      <p><%= @aquarium.location %></p>
       <p><%= @aquarium.description %></p>
+      <p>公式サイト: <%= link_to @aquarium.website, @aquarium.website, target: '_blank', class: 'link link-primary' %></p>
+      <p><%= @aquarium.location %></p>
+      <div id="map" style="height: 400px; width: 100%; margin-top: 20px;"></div>
       <p>地域: <%= @aquarium.region %></p>
-      <p>公式サイト: <%= link_to @aquarium.website, @aquarium.website, target: "_blank" %></p>
     </div>
 
-    <% if @photo_urls.any? %>
-    <h2>Photos</h2>
-    <% @photo_urls.each do |photo_url| %>
-      <%= image_tag photo_url %>
-    <% end %>
-    <% else %>
-    <p>No photos available.</p>
-    <% end %>
 
-    <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="推しポイント" />
+    <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="行ったよ！" />
     <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
 
-    <h2>レビューの集計データ</h2>
+    <div class="text-right mb-4">
+      <% if user_signed_in? %>
+        <%= link_to 'レビューを追加', new_aquarium_review_path(@aquarium), class: "btn btn-secondary" %>
+      <% else %>
+        <p><%= link_to 'ログインしてレビューを投稿する', new_user_session_path, class: "btn btn-secondary" %></p>
+      <% end %>
+    </div>
+
+    <h2>みんなの声</h2>
     
     <div class="flex flex-wrap justify-around">
       <div class="w-1/3 p-2">
-        <h3>対象年齢の選択</h3>
+        <h3>大人向け？子供向け？</h3>
         <% target_audience_keys = @target_audience_data.keys.map { |id| TargetAudience.find(id).content } %>
         <%= pie_chart @target_audience_data.transform_keys { |id| TargetAudience.find(id).content }, colors: daisyui_colors_1 %>
       </div>
 
       <div class="w-1/3 p-2">
-        <h3>サイズ評価の選択</h3>
+        <h3>水族館の大きさは？</h3>
         <% size_rating_keys = @size_rating_data.keys.map { |id| SizeRating.find(id).size } %>
         <%= pie_chart @size_rating_data.transform_keys { |id| SizeRating.find(id).size }, colors: daisyui_colors_2 %>
       </div>
       
       <div class="w-1/3 p-2">
-        <h3>推しポイントの選択</h3>
+        <h3>ショー？展示？</h3>
         <% highlight_keys = @highlight_data.keys.map { |id| Highlight.find(id).highlight_kind } %>
         <%= pie_chart @highlight_data.transform_keys { |id| Highlight.find(id).highlight_kind }, colors: daisyui_colors_3 %>
       </div>
     </div>
 
+    <h2>私の推しポイント</h2>
 
-    <% @reviews.each do |review| %>
-      <p><strong><%= review.user.name %>:</strong></p>
-      <p><%= review.content %></p>
-      <p>対象年齢: <%= review.target_audience.content %></p>
-      <p>サイズ評価: <%= review.size_rating.size %></p>
-      <p>推しポイント: <%= review.highlight.highlight_kind %></p>
-      <% if review.image_url.present? %>
-        <p><img src="<%= review.image_url %>" alt="Review Image" style="max-width: 200px;"></p>
-      <% end %>
-      <% if review.user == current_user %>
-        <%= link_to '編集', edit_aquarium_review_path(@aquarium, review) %>
-      <% end %>
-    <% end %>
-
-      <% if user_signed_in? %>
-        <%= link_to 'レビューを追加', new_aquarium_review_path(@aquarium) %>
-      <% else %>
-        <p><%= link_to 'ログインしてレビューを投稿する', new_user_session_path %></p>
+    <% @reviews.each_with_index do |review, index| %>
+      <div class="chat <%= index.even? ? 'chat-start' : 'chat-end' %>">
+        <div class="chat-bubble <%= ['chat-bubble-primary', 'chat-bubble-secondary', 'chat-bubble-accent', 'chat-bubble-info', 'chat-bubble-success', 'chat-bubble-warning', 'chat-bubble-error'][index % 7] %>">
+          <p><strong><%= review.user.name %>:</strong></p>
+          <p><%= review.content %></p>
+      #<% if review.image_url.present? %>
+      #  <p><img src="<%= review.image_url %>" alt="Review Image" style="max-width: 200px;"></p>
+      #<% end %>
+        <% if review.user == current_user %>
+          <%= link_to '編集', edit_aquarium_review_path(@aquarium, review) %>
+        <% end %>
       <% end %>
     </div>
+  </div>
   </div>
 
   <script>
