@@ -13,9 +13,7 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
-    @target_audiences = TargetAudience.all
-    @size_ratings = SizeRating.all
-    @highlights = Highlight.all
+    load_review_resources
   end
 
   def create
@@ -25,31 +23,40 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to @aquarium, notice: 'レビューが正常に投稿されました。'
     else
-      @target_audiences = TargetAudience.all
-      @size_ratings = SizeRating.all
-      @highlights = Highlight.all
+      load_review_resources
+      flash.now[:alert] = "全ての項目を選択してください"
       render :new
     end
   end
 
   def edit
-    @target_audiences = TargetAudience.all
-    @size_ratings = SizeRating.all
-    @highlights = Highlight.all
+    load_review_resources
   end
 
   def update
     if @review.update(review_params)
       redirect_to @aquarium, notice: 'レビューが更新されました。'
     else
-      @target_audiences = TargetAudience.all
-      @size_ratings = SizeRating.all
-      @highlights = Highlight.all
+      load_review_resources
+      flash.now[:alert] = "全ての項目を選択してください"
       render :edit
     end
   end
 
+  def destroy
+    @review.destroy
+    flash[:notice] = "レビューを削除しました"
+    redirect_to @aquarium, status: :see_other
+  end
+
   private
+
+  def load_review_resources
+    @target_audiences = TargetAudience.all
+    @size_ratings = SizeRating.all
+    @highlights = Highlight.all
+  end
+
 
   def set_aquarium
     @aquarium = Aquarium.find(params[:aquarium_id])

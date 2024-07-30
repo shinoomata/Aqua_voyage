@@ -528,7 +528,7 @@ aquariums = [
   },
   {
     name: '志布志湾大黒イルカランド',
-    location: '宮崎県串間市志布志町志布志321-1',
+    location: ' 宮崎県串間市高松１４８１−３',
     description: '志布志湾大黒イルカランドは、イルカと触れ合える体験型施設で、ペンギンやウミガメとのふれあいも楽しめます。',
     website: 'http://irukaland.com/',
     region: '九州'

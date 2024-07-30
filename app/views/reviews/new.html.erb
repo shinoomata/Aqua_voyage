@@ -4,18 +4,31 @@
 
     <%= form_with(model: [@aquarium, @review], local: true, html: { class: 'space-y-4' }) do |form| %>
       <% if @review.errors.any? %>
-        <div id="error_explanation" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
-          <h2 class="font-bold mb-2"><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
-          <ul class="list-disc pl-5">
-            <% @review.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
+        <div role="alert" class="alert alert-error mb-4">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6 shrink-0 stroke-current"
+            fill="none"
+            viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <div>
+            <h2 class="font-bold"><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+            <ul class="list-disc pl-5">
+              <% @review.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
         </div>
       <% end %>
 
-      <div class="space-y-2">
-        <p class="font-medium">大人向け？子供向け？</p>
+      <div class="space-y-2 mt-4">
+        <p class="font-bold">大人向け？子供向け？</p>
         <% @target_audiences.each do |audience| %>
           <label class="block">
             <%= form.radio_button :target_audience_id, audience.id, class: "radio radio-info mr-2" %>
@@ -24,8 +37,8 @@
         <% end %>
       </div>
 
-      <div class="space-y-2">
-        <p class="font-medium">水族館の大きさは？</p>
+      <div class="space-y-2 mt-4">
+        <p class="font-bold">水族館の大きさは？</p>
         <% @size_ratings.each do |rating| %>
           <label class="block">
             <%= form.radio_button :size_rating_id, rating.id, class: "radio radio-info mr-2" %>
@@ -34,8 +47,8 @@
         <% end %>
       </div>
 
-      <div class="space-y-2">
-        <p class="font-medium">見どころはショー？展示？</p>
+      <div class="space-y-2 mt-4">
+        <p class="font-bold">見どころはショー？展示？</p>
         <% @highlights.each do |highlight| %>
           <label class="block">
             <%= form.radio_button :highlight_id, highlight.id, class: "radio radio-info mr-2" %>
@@ -45,8 +58,8 @@
       </div>
 
       <div class="space-y-2">
-        <%= form.label :content, "私の推しポイント", class: "block text-sm font-medium text-gray-700" %>
-        <%= form.text_area :content, placeholder: "この水族館の好きなところ、思い出などを自由に書いてね", class: "input input-bordered input-lg input-info w-full max-w-xs" %>
+        <%= form.label :content, "私の推しポイント", class: "block text-sm font-bold text-gray-700" %>
+        <%= form.text_area :content, placeholder: "この水族館の好きなところ、思い出などを自由に書いてね", class: "input input-bordered input-lg input-info w-full h-32 placeholder-small resize-none" %>
       </div>
 
       <div class="text-center">

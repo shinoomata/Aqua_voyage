@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   root to: 'top#index'
 
   resources :aquariums, only: [:index, :show] do
-    resources :reviews, only: [:index, :new, :create, :edit, :update]
+    resources :reviews, only: [:index, :new, :create, :edit, :update, :destroy]
   end
 end

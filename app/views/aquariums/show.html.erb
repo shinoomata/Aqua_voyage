@@ -50,7 +50,11 @@
 
     <div class="text-right mb-4">
       <% if user_signed_in? %>
-        <%= link_to 'レビューを追加', new_aquarium_review_path(@aquarium), class: "btn btn-secondary" %>
+        <% unless @user_has_reviewed %>
+          <%= link_to 'レビューを追加', new_aquarium_review_path(@aquarium), class: "btn btn-secondary" %>
+        <% else %>
+          <p>レビューありがとうございます！</p>
+        <% end %>
       <% else %>
         <p><%= link_to 'ログインしてレビューを投稿する', new_user_session_path, class: "btn btn-secondary" %></p>
       <% end %>
@@ -90,6 +94,7 @@
           <% end %>
           <% if review.user == current_user %>
             <%= link_to '編集', edit_aquarium_review_path(@aquarium, review), class: 'link link-hover' %>
+            <%= link_to '削除', aquarium_review_path(@aquarium, review),  data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'link link-danger' %>
           <% end %>
         </div>
       </div>
