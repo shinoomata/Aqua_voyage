@@ -12,11 +12,7 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :content, "レビュー内容" %>
-    <%= form.text_area :content %>
-  </div>
-
+ 
   <div>
   <p>対象年齢:</p>
   <% @target_audiences.each do |audience| %>
@@ -47,10 +43,16 @@
   <% end %>
 </div>
 
-  <div>
-    <%= form.label :image_url, "画像URL" %>
-    <%= form.text_field :image_url %>
-  </div>
+<div>
+<%= form.label :content, "レビュー内容" %>
+<%= form.text_area :content %>
+</div>
+
+
+  #<div>
+   # <%= form.label :image_url, "画像URL" %>
+    #<%= form.text_field :image_url %>
+  #</div>
 
   <div>
     <%= form.submit "レビューを投稿" %>
