@@ -26,6 +26,12 @@ class AquariumsController < ApplicationController
       @size_rating_data = @reviews.group(:size_rating_id).count
       @highlight_data = @reviews.group(:highlight_id).count
 
+      if user_signed_in?
+        @user_has_reviewed = @reviews.exists?(user_id: current_user.id)
+      else
+        store_location_for(:user, request.fullpath)
+      end
+
       # Google Places APIを使って写真を取得
       client = GooglePlaces::Client.new(ENV['GOOGLE_MAPS_API_KEY'])
       place = client.spots_by_query(@aquarium.name).first

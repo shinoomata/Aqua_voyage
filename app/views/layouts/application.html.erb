@@ -24,8 +24,7 @@
         </li>
       <% end %>
     </header>
-    <p class="notice"><%= notice %></p> # 追記
-    <p class="alert"><%= alert %></p> # 追記
+    <%= render 'layouts/flash' %> <!-- フラッシュメッセージの表示 -->
     <%= yield %>
     
 

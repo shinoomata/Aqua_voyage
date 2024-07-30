@@ -17,11 +17,11 @@
       <% share_text = "私のおすすめの水族館は「#{@aquarium.name}」。詳細はこちら:" %>
       <% share_url = "https://aqua-voyage.fly.dev/aquariums/#{@aquarium.id}" %> <!-- ここを実際のURLに置き換えてください -->
       <a href="https://twitter.com/intent/tweet?text=<%= ERB::Util.url_encode(share_text) %>&url=<%= ERB::Util.url_encode(share_url) %>" target="_blank" class="btn btn-primary ml-4">
-        Share on X
+        Xでシェアする
       </a>
     </div>
   
-  <% if @photo_urls.any? %>
+    <% if @photo_urls.any? %>
       <div class="flex flex-wrap justify-center">
         <% @photo_urls.each do |photo_url| %>
           <div class="m-2">
@@ -34,7 +34,7 @@
     <% end %>
   
 
-  <div role="tablist" class="tabs tabs-lifted grid grid-cols-3 w-full mt-4">
+    <div role="tablist" class="tabs tabs-lifted grid grid-cols-3 w-full mt-4">
     <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="基本情報" checked="checked" />
     <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
       <p class="mb-4 mt-8"><%= @aquarium.description %></p>
@@ -50,7 +50,11 @@
 
     <div class="text-right mb-4">
       <% if user_signed_in? %>
-        <%= link_to 'レビューを追加', new_aquarium_review_path(@aquarium), class: "btn btn-secondary" %>
+        <% unless @user_has_reviewed %>
+          <%= link_to 'レビューを追加', new_aquarium_review_path(@aquarium), class: "btn btn-secondary" %>
+        <% else %>
+          <p>レビューありがとうございます！</p>
+        <% end %>
       <% else %>
         <p><%= link_to 'ログインしてレビューを投稿する', new_user_session_path, class: "btn btn-secondary" %></p>
       <% end %>
@@ -78,27 +82,31 @@
       </div>
     </div>
 
-    <h2 class="font-bold">私の推しポイント</h2>
+    <h2 class="font-bold mt-4">私の推しポイント</h2>
 
     <% @reviews.each_with_index do |review, index| %>
       <div class="chat <%= index.even? ? 'chat-start' : 'chat-end' %> mt-4">
-        <div class="chat-bubble <%= ['chat-bubble-primary', 'chat-bubble-secondary', 'chat-bubble-accent', 'chat-bubble-info', 'chat-bubble-success', 'chat-bubble-warning', 'chat-bubble-error'][index % 7] %>">
+        <div class="chat-bubble <%= ['chat-bubble-primary', 'chat-bubble-secondary', 'chat-bubble-accent', 'chat-bubble-info', 'chat-bubble-success', 'chat-bubble-warning', 'chat-bubble-error'][index % 7] %> mt-4">
           <p><strong><%= review.user.name %>:</strong></p>
           <p><%= review.content %></p>
-      #<% if review.image_url.present? %>
-      #  <p><img src="<%= review.image_url %>" alt="Review Image" style="max-width: 200px;"></p>
-      #<% end %>
-        <% if review.user == current_user %>
-          <%= link_to '編集', edit_aquarium_review_path(@aquarium, review), class: 'link link-hover' %>
-        <% end %>
-      <% end %>
-    </div>
+          <% if review.image_url.present? %>
+            <p><img src="<%= review.image_url %>" alt="Review Image" style="max-width: 200px;"></p>
+          <% end %>
+          <% if review.user == current_user %>
+            <%= link_to '編集', edit_aquarium_review_path(@aquarium, review), class: 'link link-hover' %>
+            <%= link_to '削除', aquarium_review_path(@aquarium, review),  data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'link link-danger' %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
+</div>
 
-    <div class="text-center mt-8">
-      <%= link_to '水族館一覧に戻る', aquariums_path, class: "btn btn-info" %>
-    </div>
+  <!-- 水族館一覧に戻るボタン -->
+  <div class="text-center mt-8">
+    <%= link_to '水族館一覧に戻る', aquariums_path, class: "btn btn-info" %>
   </div>
+</div>
 
   <script>
     function initMap() {

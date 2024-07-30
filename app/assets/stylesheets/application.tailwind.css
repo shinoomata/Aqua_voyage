@@ -6,6 +6,9 @@
     .bg-customBackground {
       background-color: #96C9F4;
     }
+    .bg-customFormBackground {
+      background-color: #FAFFAF;
+    }
     .tab::before {
       content: none !important;
     }

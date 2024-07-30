@@ -6,6 +6,9 @@ class Review < ApplicationRecord
   belongs_to :highlight
 
   validates :user_id, uniqueness: { scope: :aquaria_id, message: "はこの水族館に既にレビューを投稿しています" }
+  validates :target_audience_id, presence: true
+  validates :size_rating_id, presence: true
+  validates :highlight_id, presence: true
 end
 
 class User < ApplicationRecord
