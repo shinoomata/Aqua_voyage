@@ -1,5 +1,5 @@
 <div class="flex items-center justify-center min-h-[50vh] bg-customBackground">
-  <div class="rounded-box bg-customFormBackground p-8 shadow-lg w-1/2 max-w-1/2">
+  <div class="rounded-box bg-customFormBackground p-8 shadow-lg w-full sm:w-2/3 md:w-1/2 lg:w-1/2 max-w-full m-4">
     <%= search_form_for @q, url: aquariums_path, method: :get do |f| %>
       <div class="form-control w-full mb-2">
         <div class="label">
@@ -43,6 +43,7 @@
         <div class="card-body">
           <h2 class="card-title"><%= link_to aquarium.name, aquarium_path(aquarium) %></h2>
           <p><%= aquarium.description %></p>
+          <div class="badge badge-outline"><%= aquarium.region %></div>
           <div class="card-actions justify-end">
             <%= link_to '詳細を見る', aquarium_path(aquarium), class: "btn btn-primary" %>
           </div>
