@@ -7,6 +7,9 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <% if Rails.env.production? %>
+      <%= render 'layouts/google_analytics' %>
+    <% end %>
   </head>
 
   <body class="bg-customBackground">

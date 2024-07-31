@@ -1,11 +1,11 @@
 <div class="flex items-center justify-center min-h-[50vh] bg-customBackground">
-  <div class="rounded-box bg-customFormBackground p-8 shadow-lg w-1/2 max-w-1/2">
+  <div class="rounded-box bg-customFormBackground p-8 shadow-lg w-full sm:w-2/3 md:w-1/2 lg:w-1/2 max-w-full m-4">
     <%= search_form_for @q, url: aquariums_path, method: :get do |f| %>
       <div class="form-control w-full mb-2">
         <div class="label">
           <%= f.label :name_or_location_or_description_cont, "キーワード検索", class: "label-text mb-2" %>
         </div>
-        <%= f.search_field :name_or_location_or_description_cont, placeholder: "ここに入力 見たい生き物・所在地", class: "input input-bordered w-full mb-4" %>
+        <%= f.search_field :name_or_location_or_description_cont, placeholder: "見たい生き物・所在地", class: "input input-bordered w-full mb-4" %>
       </div>
 
       <div class="form-control w-full mb-2">
@@ -36,18 +36,21 @@
   </div>
 <% end %>
 
-<% if @aquariums.any? %>
-  <% @aquariums.each do |aquarium| %>
-    <div class="card bg-base-100 w-96 shadow-xl m-4">
-      <div class="card-body">
-        <h2 class="card-title"><%= link_to aquarium.name, aquarium_path(aquarium) %></h2>
-        <p><%= aquarium.description %></p>
-        <div class="card-actions justify-end">
-          <%= link_to '詳細を見る', aquarium_path(aquarium), class: "btn btn-primary" %>
+<div class="flex flex-wrap justify-center">
+  <% if @aquariums.any? %>
+    <% @aquariums.each do |aquarium| %>
+      <div class="card bg-base-100 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 shadow-xl m-4">
+        <div class="card-body">
+          <h2 class="card-title"><%= link_to aquarium.name, aquarium_path(aquarium) %></h2>
+          <p><%= aquarium.description %></p>
+          <div class="badge badge-outline"><%= aquarium.region %></div>
+          <div class="card-actions justify-end">
+            <%= link_to '詳細を見る', aquarium_path(aquarium), class: "btn btn-primary" %>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
+  <% else %>
+    <p>検索結果が見つかりませんでした。</p>
   <% end %>
-<% else %>
-  <p>検索結果が見つかりませんでした。</p>
-<% end %>
+</div>
