@@ -12,6 +12,11 @@
     .tab::before {
       content: none !important;
     }
+    .custom-image-size {
+      height: 20vw; /* 必要に応じて高さを調整 */
+      object-fit: contain; /* 画像を縦横比を維持して表示 */
+      width: 100%;
+    }
   }
 
 body {
