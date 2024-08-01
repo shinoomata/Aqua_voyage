@@ -10,7 +10,6 @@
   <div class="text-center ">
     <%= image_tag "top.png", alt: "トップ画像", class: "w-full" %>
     <div class="space-y-4 mt-8 mb-8 flex flex-col items-center">
-      <%= link_to '水族館を探す', aquariums_path, class: 'btn btn-primary text-lg' %>
         <% unless user_signed_in? %>
         <!-- ここでGoogleログインボタンを表示 -->
         <% resource_name = :user %>
