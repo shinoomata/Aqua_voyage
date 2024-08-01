@@ -10,6 +10,10 @@ module.exports = {
       colors: {
         customBackground: '#96C9F4',
         customFormBackground: '#FAFFAF',
+        customBlue: '#0F67B1',
+      },
+      margin: {
+        'header-space': '1rem', // 必要に応じて調整
       },
     },
   },
