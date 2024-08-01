@@ -11,6 +11,7 @@ module.exports = {
         customBackground: '#96C9F4',
         customFormBackground: '#FAFFAF',
         customBlue: '#0F67B1',
+        customFooterBlue: '#3FA2F6',
       },
       margin: {
         'header-space': '1rem', // 必要に応じて調整

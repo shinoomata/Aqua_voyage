@@ -12,8 +12,19 @@
     <div class="space-y-4 mt-8 mb-8 flex flex-col items-center">
       <%= link_to '水族館を探す', aquariums_path, class: 'btn btn-primary text-lg' %>
         <% unless user_signed_in? %>
-          <%= link_to 'ログインして水族館のレビュー投稿する', new_user_session_path, class: 'btn btn-secondary text-lg' %>
+        <!-- ここでGoogleログインボタンを表示 -->
+        <% resource_name = :user %>
+        <% resource = User.new %>
+        <% devise_mapping = Devise.mappings[:user] %>
+        <% resource_class = User %> <!-- Userクラスを設定 -->
+  
+        <%- if devise_mapping.omniauthable? %>
+          <%- resource_class.omniauth_providers.each do |provider| %>
+            <%= button_to "Google認証", omniauth_authorize_path(resource_name, provider), data: { turbo: false }, class: "btn btn-google text-lg" %>
+          <% end %>
         <% end %>
+        <p>＊レビューにはGoogle認証が必要です</p>
+      <% end %>
     </div>
   </div>
 
