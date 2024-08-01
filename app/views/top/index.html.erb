@@ -1,5 +1,66 @@
-<div>
-<h1 class="text-3xl font-bold underline">Welcome to Our Aquarium Search</h1>
-<%= link_to '水族館を探す', aquariums_path, class: 'btn btn-primary' %>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>アクアボヤージュ</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-customBackground items-center justify-center min-h-screen">
+  <div class="text-center ">
+    <%= image_tag "top.png", alt: "トップ画像", class: "w-full" %>
+    <div class="space-y-4 mt-8 mb-8 flex flex-col items-center">
+      <%= link_to '水族館を探す', aquariums_path, class: 'btn btn-primary' %>
+        <% unless user_signed_in? %>
+          <%= link_to 'ログインして水族館のレビュー投稿する', new_user_session_path, class: 'btn btn-secondary mt-4' %>
+        <% end %>
+    </div>
+  </div>
 
+  <div class="container mx-auto p-8">
+  <h2 class="items-center text-2xl font-bold mb-4">アクアボヤージュでできること</h2>
+
+  <div class="flex items-center mb-8">
+    <%= image_tag "review.png", class: "w-1/3 mr-4 rounded-lg custom-image-size" %>
+    <div>
+      <h3 class="text-xl font-bold">一緒に行ったとしても感想が違うかも？</h3>
+      <p>水族館の魅力は人それぞれ。あなたの感じた素敵な瞬間をシェアしよう！</p>
+    </div>
+  </div>
+
+  <div class="flex items-center mb-8">
+    <%= image_tag "thinking.png", class: "w-1/3 mr-4 rounded-lg custom-image-size" %>
+    <div>
+      <h3 class="text-xl font-bold">水族館検索</h3>
+      <p>簡単な検索で、全国の水族館情報を一目でチェック。次の旅行先を見つけてみませんか？</p>
+    </div>
+  </div>
+
+  <div class="flex items-center mb-8">
+    <%= image_tag "friends.png", class: "w-1/3 mr-4 rounded-lg custom-image-size" %>
+    <div>
+      <h3 class="text-xl font-bold">水族館に行ったらレビューで魅力を伝えよう</h3>
+      <p>あなたの声が次の訪問者の参考に！水族館の見どころや感動をレビューで共有しましょう。</p>
+    </div>
+  </div>
+
+  <div class="flex items-center mb-8">
+    <div>
+      <h3 class="text-xl font-bold">ランキング実装予定</h3>
+      <p>一番水族館に訪れているユーザーは？みんなに人気の水族館は？ランキング機能をお楽しみに！乞うご期待！</p>
+    </div>
+  </div>
+
+  <div class="flex items-center mb-8">
+    <div>
+      <h3 class="text-xl font-bold">その他実装予定</h3>
+      <p>マイページ</p>
+      <p>画像投稿機能</p>
+      <p>お気に入り</p>
+    </div>
+  </div>
 </div>
+
+</body>
+</html>
+
