@@ -27,6 +27,7 @@
     <% if Rails.env.production? %>
       <%= render 'layouts/google_analytics' %>
     <% end %>
+    <%= favicon_link_tag('favicon.ico') %>
 
 
   </head>
