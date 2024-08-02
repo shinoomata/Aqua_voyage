@@ -9,6 +9,12 @@
     .bg-customFormBackground {
       background-color: #FAFFAF;
     }
+    .bg-customBlue {
+      background-color: #0F67B1;
+    }
+    .bg-customFooterBlue {
+      background-color: #3FA2F6;
+    }
     .tab::before {
       content: none !important;
     }
