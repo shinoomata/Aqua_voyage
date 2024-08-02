@@ -14,7 +14,7 @@
     <div class="flex justify-between items-center">
       <h1 class="font-bold text-3xl text-center"><%= @aquarium.name %></h1>
       <!-- Xシェアボタン -->
-      <% share_text = "私のおすすめの水族館は「#{@aquarium.name}」。詳細はこちら:" %>
+      <% share_text = "私のおすすめの水族館は「#{@aquarium.name}」。#AquaVoyage" %>
       <% share_url = "https://aqua-voyage.fly.dev/aquariums/#{@aquarium.id}" %> <!-- ここを実際のURLに置き換えてください -->
       <a href="https://twitter.com/intent/tweet?text=<%= ERB::Util.url_encode(share_text) %>&url=<%= ERB::Util.url_encode(share_url) %>" target="_blank" class="btn btn-primary ml-4">
         Xでシェアする

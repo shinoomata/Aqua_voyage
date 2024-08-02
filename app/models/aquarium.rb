@@ -1,4 +1,5 @@
 class Aquarium < ApplicationRecord
+  validates :name, presence: true, uniqueness: true
   self.table_name = 'aquaria'
   has_many :reviews, dependent: :destroy
 
