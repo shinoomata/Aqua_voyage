@@ -14,6 +14,7 @@ aquariums = [
       description: 'あわしまマリンパークは、島全体がテーマパークになっており、カエル館や釣り体験も楽しめます。ユニークな生物展示が魅力です。',
       website: 'http://www.marinepark.jp/',
       region: '東海'
+
     },
     {
       name: '沼津港深海水族館',
@@ -842,6 +843,7 @@ aquariums = [
     region: '沖縄'
   }
 ]
+
 
 # 水族館データをデータベースに保存
 aquariums.each do |aquarium|
