@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  get 'pages/terms'
   get 'reviews/new'
   get 'reviews/create'
   get 'aquariums/index'
   get 'aquariums/show'
   get 'top/index'
+  get 'terms', to: 'pages#terms'
+
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
