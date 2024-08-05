@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* DaisyUI用のスタイルをインポート */
-@import "daisyui";
-
-/* Font Awesomeのスタイルをインポート */
-@import "@fortawesome/fontawesome-free/css/all.min.css";
-
 @layer utilities {
     .bg-customBackground {
       background-color: #96C9F4;
