@@ -1,0 +1,27 @@
+<!-- app/views/reviews/latest.html.erb -->
+
+<h1 class="text-2xl font-bold mb-4 m-4">新着レビュー</h1>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 m-4">
+  <% @reviews.each do |review| %>
+    <div class="bg-white p-4 rounded-lg shadow-md">
+    <h2 class="text-lg font-semibold">
+      <%= link_to review.aquarium.name, aquarium_path(review.aquarium), class: 'text-blue-500 hover:underline' %>
+    </h2>
+    <% if review.user %>
+      <p class="text-gray-600"><%= review.user.name %></p>
+    <% else %>
+      <p class="text-gray-600">匿名ユーザー</p>
+    <% end %>
+   <!-- ランダムな色を適用 -->
+   <% if review.content.present? %>
+   <div class="chat chat-start">
+      <div class="chat-bubble <%= @chat_bubble_colors.sample %> mt-2">
+        <p><%= truncate(review.content, length: 100) %></p>
+      </div>
+    </div>
+    <% end %>
+    <p class="text-sm text-gray-500 mt-2"><%= review.created_at.strftime("%Y年%m月%d日") %></p>
+    </div>
+  <% end %>
+</div>

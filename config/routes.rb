@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'pages/terms'
   get 'reviews/new'
   get 'reviews/create'
+  get 'reviews/latest', to: 'reviews#latest', as: 'latest_reviews'
   get 'aquariums/index'
   get 'aquariums/show'
   get 'top/index'
