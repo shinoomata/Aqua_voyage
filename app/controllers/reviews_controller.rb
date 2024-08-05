@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :set_aquarium
+  before_action :authenticate_user!, except: [:latest]
+  before_action :set_aquarium, only: [:show, :edit, :update, :destroy]
   before_action :set_review, only: [:edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
@@ -47,6 +47,11 @@ class ReviewsController < ApplicationController
     @review.destroy
     flash[:notice] = "レビューを削除しました"
     redirect_to @aquarium, status: :see_other
+  end
+
+  def latest
+    @reviews = Review.includes(:aquarium).order(created_at: :desc).limit(20) # 最新の20件のレビューを取得
+    @chat_bubble_colors = ['chat-bubble-primary', 'chat-bubble-secondary', 'chat-bubble-accent', 'chat-bubble-info', 'chat-bubble-success', 'chat-bubble-warning', 'chat-bubble-error']
   end
 
   private
