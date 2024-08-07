@@ -25,6 +25,7 @@
           <li><%= link_to '水族館一覧', aquariums_path %></li>
           <li><%= link_to '新着レビュー', latest_reviews_path %></li>
           <% if user_signed_in? %>
+            <li><%= link_to 'マイページ', user_path(current_user) %></li>
             <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
           <% else %>
             <li><%= link_to 'ログイン（認証）', new_user_session_path %></li>
@@ -41,6 +42,7 @@
       <li><%= link_to '水族館一覧', aquariums_path %></li>
       <li><%= link_to '新着レビュー', latest_reviews_path %></li>
       <% if user_signed_in? %>
+        <li><%= link_to 'マイページ', user_path(current_user) %></li>
         <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
       <% else %>
         <li><%= link_to 'ログイン（認証）', new_user_session_path %></li>
