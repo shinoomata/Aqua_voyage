@@ -1,8 +1,8 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, except: [:latest]
-  before_action :set_aquarium, only: [:show, :edit, :update, :destroy]
-  before_action :set_review, only: [:edit, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :set_aquarium, only: %i[new create edit update destroy]
+  before_action :set_review, only: %i[edit update destroy]
+  before_action :correct_user, only: %i[edit update destroy]
 
   def index
     @reviews = @aquarium.reviews
@@ -51,7 +51,7 @@ class ReviewsController < ApplicationController
 
   def latest
     @reviews = Review.includes(:aquarium).order(created_at: :desc).limit(20) # 最新の20件のレビューを取得
-    @chat_bubble_colors = ['chat-bubble-primary', 'chat-bubble-secondary', 'chat-bubble-accent', 'chat-bubble-info', 'chat-bubble-success', 'chat-bubble-warning', 'chat-bubble-error']
+    @chat_bubble_colors = %w[chat-bubble-primary chat-bubble-secondary chat-bubble-accent chat-bubble-info chat-bubble-success chat-bubble-warning chat-bubble-error]
   end
 
   private
@@ -62,7 +62,6 @@ class ReviewsController < ApplicationController
     @highlights = Highlight.all
   end
 
-
   def set_aquarium
     @aquarium = Aquarium.find(params[:aquarium_id])
   end
@@ -72,9 +71,7 @@ class ReviewsController < ApplicationController
   end
 
   def correct_user
-    unless @review.user == current_user
-      redirect_to @aquarium, alert: "編集権限がありません。"
-    end
+    redirect_to @aquarium, alert: "編集権限がありません。" unless @review.user == current_user
   end
 
   def review_params

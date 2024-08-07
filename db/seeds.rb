@@ -1,6 +1,5 @@
-
-
 aquariums = [
+
     {
       name: '沖縄美ら海水族館',
       location: '沖縄県国頭郡本部町字石川424',
@@ -861,4 +860,4 @@ aquariums.each do |aquarium|
   a.save!
 end
 
-  puts "Aquariums seeded successfully!"
+Rails.logger.debug "Aquariums seeded successfully!"

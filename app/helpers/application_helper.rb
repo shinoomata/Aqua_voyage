@@ -1,16 +1,16 @@
 module ApplicationHelper
-  def daisyui_colors_1
-  [
-    "#ec4899",  # accent
-    "#f87171",  # red
-    "#facc15",  # yellow
-    "#34d399",  # green
-    "#6b7280",  # gray
-    "#d1d5db"   # light-gray
-  ]
+  def daisyui_colors_set1
+    [
+      "#ec4899",  # accent
+      "#f87171",  # red
+      "#facc15",  # yellow
+      "#34d399",  # green
+      "#6b7280",  # gray
+      "#d1d5db"   # light-gray
+    ]
   end
 
-  def daisyui_colors_2
+  def daisyui_colors_set2
     [
       "#4ade80",  # green
       "#22d3ee",  # cyan
@@ -23,7 +23,7 @@ module ApplicationHelper
     ]
   end
 
-  def daisyui_colors_3
+  def daisyui_colors_set3
     [
       "#f97316",  # orange
       "#10b981",  # green

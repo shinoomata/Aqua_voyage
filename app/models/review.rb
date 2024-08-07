@@ -1,9 +1,9 @@
 class Review < ApplicationRecord
-  belongs_to :user
-  belongs_to :aquarium, class_name: 'Aquarium', foreign_key: 'aquaria_id'
-  belongs_to :target_audience
-  belongs_to :size_rating
-  belongs_to :highlight
+  belongs_to :user, inverse_of: :reviews
+  belongs_to :aquarium, class_name: 'Aquarium', foreign_key: 'aquaria_id', inverse_of: :reviews
+  belongs_to :target_audience, inverse_of: :reviews
+  belongs_to :size_rating, inverse_of: :reviews
+  belongs_to :highlight, inverse_of: :reviews
 
   validates :user_id, uniqueness: { scope: :aquaria_id, message: "はこの水族館に既にレビューを投稿しています" }
   validates :target_audience_id, presence: true

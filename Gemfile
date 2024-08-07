@@ -38,7 +38,7 @@ gem "jbuilder"
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -50,8 +50,8 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 # Authentication
-gem "devise", "~> 4.8"
 gem "auth0", "~> 5.9"
+gem "devise", "~> 4.8"
 
 # File Uploads
 gem "cloudinary", "~> 1.20.0"
@@ -65,18 +65,22 @@ gem "rubyzip", "~> 2.3"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
-  gem "rspec-rails", "~> 5.0"
+  gem "debug", platforms: %i[mri mingw x64_mingw]
   gem "factory_bot_rails"
   gem "faker"
+  gem "rspec-rails", "~> 5.0"
+  gem 'rubocop', require: false
+  gem 'rubocop-capybara', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem "web-console", ">= 4.1.0"
   gem "listen", "~> 3.3"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
+  gem "web-console", ">= 4.1.0"
 end
 
 group :test do
@@ -89,12 +93,12 @@ group :production do
   gem "rails_12factor"
 end
 
-gem "dockerfile-rails", ">= 1.6", :group => :development
+gem "dockerfile-rails", ">= 1.6", group: :development
 
+gem 'dotenv-rails'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
-gem 'dotenv-rails'
 gem 'omniauth-rails_csrf_protection'
 
-gem 'ransack', '~> 4.2.0'
 gem 'google_places'
+gem 'ransack', '~> 4.2.0'
