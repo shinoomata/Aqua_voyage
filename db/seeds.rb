@@ -1,27 +1,25 @@
-
-
 aquariums = [
-    {
-      name: '沖縄美ら海水族館',
-      location: '沖縄県国頭郡本部町字石川424',
-      description: '沖縄美ら海水族館は、沖縄の海をテーマにした大型水族館で、世界最大級の水槽を誇ります。',
-      website: 'https://churaumi.okinawa/',
-      region: '沖縄'
-    },
-    {
-      name: 'あわしまマリンパーク',
-      location: '静岡県沼津市内浦重寺186',
-      description: 'あわしまマリンパークは、島全体がテーマパークになっており、カエル館や釣り体験も楽しめます。ユニークな生物展示が魅力です。',
-      website: 'http://www.marinepark.jp/',
-      region: '東海'
-    },
-    {
-      name: '沼津港深海水族館',
-      location: '静岡県沼津市千本港町83',
-      description: '沼津港深海水族館は、深海生物の展示に特化しており、珍しい生物が観察できます。深海の神秘を感じられる展示が特徴です。',
-      website: 'http://www.numazu-deepsea.com/',
-      region: '東海'
-    },
+  {
+    name: '沖縄美ら海水族館',
+    location: '沖縄県国頭郡本部町字石川424',
+    description: '沖縄美ら海水族館は、沖縄の海をテーマにした大型水族館で、世界最大級の水槽を誇ります。',
+    website: 'https://churaumi.okinawa/',
+    region: '沖縄'
+  },
+  {
+    name: 'あわしまマリンパーク',
+    location: '静岡県沼津市内浦重寺186',
+    description: 'あわしまマリンパークは、島全体がテーマパークになっており、カエル館や釣り体験も楽しめます。ユニークな生物展示が魅力です。',
+    website: 'http://www.marinepark.jp/',
+    region: '東海'
+  },
+  {
+    name: '沼津港深海水族館',
+    location: '静岡県沼津市千本港町83',
+    description: '沼津港深海水族館は、深海生物の展示に特化しており、珍しい生物が観察できます。深海の神秘を感じられる展示が特徴です。',
+    website: 'http://www.numazu-deepsea.com/',
+    region: '東海'
+  },
   {
     name: '下田海中水族館',
     location: '静岡県下田市3-22-31',
@@ -859,4 +857,4 @@ aquariums.each do |aquarium|
   a.save!
 end
 
-  puts "Aquariums seeded successfully!"
+Rails.logger.debug "Aquariums seeded successfully!"

@@ -56,7 +56,7 @@ RUN bundle exec rake assets:precompile
 EXPOSE 3000
 
 # サーバー起動コマンド
-CMD ["bin/rails", "server", "-b", "0.0.0.0"]
+CMD ["bin/rails", "server", "-b", "0.0.0.0", "-p", "3000"]
 
 # entrypoint.shを実行するための記述
 COPY entrypoint.sh /usr/bin/

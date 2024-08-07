@@ -1,0 +1,95 @@
+# .rubocop.yml
+
+# `rubocop-rails`を読み込む
+require:
+  - rubocop-rails
+
+AllCops:
+  TargetRubyVersion: 2.6
+  Exclude:
+    - bin/*
+    - db/schema.rb
+    - db/**/*
+    - vendor/**/*
+    - config/**/*
+    - lib/tasks/*
+    - Gemfile
+    - features/**/*
+    - spec/**/*
+
+Rails:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# LineLengthはLayout部門に属しているので、Layout/LineLengthに変更
+Layout/LineLength:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+
+Layout/EmptyLinesAroundClassBody:
+  Enabled: false
+
+Layout/ExtraSpacing:
+  Enabled: false
+
+# Copの名前が変更されたため、以下を修正
+Layout/FirstHashElementIndentation:
+  Enabled: false
+
+Layout/SpaceInsideHashLiteralBraces:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 40
+
+# FormatStringはStyle/FormatStringに変更
+Style/FormatString:
+  EnforcedStyle: percent
+
+# NumberLiteralsは削除
+# NumericLiterals:
+#   Enabled: false
+
+Style/AndOr:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Style/MethodDefParentheses:
+  Enabled: false
+
+Style/RedundantReturn:
+  Enabled: false
+
+Style/TernaryParentheses:
+  Enabled: false
+
+# DotPositionはLayout/DotPositionに変更
+Layout/DotPosition:
+  EnforcedStyle: trailing
+
+AllCops:
+  SuggestExtensions: false

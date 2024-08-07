@@ -1,13 +1,14 @@
 class Aquarium < ApplicationRecord
-  validates :name, presence: true, uniqueness: true
   self.table_name = 'aquaria'
-  has_many :reviews, dependent: :destroy
 
-  def self.ransackable_attributes(auth_object = nil)
-    ["created_at", "description", "id", "location", "name", "region", "updated_at", "website"]
+  validates :name, presence: true, uniqueness: true
+  has_many :reviews, inverse_of: :aquarium, dependent: :destroy
+
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[created_at description id location name region updated_at website]
   end
 
-  def self.ransackable_associations(auth_object = nil)
+  def self.ransackable_associations(_auth_object = nil)
     []  # 必要に応じて関連付けを追加します
   end
 end
