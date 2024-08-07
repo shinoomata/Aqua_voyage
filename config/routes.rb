@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
+  resource :user, only: [:show], controller: 'users' do
+    get 'mypage', on: :collection, as: :mypage
+  end
+
   root to: 'top#index'
 
   resources :aquariums, only: %i[index show] do
