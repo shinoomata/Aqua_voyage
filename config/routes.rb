@@ -3,8 +3,6 @@ Rails.application.routes.draw do
   get 'reviews/new'
   get 'reviews/create'
   get 'reviews/latest', to: 'reviews#latest', as: 'latest_reviews'
-  get 'aquariums/index'
-  get 'aquariums/show'
   get 'top/index'
   get 'terms', to: 'pages#terms'
 
@@ -15,6 +13,8 @@ Rails.application.routes.draw do
   resource :user, only: [:show], controller: 'users' do
     get 'mypage', on: :collection, as: :mypage
   end
+
+  resources :rankings, only: [:index]
 
   root to: 'top#index'
 

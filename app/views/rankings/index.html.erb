@@ -1,0 +1,37 @@
+<!-- app/views/rankings/index.html.erb -->
+
+<div class="container mx-auto px-4 py-6">
+  <h1 class="text-3xl font-bold mb-6">ランキング</h1>
+
+  <div class="bg-white shadow-md rounded-lg p-6">
+    <h2 class="text-2xl font-semibold mb-4">水族館</h2>
+    <% if @top_aquariums.any? %>
+      <ol>
+        <% @top_aquariums.each_with_index do |aquarium, index| %>
+          <li class="border-b py-2">
+            <strong><%= index + 1 %>. <%= link_to aquarium.name, aquarium_path(aquarium) %></strong>
+            <p class="text-sm text-gray-600">レビュー数: <%= aquarium.reviews.count %></p>
+          </li>
+        <% end %>
+      </ol>
+    <% else %>
+      <p>まだランキングデータがありません。</p>
+    <% end %>
+  </div>
+
+  <div class="bg-white shadow-md rounded-lg p-6 mt-6">
+    <h2 class="text-2xl font-semibold mb-4">ユーザー</h2>
+    <% if @top_users.any? %>
+      <ol>
+        <% @top_users.each_with_index do |user, index| %>
+          <li class="border-b py-2">
+            <strong><%= index + 1 %>. <%= user.name %></strong>
+            <p class="text-sm text-gray-600">レビュー数: <%= user.reviews.count %></p>
+          </li>
+        <% end %>
+      </ol>
+    <% else %>
+      <p>まだランキングデータがありません。</p>
+    <% end %>
+  </div>
+</div>

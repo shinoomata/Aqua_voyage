@@ -4,6 +4,6 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     # 必要に応じて、レビューやその他のユーザー関連情報を取得
-    @reviews = @user.reviews.includes(:aquarium)
+    @reviews = @user.reviews.includes(:aquarium).order(created_at: :desc)
   end
 end
