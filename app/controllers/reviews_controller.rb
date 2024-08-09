@@ -19,8 +19,15 @@ class ReviewsController < ApplicationController
   def create
     @review = @aquarium.reviews.new(review_params)
     @review.user = current_user
-
+  
     if @review.save
+      # 水族館にタグを追加
+      if params[:aquarium][:tag_list].present?
+        @aquarium.tag_list = params[:aquarium][:tag_list]
+        @aquarium.save
+        Rails.logger.debug "Saved tags: #{@aquarium.tag_list}"
+      end
+  
       redirect_to @aquarium, notice: 'レビューが正常に投稿されました。'
     else
       load_review_resources
@@ -28,6 +35,7 @@ class ReviewsController < ApplicationController
       render :new
     end
   end
+  
 
   def edit
     load_review_resources
@@ -35,13 +43,21 @@ class ReviewsController < ApplicationController
 
   def update
     if @review.update(review_params)
-      redirect_to @aquarium, notice: 'レビューが更新されました。'
+      # タグの更新
+      if params[:aquarium][:tag_list].present?
+        @aquarium.tag_list = params[:aquarium][:tag_list]
+        @aquarium.save
+        Rails.logger.debug "Updated tags: #{@aquarium.tag_list}"
+      end
+  
+      redirect_to @aquarium, notice: 'レビューが正常に更新されました。'
     else
       load_review_resources
       flash.now[:alert] = "全ての項目を選択してください"
       render :edit
     end
   end
+  
 
   def destroy
     @review.destroy
@@ -75,6 +91,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:content, :target_audience_id, :size_rating_id, :highlight_id, :image_url)
+    params.require(:review).permit(:content, :target_audience_id, :size_rating_id, :highlight_id, :tag_list)
   end
 end
