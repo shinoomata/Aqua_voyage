@@ -1,5 +1,6 @@
 class Aquarium < ApplicationRecord
   self.table_name = 'aquaria'
+  acts_as_taggable_on :tags
 
   validates :name, presence: true, uniqueness: true
   has_many :reviews, inverse_of: :aquarium, dependent: :destroy

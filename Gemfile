@@ -102,3 +102,4 @@ gem 'omniauth-rails_csrf_protection'
 
 gem 'google_places'
 gem 'ransack', '~> 4.2.0'
+gem 'acts-as-taggable-on'

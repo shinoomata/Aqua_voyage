@@ -12,6 +12,13 @@ class AquariumsController < ApplicationController
     @regions = @regions.sort_by { |region| region_order.index(region) || Float::INFINITY }
     @aquariums = @q.result(distinct: true)
 
+    # タグでフィルタリング
+    if params[:tag]
+      @aquariums = Aquarium.tagged_with(params[:tag])
+    else
+      @aquariums = @q.result(distinct: true)
+    end
+
     @search_keyword = params.dig(:q, :name_or_location_or_description_cont)
     @selected_region = params.dig(:q, :region_eq)
   end
@@ -21,6 +28,7 @@ class AquariumsController < ApplicationController
     if @aquarium
       prepare_reviews_and_data
       prepare_photo_urls
+      @tags = @aquarium.tag_list # タグ情報を準備
       log_aquarium_info
     else
       handle_aquarium_not_found

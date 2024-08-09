@@ -7,10 +7,17 @@
     <h2 class="text-2xl font-semibold mb-4">水族館</h2>
     <% if @top_aquariums.any? %>
       <ol>
+        <% last_count = nil %>
+        <% rank = 0 %>
         <% @top_aquariums.each_with_index do |aquarium, index| %>
+          <% current_count = aquarium.reviews_count %>
+          <% if last_count != current_count %>
+            <% rank = index + 1 %>
+          <% end %>
+          <% last_count = current_count %>
           <li class="border-b py-2">
-            <strong><%= index + 1 %>. <%= link_to aquarium.name, aquarium_path(aquarium) %></strong>
-            <p class="text-sm text-gray-600">レビュー数: <%= aquarium.reviews.count %></p>
+            <strong><%= rank %>. <%= link_to aquarium.name, aquarium_path(aquarium) %></strong>
+            <p class="text-sm text-gray-600">レビュー数: <%= current_count %></p>
           </li>
         <% end %>
       </ol>
@@ -23,10 +30,17 @@
     <h2 class="text-2xl font-semibold mb-4">ユーザー</h2>
     <% if @top_users.any? %>
       <ol>
+        <% last_count = nil %>
+        <% rank = 0 %>
         <% @top_users.each_with_index do |user, index| %>
+          <% current_count = user.reviews_count %>
+          <% if last_count != current_count %>
+            <% rank = index + 1 %>
+          <% end %>
+          <% last_count = current_count %>
           <li class="border-b py-2">
-            <strong><%= index + 1 %>. <%= user.name %></strong>
-            <p class="text-sm text-gray-600">レビュー数: <%= user.reviews.count %></p>
+            <strong><%= rank %>. <%= user.name %></strong>
+            <p class="text-sm text-gray-600">レビュー数: <%= current_count %></p>
           </li>
         <% end %>
       </ol>

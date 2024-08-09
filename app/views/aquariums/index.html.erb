@@ -44,6 +44,19 @@
           <h2 class="card-title"><%= link_to aquarium.name, aquarium_path(aquarium) %></h2>
           <p><%= aquarium.description %></p>
           <div class="badge badge-outline"><%= aquarium.region %></div>
+          <!-- タグを表示する部分 -->
+          <% if aquarium.tag_list.any? %>
+            <div class="mt-2">
+              <h3 class="font-bold text-sm">タグ:</h3>
+              <ul class="flex flex-wrap list-none p-0 mt-1">
+                <% aquarium.tag_list.each do |tag| %>
+                  <li class="mr-2 mb-2">
+                    <%= link_to tag, tagged_path(tag), class: "badge badge-primary", title: "#{tag}に関連する水族館を表示" %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
           <div class="card-actions justify-end">
             <%= link_to '詳細を見る', aquarium_path(aquarium), class: "btn btn-primary" %>
           </div>

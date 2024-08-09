@@ -44,6 +44,20 @@
     <% else %>
       <p class="text-center">No photos available.</p>
     <% end %>
+
+    <!-- タグを表示する -->
+    <% if @aquarium.tag_list.any? %>
+      <div class="mt-4">
+        <h2 class="font-bold text-lg">タグ:</h2>
+        <ul class="flex flex-wrap">
+          <% @aquarium.tag_list.each do |tag| %>
+            <li class="mr-2 mb-2">
+              <%= link_to tag, tagged_path(tag), class: "btn btn-sm btn-outline-primary" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
   
 
     <div role="tablist" class="tabs tabs-lifted grid grid-cols-3 w-full mt-4">
