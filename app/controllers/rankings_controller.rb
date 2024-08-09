@@ -1,4 +1,6 @@
 class RankingsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index]
+
   def index
     @top_aquariums = rank_aquariums
     @top_users = rank_users

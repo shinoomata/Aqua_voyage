@@ -60,7 +60,7 @@
       <!-- タグ入力フィールド -->
   <div class="space-y-2 mt-4">
     <%= form.label :tag_list, "タグ (カンマ区切りで入力)", class: "block text-sm font-bold text-gray-700" %>
-    <%= text_field_tag 'aquarium[tag_list]', @aquarium.tag_list.join(', '), placeholder: "例: イルカショー, 子供向け", class: "input input-bordered input-lg input-info w-full" %>
+    <%= text_field_tag 'aquarium[tag_list]', @aquarium.tag_list.join(', '), placeholder: "生き物、特徴など 例: イルカ, ペンギン", class: "input input-bordered input-lg input-info w-full" %>
   </div>
 
       <div class="space-y-2">
