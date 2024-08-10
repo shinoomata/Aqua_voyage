@@ -1,4 +1,4 @@
-zFactoryBot.define do
+FactoryBot.define do
   factory :aquarium do
     name { "MyString" }
     location { "MyString" }
