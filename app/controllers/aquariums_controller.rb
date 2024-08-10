@@ -46,10 +46,11 @@ class AquariumsController < ApplicationController
 
   def prepare_reviews_and_data
     @reviews = @aquarium.reviews.includes(:user, :target_audience, :size_rating, :highlight)
+    Rails.logger.debug "SQL: #{@reviews.to_sql}"
     @target_audience_data = @reviews.group(:target_audience_id).count
     @size_rating_data = @reviews.group(:size_rating_id).count
     @highlight_data = @reviews.group(:highlight_id).count
-
+  
     if user_signed_in?
       @user_has_reviewed = @reviews.exists?(user_id: current_user.id)
     else
