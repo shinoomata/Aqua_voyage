@@ -14,4 +14,8 @@ class User < ApplicationRecord
       user.uid = auth.uid
     end
   end
+
+  def admin?
+    self.admin
+  end
 end

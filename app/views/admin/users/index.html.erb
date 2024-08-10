@@ -1,0 +1,52 @@
+<h1>ユーザーとレビュー管理</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Email</th>
+      <th>レビュー数</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.email %></td>
+        <td><%= user.reviews.count %></td>
+        <td>
+          <%= link_to 'ユーザー削除', destroy_user_admin_user_path(user),  data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'link link-danger' %>
+        </td>
+      </tr>
+      <% if user.reviews.any? %>
+        <tr>
+          <td colspan="4">
+            <table class="ml-4">
+              <thead>
+                <tr>
+                  <th>レビューID</th>
+                  <th>水族館</th>
+                  <th>内容</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% user.reviews.each do |review| %>
+                  <tr>
+                    <td><%= review.id %></td>
+                    <td><%= review.aquarium.name %></td>
+                    <td><%= truncate(review.content, length: 50) %></td>
+                    <td>
+                      <%= link_to 'レビュー削除', destroy_review_admin_user_path(review),  data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'link link-danger' %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

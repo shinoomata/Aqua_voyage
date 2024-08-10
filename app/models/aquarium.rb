@@ -3,8 +3,8 @@ class Aquarium < ApplicationRecord
   acts_as_taggable_on :tags
 
   validates :name, presence: true, uniqueness: true
-  has_many :reviews, inverse_of: :aquarium, dependent: :destroy
-
+  has_many :reviews, foreign_key: 'aquaria_id', dependent: :destroy
+  
   def self.ransackable_attributes(_auth_object = nil)
     %w[created_at description id location name region updated_at website]
   end

@@ -22,4 +22,13 @@ Rails.application.routes.draw do
   resources :aquariums, only: %i[index show] do
     resources :reviews, only: %i[index new create edit update destroy]
   end
+
+  namespace :admin do
+    resources :users, only: [:index] do
+      member do
+        delete :destroy_user
+        delete :destroy_review
+      end
+    end
+  end
 end
