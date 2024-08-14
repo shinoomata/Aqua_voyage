@@ -14,13 +14,29 @@
         <% @reviews.each do |review| %>
           <li class="border-b py-2">
             <h3 class="text-xl"><%= link_to review.aquarium.name, aquarium_path(review.aquarium) %></h3>
-            <p><%= review.content.truncate(100) %></p>
+            <p><%= review.content.truncate(10) %></p>
             <p class="text-sm text-gray-600"><%= review.created_at.strftime("%Y年%m月%d日") %></p>
           </li>
         <% end %>
       </ul>
     <% else %>
       <p>まだレビューがありません。</p>
+    <% end %>
+  </div>
+
+  <div class="bg-white shadow-md rounded-lg p-6 mt-6">
+    <h2 class="text-2xl font-semibold mb-4">お気に入りの水族館</h2>
+    <% if @liked_aquariums.any? %>
+      <ul>
+        <% @liked_aquariums.each do |aquarium| %>
+          <li class="border-b py-2">
+            <h3 class="text-xl"><%= link_to aquarium.name, aquarium_path(aquarium) %></h3>
+            <p><%= aquarium.description.truncate(30) %></p>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>お気に入りに追加された水族館はまだありません。</p>
     <% end %>
   </div>
 </div>
