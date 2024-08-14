@@ -1,5 +1,9 @@
 class Aquarium < ApplicationRecord
   self.table_name = 'aquaria'
+
+  has_many :like_aquarias, class_name: 'LikeAquarium', dependent: :destroy
+  has_many :liked_by_users, through: :like_aquarias, source: :user
+  
   acts_as_taggable_on :tags
 
   validates :name, presence: true, uniqueness: true

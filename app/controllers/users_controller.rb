@@ -6,6 +6,8 @@ class UsersController < ApplicationController
     @user = current_user
     # 必要に応じて、レビューやその他のユーザー関連情報を取得
     @reviews = @user.reviews.includes(:aquarium).order(created_at: :desc)
+    # お気に入りの水族館を取得
+    @liked_aquariums = @user.liked_aquariums.includes(:reviews)
   end
 
   def destroy

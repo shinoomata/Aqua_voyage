@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   resources :aquariums, only: %i[index show] do
     resources :reviews, only: %i[index new create edit update destroy]
+    resource :like, only: %i[create destroy], controller: 'like_aquarias'
   end
 
   namespace :admin do
