@@ -1,0 +1,2 @@
+module LikeAquariasHelper
+end

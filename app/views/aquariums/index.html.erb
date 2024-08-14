@@ -57,7 +57,18 @@
               </ul>
             </div>
           <% end %>
-          <div class="card-actions justify-end">
+          <div class="card-actions justify-between">
+          <% if user_signed_in? %>
+              <% if current_user.liked_aquariums.include?(aquarium) %>
+                <%= button_to aquarium_like_path(aquarium), method: :delete, class: "btn btn-outline text-red-500" do %>
+                  <i class="fa-solid fa-heart"></i>
+                <% end %>
+              <% else %>
+                <%= button_to aquarium_like_path(aquarium), method: :post, class: "btn btn-outline text-gray-500" do %>
+                  <i class="fa-regular fa-heart"></i>
+                <% end %>
+              <% end %>
+            <% end %>
             <%= link_to '詳細を見る', aquarium_path(aquarium), class: "btn btn-primary" %>
           </div>
         </div>

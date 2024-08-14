@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_08_064012) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_13_085337) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,7 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_08_064012) do
 
   create_table "reviews", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "aquarium_id", null: false
+    t.bigint "aquaria_id", null: false
     t.text "content"
     t.bigint "target_audience_id", null: false
     t.bigint "size_rating_id", null: false
@@ -43,7 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_08_064012) do
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["aquarium_id"], name: "index_reviews_on_aquarium_id"
+    t.index ["aquaria_id"], name: "index_reviews_on_aquaria_id"
     t.index ["highlight_id"], name: "index_reviews_on_highlight_id"
     t.index ["size_rating_id"], name: "index_reviews_on_size_rating_id"
     t.index ["target_audience_id"], name: "index_reviews_on_target_audience_id"
@@ -106,10 +106,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_08_064012) do
     t.datetime "oauth_expires_at"
     t.string "image"
     t.datetime "remember_created_at"
+    t.boolean "admin", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "reviews", "aquaria"
+  add_foreign_key "reviews", "aquaria", column: "aquaria_id"
   add_foreign_key "reviews", "highlights"
   add_foreign_key "reviews", "size_ratings"
   add_foreign_key "reviews", "target_audiences"
