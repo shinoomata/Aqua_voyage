@@ -1,4 +1,4 @@
-class CreateLikeAquaria < ActiveRecord::Migration[7.0]
+class CreateLikeAquarias < ActiveRecord::Migration[7.0]
   def change
     create_table :like_aquaria do |t|
       t.references :user, null: false, foreign_key: true
