@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'replies/create'
+  get 'replies/destroy'
   get 'pages/terms'
   get 'reviews/new'
   get 'reviews/create'
@@ -23,6 +25,10 @@ Rails.application.routes.draw do
     resources :reviews, only: %i[index new create edit update destroy]
     resource :like, only: %i[create destroy], controller: 'like_aquarias'
   end
+
+  resources :reviews do
+    resources :replies, only: [:create, :destroy, :edit, :update]
+  end  
 
   namespace :admin do
     resources :users, only: [:index] do
