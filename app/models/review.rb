@@ -9,6 +9,8 @@ class Review < ApplicationRecord
   validates :target_audience_id, presence: true
   validates :size_rating_id, presence: true
   validates :highlight_id, presence: true
+
+  has_many :replies, dependent: :destroy
 end
 
 class User < ApplicationRecord
