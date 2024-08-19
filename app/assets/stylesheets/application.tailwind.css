@@ -23,6 +23,22 @@
       object-fit: contain; /* 画像を縦横比を維持して表示 */
       width: 100%;
     }
+    .autocomplete-list {
+      background-color: rgb(53, 208, 149);
+      max-height: 150px;
+      overflow-y: auto;
+      position: absolute;
+      width: 100%;
+      z-index: 1000;
+    }
+    .autocomplete-item {
+      padding: 10px;
+      cursor: pointer;
+    }
+    
+    .autocomplete-item:hover {
+      background-color: #a22e66;
+    }
   }
 
 body {

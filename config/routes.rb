@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'top/index'
   get 'terms', to: 'pages#terms'
   get 'tags/:tag', to: 'aquariums#index', as: :tagged
+  get 'autocomplete', to: 'aquariums#autocomplete'
 
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks'
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
   root to: 'top#index'
 
   resources :aquariums, only: %i[index show] do
+    get :autocomplete, on: :collection 
     resources :reviews, only: %i[index new create edit update destroy]
     resource :like, only: %i[create destroy], controller: 'like_aquarias'
   end
