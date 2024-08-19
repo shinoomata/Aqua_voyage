@@ -24,20 +24,29 @@
       width: 100%;
     }
     .autocomplete-list {
-      background-color: rgb(53, 208, 149);
+      background-color: #3FA2F6;
       max-height: 150px;
       overflow-y: auto;
       position: absolute;
+      top: 100%; /* 入力フィールドの直下に表示されるように設定 */
+      left: 0;
       width: 100%;
       z-index: 1000;
+      border-radius: 4px; /* 角を丸める場合 */
     }
+
     .autocomplete-item {
       padding: 10px;
       cursor: pointer;
     }
     
     .autocomplete-item:hover {
-      background-color: #a22e66;
+      background-color: #0F67B1;
+    }
+
+    /* 親要素のスタイル */
+    .form-control {
+      position: relative; /* リストが親要素に対して相対的に配置される */
     }
   }
 

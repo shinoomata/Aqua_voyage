@@ -6,15 +6,15 @@ export default class extends Controller {
   static targets = ["input", "list"]
 
   connect() {
-    console.log("Autocomplete connected"); // Debugging用のログ
+    //console.log("Autocomplete connected"); // Debugging用のログ
     this.inputTarget.addEventListener("input", this.suggest.bind(this));
   }
 
   suggest() {
     const query = this.inputTarget.value;
 
-    console.log("URL:", this.data.get("urlValue")); // URLをログに出力
-    console.log("Query:", query); // クエリもログに出力
+    //console.log("URL:", this.data.get("urlValue")); // URLをログに出力
+    //console.log("Query:", query); // クエリもログに出力
 
 
     if (query.length < 2) {
