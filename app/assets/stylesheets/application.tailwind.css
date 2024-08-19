@@ -23,6 +23,31 @@
       object-fit: contain; /* 画像を縦横比を維持して表示 */
       width: 100%;
     }
+    .autocomplete-list {
+      background-color: #3FA2F6;
+      max-height: 150px;
+      overflow-y: auto;
+      position: absolute;
+      top: 100%; /* 入力フィールドの直下に表示されるように設定 */
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      border-radius: 4px; /* 角を丸める場合 */
+    }
+
+    .autocomplete-item {
+      padding: 10px;
+      cursor: pointer;
+    }
+    
+    .autocomplete-item:hover {
+      background-color: #0F67B1;
+    }
+
+    /* 親要素のスタイル */
+    .form-control {
+      position: relative; /* リストが親要素に対して相対的に配置される */
+    }
   }
 
 body {

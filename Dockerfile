@@ -33,7 +33,7 @@ COPY . /app_name
 
 # # YarnインストールとTailwindCSSの設定
 RUN yarn install --check-files && \
-yarn add tailwindcss postcss autoprefixer esbuild daisyui && \
+yarn add tailwindcss postcss autoprefixer esbuild daisyui axios && \
 npx tailwindcss init
 
 # TailwindCSSの初期化と設定
@@ -44,6 +44,9 @@ RUN echo 'module.exports = { plugins: [ require("tailwindcss"), require("autopre
 
 # TailwindCSSのビルド
 RUN yarn run tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/stylesheets/application.css --minify
+
+# `esbuild`ビルドの修正
+RUN yarn run esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets
 
 # アセットをプリコンパイルするための環境変数を設定
 ARG SECRET_KEY_BASE

@@ -36,6 +36,12 @@ class AquariumsController < ApplicationController
     end
   end
 
+  def autocomplete
+    query = params[:q]
+    results = Aquarium.where("name LIKE ? OR location LIKE ? OR description LIKE ?", "%#{query}%", "%#{query}%", "%#{query}%").limit(10).pluck(:name)
+    render json: results.map { |name| { label: name, value: name } }
+  end
+
   private
 
   def find_aquarium

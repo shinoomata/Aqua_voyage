@@ -1,11 +1,12 @@
 <div class="flex items-center justify-center min-h-[50vh] bg-customBackground">
   <div class="rounded-box bg-customFormBackground p-8 shadow-lg w-full sm:w-2/3 md:w-1/2 lg:w-1/2 max-w-full m-4">
     <%= search_form_for @q, url: aquariums_path, method: :get do |f| %>
-      <div class="form-control w-full mb-2">
+      <div class="form-control w-full mb-2" data-controller="autocomplete" data-autocomplete-url-value="/autocomplete">
         <div class="label">
           <%= f.label :name_or_location_or_description_cont, "キーワード検索", class: "label-text mb-2" %>
         </div>
-        <%= f.search_field :name_or_location_or_description_cont, placeholder: "見たい生き物・所在地", class: "input input-bordered w-full mb-4" %>
+        <%= f.search_field :name_or_location_or_description_cont, placeholder: "見たい生き物・所在地", class: "input input-bordered w-full mb-4", data: { autocomplete_target: "input" } %>
+        <ul data-autocomplete-target="list" class="autocomplete-list"></ul>
       </div>
 
       <div class="form-control w-full mb-2">
