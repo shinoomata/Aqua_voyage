@@ -64,7 +64,7 @@ https://drive.google.com/file/d/1r17ruJXx3ZinofIrMx_hzifHFkDK7_Pr/view?usp=shari
 * 水族館検索・一覧
   * 施設名
   * 地域
-　　{* タグ・レビュー}実装予定
+　　　　* タグ・レビュー　（実装予定）
 * オートコンプリート　（Stimulus Autocomplete）
 * 水族館詳細
 　　　　*　　水族館写真・位置（GoogleMapAPIにて取得） 
