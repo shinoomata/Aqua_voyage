@@ -71,7 +71,7 @@ https://drive.google.com/file/d/1r17ruJXx3ZinofIrMx_hzifHFkDK7_Pr/view?usp=shari
 * ランキング機能（水族館・ユーザーレビュー数）
 * オートコンプリート
 
-### その後の機能
+### 今後追加予定の機能
 * おすすめの水族館表示（レコメンド）
 * 写真投稿（画像加工）
 * ローディング
