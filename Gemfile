@@ -54,7 +54,7 @@ gem "auth0", "~> 5.9"
 gem "devise", "~> 4.8"
 
 # File Uploads
-gem "cloudinary", "~> 1.20.0"
+gem "cloudinary"
 
 # Charts
 gem "chartkick", "~> 4.0"
@@ -103,3 +103,5 @@ gem 'omniauth-rails_csrf_protection'
 gem 'google_places'
 gem 'ransack', '~> 4.2.0'
 gem 'acts-as-taggable-on'
+
+gem 'carrierwave'
