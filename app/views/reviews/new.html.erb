@@ -69,6 +69,11 @@
         <%= form.text_area :content, placeholder: "この水族館の好きなところ、思い出などを自由に書いてね", class: "input input-bordered input-lg input-info w-full h-32 placeholder-small resize-none" %>
       </div>
 
+      <div class="form-group">
+        <%= form.label :image_url, "画像アップロード" %>
+        <%= form.file_field :image_url %>
+      </div>
+
       <div class="text-center">
         <%= form.submit "レビューを投稿", class: "btn btn-primary" %>
       </div>

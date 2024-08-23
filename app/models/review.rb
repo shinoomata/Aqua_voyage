@@ -10,6 +10,8 @@ class Review < ApplicationRecord
   validates :size_rating_id, presence: true
   validates :highlight_id, presence: true
 
+  mount_uploader :image_url, AquariumImageUploader
+
   has_many :replies, dependent: :destroy
 end
 
