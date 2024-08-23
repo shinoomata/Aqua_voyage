@@ -130,9 +130,6 @@
         <div class="chat-bubble <%= ['chat-bubble-primary', 'chat-bubble-secondary', 'chat-bubble-accent', 'chat-bubble-info', 'chat-bubble-success', 'chat-bubble-warning', 'chat-bubble-error'].sample %> mt-4">
           <p><strong><%= review.user.name %>:</strong></p>
           <p><%= review.content %></p>
-          <% if review.image_url.present? %>
-            <p><img src="<%= review.image_url %>" alt="Review Image" style="max-width: 200px;"></p>
-          <% end %>
           <% if review.user == current_user %>
             <%= link_to '編集', edit_aquarium_review_path(@aquarium, review), class: 'link link-hover' %>
             <%= link_to '削除', aquarium_review_path(@aquarium, review),  data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'link link-danger' %>
