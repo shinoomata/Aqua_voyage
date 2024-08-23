@@ -91,6 +91,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:content, :target_audience_id, :size_rating_id, :highlight_id, :tag_list, :image_url)
+    params.require(:review).permit(:content, :target_audience_id, :size_rating_id, :highlight_id, :tag_list, :image_url, :remove_image_url)
   end
 end
