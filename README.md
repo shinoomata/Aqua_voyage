@@ -1,4 +1,5 @@
-# AQUA　VOYAGE　〜水族館めぐり〜
+[![Image from Gyazo](https://i.gyazo.com/985c1056b629c8ddabea4277a6b26b0e.jpg)](https://gyazo.com/985c1056b629c8ddabea4277a6b26b0e)
+# 🐬AQUA　VOYAGE　〜水族館めぐり〜🐋
 
 ## サービス概要
 AQUA VOYAGE（アクア・ボヤージュ） 〜水族館めぐり〜は、訪れた水族館を写真や感想、タグで記録し、体験を共有できるサービスです。
@@ -68,6 +69,7 @@ https://drive.google.com/file/d/1r17ruJXx3ZinofIrMx_hzifHFkDK7_Pr/view?usp=shari
 * オートコンプリート　（Stimulus Autocomplete）
 * 水族館詳細
   * レビュー投稿・タグ付け
+    * 写真投稿（画像加工）
   * レーティング（大人向けか子供向けか等）
   * 水族館写真・位置（GoogleMapAPIにて取得） 
 * ランキング機能（水族館・ユーザーレビュー数）
@@ -75,5 +77,5 @@ https://drive.google.com/file/d/1r17ruJXx3ZinofIrMx_hzifHFkDK7_Pr/view?usp=shari
 
 ### 今後追加予定の機能
 * おすすめの水族館表示（レコメンド）
-* 写真投稿（画像加工）
+
 * ローディング
