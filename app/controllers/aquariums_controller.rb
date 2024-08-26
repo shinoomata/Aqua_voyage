@@ -26,6 +26,7 @@ class AquariumsController < ApplicationController
   def show
     @aquarium = find_aquarium
     if @aquarium
+      GenerateAquariumDetailJob.perform_later(@aquarium.id)
       prepare_reviews_and_data
       prepare_photo_urls
       @tags = @aquarium.tag_list # タグ情報を準備

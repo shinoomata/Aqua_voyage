@@ -2,11 +2,13 @@
 import "chartkick/chart.js"
 import "@hotwired/turbo-rails"
 
-// app/javascript/application.js
+// Stimulusを使用してコントローラーを登録
 import { Application } from "stimulus";
 import AutocompleteController from "./controllers/autocomplete_controller";
+import LoadingController from "./controllers/loading_controller";
 
 const application = Application.start();
 
 // 手動でコントローラーをロード
 application.register("autocomplete", AutocompleteController);
+application.register("loading", LoadingController);
