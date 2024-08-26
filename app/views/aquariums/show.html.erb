@@ -7,12 +7,20 @@
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
-  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&libraries=places&callback=initMap&v=weekly" async defer></script>
 </head>
 <body class="bg-customBackground flex items-center justify-center min-h-screen">
   <div class="container mx-auto p-4 bg-customFormBackground rounded-lg shadow-lg">
     <div class="flex justify-between items-center">
       <h1 class="font-bold text-3xl text-center"><%= @aquarium.name %></h1>
+
+      <div id="loading-spinner" class="fixed inset-0 flex flex-col items-center justify-center bg-white z-50 hidden">
+      <!-- カスタムイラスト -->
+      <img src="<%= asset_path('Aqua-voyage.png') %>" alt="Loading illustration" class="mb-4" />
+    
+      <!-- スピナー -->
+      <span class="loading loading-spinner text-info"></span>
+    </div>
+    
 
       <!-- お気に入りボタン -->
       <% if user_signed_in? %>
@@ -130,9 +138,6 @@
         <div class="chat-bubble <%= ['chat-bubble-primary', 'chat-bubble-secondary', 'chat-bubble-accent', 'chat-bubble-info', 'chat-bubble-success', 'chat-bubble-warning', 'chat-bubble-error'].sample %> mt-4">
           <p><strong><%= review.user.name %>:</strong></p>
           <p><%= review.content %></p>
-          <% if review.image_url.present? %>
-            <p><img src="<%= review.image_url %>" alt="Review Image" style="max-width: 200px;"></p>
-          <% end %>
           <% if review.user == current_user %>
             <%= link_to '編集', edit_aquarium_review_path(@aquarium, review), class: 'link link-hover' %>
             <%= link_to '削除', aquarium_review_path(@aquarium, review),  data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' }, class: 'link link-danger' %>
@@ -163,8 +168,28 @@
   </div>
 </div>
 
-  <script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&libraries=places&callback=initMap&v=weekly" async defer></script>
+  <script>  
+  document.addEventListener('turbo:before-visit', function() {
+  const spinner = document.getElementById('loading-spinner');
+  if (spinner) {
+    spinner.classList.remove('hidden');
+  }
+});
+
+document.addEventListener('turbo:load', function() {
+  const spinner = document.getElementById('loading-spinner');
+  if (spinner) {
+    spinner.classList.add('hidden');
+  }
+});
+
     function initMap() {
+      const spinner = document.getElementById('loading-spinner');
+  if (spinner) {
+    spinner.classList.remove('hidden'); // スピナーを表示
+  }
+
       const address = "<%= @aquarium.location %>";
 
       const geocoder = new google.maps.Geocoder();
@@ -183,6 +208,10 @@
         } else {
           alert('Geocode was not successful for the following reason: ' + status);
         }
+
+        if (spinner) {
+      spinner.classList.add('hidden'); // マップの読み込み完了後にスピナーを非表示
+    }
       });
     }
   </script>

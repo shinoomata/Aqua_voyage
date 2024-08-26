@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   get 'replies/create'
   get 'replies/destroy'
@@ -21,6 +23,11 @@ Rails.application.routes.draw do
   resources :rankings, only: [:index]
 
   root to: 'top#index'
+
+  # Sidekiq Web UI の設定（管理者のみアクセス可能にする場合）
+  authenticate :user, lambda { |u| u.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 
   resources :aquariums, only: %i[index show] do
     get :autocomplete, on: :collection 

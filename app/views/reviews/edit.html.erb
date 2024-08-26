@@ -68,6 +68,28 @@
         <%= form.text_area :content, placeholder: "この水族館の好きなところ、思い出などを自由に書いてね", class: "input input-bordered input-lg input-info w-full h-32 placeholder-small resize-none" %>
       </div>
 
+      <!-- 現在の画像を表示 -->
+  <% if @review.image_url.present? %>
+    <div class="current-image">
+      <p>現在の画像:</p>
+      <img src="<%= @review.image_url %>" alt="Review Image" style="max-width: 300px;">
+    </div>
+  <% end %>
+
+  <!-- 画像のアップロード -->
+  <div class="form-group">
+    <%= form.label :image_url, "新しい画像をアップロード (既存の画像が置き換えられます)" %>
+    <%= form.file_field :image_url %>
+  </div>
+
+  <% if @review.image_url.present? %>
+  <div class="form-group">
+    <%= form.check_box :remove_image_url %>
+    <%= form.label :remove_image_url, "現在の画像を削除する" %>
+  </div>
+<% end %>
+
+
       <div class="text-center">
         <%= form.submit "レビューを更新", class: "btn btn-primary" %>
       </div>

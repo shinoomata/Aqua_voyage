@@ -28,8 +28,8 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
-# Use Redis adapter to run Action Cable in production
-# gem "redis", "~> 4.0"
+gem 'sidekiq'
+gem 'redis'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -105,3 +105,4 @@ gem 'ransack', '~> 4.2.0'
 gem 'acts-as-taggable-on'
 
 gem 'carrierwave'
+gem 'sidekiq'
