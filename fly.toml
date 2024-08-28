@@ -1,4 +1,4 @@
-app = "aqua-voyage"
+#app = "aqua-voyage"
 primary_region = "nrt"
 console_command = "/rails/bin/rails console"
 
