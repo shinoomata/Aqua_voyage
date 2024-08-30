@@ -20,6 +20,10 @@
         <%= f.submit "検索", class: "btn btn-primary w-2/3 mb-2" %>
       </div>
     <% end %>
+    <!-- 現在地から探すボタン -->
+    <div class="actions text-center">
+      <button id="find-nearby-aquariums" class="btn btn-secondary w-2/3 mb-2">現在地から探す</button>
+    </div>
   </div>
 </div>
 
@@ -80,3 +84,28 @@
     <p>検索結果が見つかりませんでした。</p>
   <% end %>
 </div>
+
+<script>
+  document.addEventListener('turbo:load', function() {
+    const findNearbyButton = document.getElementById('find-nearby-aquariums');
+  
+    if (findNearbyButton) {
+      findNearbyButton.addEventListener('click', function() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+
+            // 現在地をサーバーに送信して水族館を検索
+            window.location.href = `/aquariums/nearby?lat=${lat}&lng=${lng}`;
+          }, function(error) {
+            console.error("Geolocation error:", error);
+            alert('現在地を取得できませんでした。');
+          });
+        } else {
+          alert('このブラウザでは位置情報がサポートされていません。');
+        }
+      });
+    }
+  });
+</script>
