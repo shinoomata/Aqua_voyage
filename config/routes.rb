@@ -30,10 +30,12 @@ Rails.application.routes.draw do
   end
 
   resources :aquariums, only: %i[index show] do
-    get :autocomplete, on: :collection 
+    get :autocomplete, on: :collection
+    get :nearby, on: :collection # ここで現在地から近い順に水族館を表示するルートを追加
     resources :reviews, only: %i[index new create edit update destroy]
     resource :like, only: %i[create destroy], controller: 'like_aquarias'
   end
+  
 
   resources :reviews do
     resources :replies, only: [:create, :destroy, :edit, :update]

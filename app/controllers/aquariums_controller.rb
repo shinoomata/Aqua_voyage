@@ -43,6 +43,39 @@ class AquariumsController < ApplicationController
     render json: results.map { |name| { label: name, value: name } }
   end
 
+  def nearby
+    latitude = params[:lat].to_f
+    longitude = params[:lng].to_f
+
+    unless latitude.present? && longitude.present?
+      # エラーハンドリング（例: フラッシュメッセージを表示し、一覧ページにリダイレクトする）
+      redirect_to aquariums_path, alert: "現在地が取得できませんでした。" and return
+    end
+
+    @q = Aquarium.ransack(params[:q])
+
+    # すべての地域を取得して一意にし、nilを除外
+  @regions = Aquarium.distinct.pluck(:region).compact
+  # 北から南の順にソート
+  region_order = %w[北海道 東北 関東 東海 北陸 近畿 中国 四国 九州 沖縄]
+  @regions = @regions.sort_by { |region| region_order.index(region) || Float::INFINITY }
+
+    user_lat = params[:lat].to_f
+    user_lng = params[:lng].to_f
+
+    @aquariums = Aquarium
+      .select("*, earth_distance(ll_to_earth(latitude, longitude), ll_to_earth(#{user_lat}, #{user_lng})) AS distance")
+      .order("distance ASC")
+
+    render :index
+
+    # 位置情報がない場合の処理
+    unless latitude.present? && longitude.present?
+      flash[:alert] = "位置情報が提供されていません。"
+      redirect_to aquariums_path and return
+    end
+  end
+
   private
 
   def find_aquarium
