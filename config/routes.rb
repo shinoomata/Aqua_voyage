@@ -1,8 +1,6 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  get 'replies/create'
-  get 'replies/destroy'
   get 'pages/terms'
   get 'reviews/new'
   get 'reviews/create'
@@ -16,7 +14,7 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
-  resource :user, only: [:show], controller: 'users' do
+  resource :user, only: %i[show edit update], controller: 'users' do
     get 'mypage', on: :collection, as: :mypage
   end
 
