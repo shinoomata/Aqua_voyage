@@ -15,7 +15,7 @@
       <ul>
         <% @reviews.each do |review| %>
           <li class="border-b py-2">
-            <h3 class="text-xl"><%= link_to review.aquarium.name, aquarium_path(review.aquarium) %></h3>
+            <h3 class="text-xl link link-info"><%= link_to review.aquarium.name, aquarium_path(review.aquarium) %></h3>
             <p><%= review.content.truncate(10) %></p>
             <p class="text-sm text-gray-600"><%= review.created_at.strftime("%Y年%m月%d日") %></p>
           </li>
@@ -32,7 +32,7 @@
       <ul>
         <% @liked_aquariums.each do |aquarium| %>
           <li class="border-b py-2">
-            <h3 class="text-xl"><%= link_to aquarium.name, aquarium_path(aquarium) %></h3>
+            <h3 class="text-xl link link-info"><%= link_to aquarium.name, aquarium_path(aquarium) %></h3>
             <p><%= aquarium.description.truncate(30) %></p>
           </li>
         <% end %>
