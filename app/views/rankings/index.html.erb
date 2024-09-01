@@ -16,7 +16,9 @@
           <% end %>
           <% last_count = current_count %>
           <li class="border-b py-2">
-            <strong><%= rank %>. <%= link_to aquarium.name, aquarium_path(aquarium) %></strong>
+            <strong>
+            <span class="text-blue-500"><%= rank %>.</span>
+            <%= link_to aquarium.name, aquarium_path(aquarium), class: 'text-blue-500 hover:underline' %></strong>
             <p class="text-sm text-gray-600">レビュー数: <%= current_count %></p>
           </li>
         <% end %>
@@ -39,7 +41,9 @@
           <% end %>
           <% last_count = current_count %>
           <li class="border-b py-2">
-            <strong><%= rank %>. <%= user.name %></strong>
+            <strong>
+            <span class="text-blue-500"><%= rank %>.</span> 
+            <span class="text-blue-500"><%= user.name %></span></strong>
             <p class="text-sm text-gray-600">レビュー数: <%= current_count %></p>
           </li>
         <% end %>
