@@ -15,7 +15,6 @@ class UsersController < ApplicationController
     # @userはset_userで設定されるので、特に何もする必要はありません
   end
 
-
   def update
     Rails.logger.debug { "Updating user: #{@user.inspect}" }
     if @user.update(user_params)
@@ -34,9 +33,7 @@ class UsersController < ApplicationController
   private
 
   def check_admin
-    unless current_user.admin?
-      redirect_to root_path, alert: '権限がありません。'
-    end
+    redirect_to root_path, alert: '権限がありません。' unless current_user.admin?
   end
 
   def set_user

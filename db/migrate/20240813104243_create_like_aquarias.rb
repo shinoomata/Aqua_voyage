@@ -6,6 +6,6 @@ class CreateLikeAquarias < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
-    add_index :like_aquaria, [:user_id, :aquarium_id], unique: true
+    add_index :like_aquaria, %i[user_id aquarium_id], unique: true
   end
 end

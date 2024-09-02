@@ -10,4 +10,3 @@ class Admin::ReviewsController < Admin::BaseController
     redirect_to admin_reviews_path, notice: 'レビューを削除しました'
   end
 end
-

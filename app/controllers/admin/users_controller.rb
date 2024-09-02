@@ -16,4 +16,3 @@ class Admin::UsersController < Admin::BaseController
     redirect_to admin_users_path, notice: 'レビューを削除しました'
   end
 end
-

@@ -16,10 +16,33 @@
         <%= f.select :region_eq, options_for_select(@regions), { include_blank: '選択してください' }, class: "select select-bordered w-full mb-4" %>
       </div>
 
+      <!-- タグの選択 -->
+<div class="form-control w-full mb-2">
+  <div class="label">
+    <%= label_tag :tagged_with, "タグ", class: "label-text mb-2" %>
+  </div>
+  <%= select_tag :tagged_with, options_for_select(@tags || [], @selected_tag), include_blank: '選択してください', class: "select select-bordered w-full mb-4" %>
+</div>
+
+
+      <!-- レビュー内容の検索 -->
+      <div class="form-control w-full mb-2">
+        <div class="label">
+          <%= f.label :reviews_content_cont, "レビュー内容で検索", class: "label-text mb-2" %>
+        </div>
+        <%= f.text_field :reviews_content_cont, value: @review_content, placeholder: "レビューのキーワードを入力", class: "input input-bordered w-full mb-4" %>
+      </div>
+
       <div class="actions text-center">
         <%= f.submit "検索", class: "btn btn-primary w-2/3 mb-2" %>
       </div>
     <% end %>
+
+    <div class="actions text-center">
+  <%= link_to '検索リセット', aquariums_path, data: { turbo: false }, class: "btn btn-secondary w-2/3 mb-2" %>
+</div>
+
+
     <!-- 現在地から探すボタン -->
     <div class="actions text-center">
       <button id="find-nearby-aquariums" class="btn btn-secondary w-2/3 mb-2">現在地から探す</button>
@@ -35,7 +58,13 @@
         キーワード "<%= @search_keyword %>"
       <% end %>
       <% if @selected_region.present? %>
-          地域 "<%= @selected_region %>"
+        地域 "<%= @selected_region %>"
+      <% end %>
+      <% if @selected_tag.present? %>
+        タグ "<%= @selected_tag %>"
+      <% end %>
+      <% if @review_content.present? %>
+        レビュー内容 "<%= @review_content %>"
       <% end %>
     </p>
   </div>
