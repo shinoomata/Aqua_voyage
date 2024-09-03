@@ -51,6 +51,12 @@ class AquariumsController < ApplicationController
     render json: results.map { |name| { label: name, value: name } }
   end
 
+  def autocomplete_reviews
+    query = params[:q]
+    results = Review.where("content LIKE ?", "%#{query}%").limit(10).pluck(:content)
+    render json: results.map { |content| { label: content, value: content } }
+  end  
+
   def nearby
     latitude = params[:lat].to_f
     longitude = params[:lng].to_f
