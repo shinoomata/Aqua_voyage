@@ -51,6 +51,15 @@ AQUA VOYAGE（アクア・ボヤージュ） 〜水族館めぐり〜は、訪�
 - **推しポイント検索機能**: 全国の水族館を「推しポイント」で検索できる機能を提供。特定の特徴や見どころに興味があるユーザーにとって非常に便利なユニークな機能です。
 - **ランキングシステム**: 水族館の口コミやレビューを投稿数を可視化し、ユーザーの訪問意欲や推しの水族館へのレビュー投稿意欲を高める。これにより、水族館愛好者としての自尊心を高め、リピーターを増やすことができる。
 
+### 使い方
+| トップページ | 水族館検索画面 |
+| ---- | ---- |
+| [![Image from Gyazo](https://i.gyazo.com/060512bd1ca35d2cd9bcd537308c17bc.gif)](https://gyazo.com/060512bd1ca35d2cd9bcd537308c17bc) | [![Image from Gyazo](https://i.gyazo.com/b3f2c1de02072a8cfd634a2507bfaea2.gif)](https://gyazo.com/b3f2c1de02072a8cfd634a2507bfaea2) |
+| ---- | ---- |
+| 水族館詳細 | レビュー投稿画面 |
+| :----: | :----: |
+| [![Image from Gyazo](https://i.gyazo.com/7f34a2f4516f64b61a4ae9b8aa3d70ee.gif)](https://gyazo.com/7f34a2f4516f64b61a4ae9b8aa3d70ee) | [![Image from Gyazo](https://i.gyazo.com/a34b7c01aedad26a7fb2e674fdfbb32b.gif)](https://gyazo.com/a34b7c01aedad26a7fb2e674fdfbb32b) |
+
 ### 画面遷移図
 Figma:https://www.figma.com/design/9KOe99CAQy78HR7I4VEbbG/shino-omata's-team-library?node-id=2325-5&t=9a97svZ1hqTKppuB-1]
 
