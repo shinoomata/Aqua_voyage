@@ -54,11 +54,11 @@ AQUA VOYAGE（アクア・ボヤージュ） 〜水族館めぐり〜は、訪�
 ### 使い方
 | トップページ | 水族館検索画面 |
 | ---- | ---- |
-| [![Image from Gyazo](https://i.gyazo.com/cc586955ac3f4aa48fc06d58d7bc4490.jpg)](https://gyazo.com/cc586955ac3f4aa48fc06d58d7bc4490) | [![Image from Gyazo](https://i.gyazo.com/1a89c088754a3fda9600883368e39b53.png)](https://gyazo.com/1a89c088754a3fda9600883368e39b53) |
+| [![Image from Gyazo](https://i.gyazo.com/cc586955ac3f4aa48fc06d58d7bc4490.jpg)](https://gyazo.com/cc586955ac3f4aa48fc06d58d7bc4490) | [![Image from Gyazo](https://i.gyazo.com/890e942a0c239eb908694ce7b216df57.gif)](https://gyazo.com/890e942a0c239eb908694ce7b216df57) |
 | ---- | ---- |
 | 水族館詳細 | レビュー投稿画面 |
 | :----: | :----: |
-| [![Image from Gyazo](https://i.gyazo.com/7f34a2f4516f64b61a4ae9b8aa3d70ee.gif)](https://gyazo.com/7f34a2f4516f64b61a4ae9b8aa3d70ee) | [![Image from Gyazo](https://i.gyazo.com/a34b7c01aedad26a7fb2e674fdfbb32b.gif)](https://gyazo.com/a34b7c01aedad26a7fb2e674fdfbb32b) |
+| [![Image from Gyazo](https://i.gyazo.com/3a5c9895ad5e5159dc225cb35d3bfe30.gif)](https://gyazo.com/3a5c9895ad5e5159dc225cb35d3bfe30) | [![Image from Gyazo](https://i.gyazo.com/65a1533ead4d5dc4fbda88da6913cc85.gif)](https://gyazo.com/65a1533ead4d5dc4fbda88da6913cc85) |
 
 ### 使用技術
 |　カテゴリー	|　使用技術　|
