@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
   def create
     @review = @aquarium.reviews.new(review_params)
     @review.user = current_user
-  
+
     if @review.save
       # 水族館にタグを追加
       if params[:aquarium][:tag_list].present?
@@ -27,7 +27,7 @@ class ReviewsController < ApplicationController
         @aquarium.save
         Rails.logger.debug "Saved tags: #{@aquarium.tag_list}"
       end
-  
+
       redirect_to @aquarium, notice: 'レビューが正常に投稿されました。'
     else
       load_review_resources
@@ -35,7 +35,6 @@ class ReviewsController < ApplicationController
       render :new
     end
   end
-  
 
   def edit
     load_review_resources
@@ -49,7 +48,7 @@ class ReviewsController < ApplicationController
         @aquarium.save
         Rails.logger.debug "Updated tags: #{@aquarium.tag_list}"
       end
-  
+
       redirect_to @aquarium, notice: 'レビューが正常に更新されました。'
     else
       load_review_resources
@@ -57,7 +56,6 @@ class ReviewsController < ApplicationController
       render :edit
     end
   end
-  
 
   def destroy
     @review.destroy

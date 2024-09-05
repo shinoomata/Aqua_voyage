@@ -21,6 +21,6 @@ module AppName
     config.hosts << "aqua-voyage.com"
     config.secret_key_base = ENV['SECRET_KEY_BASE']
     # Active Job のキューアダプタとして Sidekiq を使用
-    #config.active_job.queue_adapter = :sidekiq
+    # config.active_job.queue_adapter = :sidekiq
   end
 end

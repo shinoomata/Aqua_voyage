@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'terms', to: 'pages#terms'
   get 'tags/:tag', to: 'aquariums#index', as: :tagged
   get 'autocomplete', to: 'aquariums#autocomplete'
+  get '/autocomplete_reviews', to: 'aquariums#autocomplete_reviews'
+
 
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks'
@@ -23,7 +25,7 @@ Rails.application.routes.draw do
   root to: 'top#index'
 
   # Sidekiq Web UI の設定（管理者のみアクセス可能にする場合）
-  authenticate :user, lambda { |u| u.admin? } do
+  authenticate :user, ->(u) { u.admin? } do
     mount Sidekiq::Web => '/sidekiq'
   end
 
@@ -33,11 +35,10 @@ Rails.application.routes.draw do
     resources :reviews, only: %i[index new create edit update destroy]
     resource :like, only: %i[create destroy], controller: 'like_aquarias'
   end
-  
 
   resources :reviews do
-    resources :replies, only: [:create, :destroy, :edit, :update]
-  end  
+    resources :replies, only: %i[create destroy edit update]
+  end
 
   namespace :admin do
     resources :users, only: [:index] do

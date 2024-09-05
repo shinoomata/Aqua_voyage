@@ -28,8 +28,8 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
-gem 'sidekiq'
 gem 'redis'
+gem 'sidekiq'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -100,9 +100,9 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 
+gem 'acts-as-taggable-on'
 gem 'google_places'
 gem 'ransack', '~> 4.2.0'
-gem 'acts-as-taggable-on'
 
 gem 'carrierwave'
 gem 'sidekiq'

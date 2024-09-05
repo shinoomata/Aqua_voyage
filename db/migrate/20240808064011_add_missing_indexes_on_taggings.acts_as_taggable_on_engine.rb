@@ -12,9 +12,7 @@ class AddMissingIndexesOnTaggings < ActiveRecord::Migration[6.0]
                                                                                :tagger_id
     add_index ActsAsTaggableOn.taggings_table, :context unless index_exists? ActsAsTaggableOn.taggings_table, :context
 
-    unless index_exists? ActsAsTaggableOn.taggings_table, %i[tagger_id tagger_type]
-      add_index ActsAsTaggableOn.taggings_table, %i[tagger_id tagger_type]
-    end
+    add_index ActsAsTaggableOn.taggings_table, %i[tagger_id tagger_type] unless index_exists? ActsAsTaggableOn.taggings_table, %i[tagger_id tagger_type]
 
     unless index_exists? ActsAsTaggableOn.taggings_table, %i[taggable_id taggable_type tagger_id context],
                          name: 'taggings_idy'
