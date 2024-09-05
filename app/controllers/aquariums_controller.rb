@@ -1,7 +1,7 @@
 require 'google_places'
 
 class AquariumsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index show]
+  skip_before_action :authenticate_user!, only: %i[index show nearby]
 
   def index
     # 検索オブジェクトを作成
