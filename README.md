@@ -60,6 +60,17 @@ AQUA VOYAGE（アクア・ボヤージュ） 〜水族館めぐり〜は、訪�
 | :----: | :----: |
 | [![Image from Gyazo](https://i.gyazo.com/7f34a2f4516f64b61a4ae9b8aa3d70ee.gif)](https://gyazo.com/7f34a2f4516f64b61a4ae9b8aa3d70ee) | [![Image from Gyazo](https://i.gyazo.com/a34b7c01aedad26a7fb2e674fdfbb32b.gif)](https://gyazo.com/a34b7c01aedad26a7fb2e674fdfbb32b) |
 
+### 使用技術
+|　カテゴリー	|　使用技術　|
+| ---- | ---- |
+| フロントエンド | TailwindCSS<br>daisyUI<br>JavaScript<br>Hotwire |
+| バックエンド | Ruby 3.1.2<br>Ruby on Rails 7.1.3 |
+| インフラ | Webアプリケーションサーバ: Fly.io<br>ファイルサーバ: Cloudinaly |
+| データベース | PostgreSQL （Fly Postgres）|
+| API | Google Maps JavaScript API<br>Google Places API<br>Google Geolocation API |
+| CI/CD | GithubActions |
+| 開発環境 | Docker |
+
 ### 画面遷移図
 Figma:https://www.figma.com/design/9KOe99CAQy78HR7I4VEbbG/shino-omata's-team-library?node-id=2325-5&t=9a97svZ1hqTKppuB-1]
 
