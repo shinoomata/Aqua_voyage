@@ -93,11 +93,11 @@ https://drive.google.com/file/d/1r17ruJXx3ZinofIrMx_hzifHFkDK7_Pr/view?usp=shari
 * 水族館検索・一覧
   * 施設名
   * 地域
-  * タグ・レビュー　（実装予定）
+  * タグ・レビュー
 * オートコンプリート　（Stimulus Autocomplete）
 * 水族館詳細
   * レビュー投稿・タグ付け
-    * 写真投稿（画像加工）
+    * 写真投稿（画像加工/Cloudinaly）
   * レーティング（大人向けか子供向けか等）
   * 水族館写真・位置（GoogleMapAPIにて取得） 
 * ランキング機能（水族館・ユーザーレビュー数）
