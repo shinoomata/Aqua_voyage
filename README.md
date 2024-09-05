@@ -56,7 +56,7 @@ AQUA VOYAGE（アクア・ボヤージュ） 〜水族館めぐり〜は、訪�
 | トップページ | 水族館検索画面 |
 | ---- | ---- |
 |[![Image from Gyazo](https://i.gyazo.com/d78b05c9aff057ff356db596d862dba3.gif)](https://gyazo.com/d78b05c9aff057ff356db596d862dba3)| [![Image from Gyazo](https://i.gyazo.com/890e942a0c239eb908694ce7b216df57.gif)](https://gyazo.com/890e942a0c239eb908694ce7b216df57) |
-| ---- | ---- |
+| 水族館を探すボタン、もしくは水族館一覧を押すと検索画面に遷移します。<br>🐟すぐボタンがわかるようシンプルな作りにしています。<br>🐟TOP画面の画像はキャンバでデザインしています。 | キーワード、地域、タグ、レビュー内容、現在地などから水族館を検索できます。<br>🐟キーワード、レビュー入力はオートコンプリートが使用可能です。 |
 | 水族館詳細 | レビュー投稿画面 |
 | :----: | :----: |
 | [![Image from Gyazo](https://i.gyazo.com/3a5c9895ad5e5159dc225cb35d3bfe30.gif)](https://gyazo.com/3a5c9895ad5e5159dc225cb35d3bfe30) | [![Image from Gyazo](https://i.gyazo.com/65a1533ead4d5dc4fbda88da6913cc85.gif)](https://gyazo.com/65a1533ead4d5dc4fbda88da6913cc85) |
