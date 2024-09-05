@@ -51,10 +51,11 @@ AQUA VOYAGE（アクア・ボヤージュ） 〜水族館めぐり〜は、訪�
 - **推しポイント検索機能**: 全国の水族館を「推しポイント」で検索できる機能を提供。特定の特徴や見どころに興味があるユーザーにとって非常に便利なユニークな機能です。
 - **ランキングシステム**: 水族館の口コミやレビューを投稿数を可視化し、ユーザーの訪問意欲や推しの水族館へのレビュー投稿意欲を高める。これにより、水族館愛好者としての自尊心を高め、リピーターを増やすことができる。
 
+
 ### 使い方
 | トップページ | 水族館検索画面 |
 | ---- | ---- |
-| [![Image from Gyazo](https://i.gyazo.com/cc586955ac3f4aa48fc06d58d7bc4490.jpg)](https://gyazo.com/cc586955ac3f4aa48fc06d58d7bc4490) | [![Image from Gyazo](https://i.gyazo.com/890e942a0c239eb908694ce7b216df57.gif)](https://gyazo.com/890e942a0c239eb908694ce7b216df57) |
+|[![Image from Gyazo](https://i.gyazo.com/d78b05c9aff057ff356db596d862dba3.gif)](https://gyazo.com/d78b05c9aff057ff356db596d862dba3)| [![Image from Gyazo](https://i.gyazo.com/890e942a0c239eb908694ce7b216df57.gif)](https://gyazo.com/890e942a0c239eb908694ce7b216df57) |
 | ---- | ---- |
 | 水族館詳細 | レビュー投稿画面 |
 | :----: | :----: |
