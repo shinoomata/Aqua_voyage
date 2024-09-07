@@ -1,5 +1,5 @@
-## 🐬サービス概要
-AQUA VOYAGE（アクア・ボヤージュ） 〜水族館めぐり〜は、訪れた水族館を写真や感想、タグで記録し、体験を共有できるサービスです。
+## 🐬AQUA VOYAGE（アクア・ボヤージュ） 〜水族館めぐり〜
+訪れた水族館を写真や感想、タグで記録し、体験を共有できるサービスです。
 
 [![Image from Gyazo](https://i.gyazo.com/985c1056b629c8ddabea4277a6b26b0e.jpg)](https://gyazo.com/985c1056b629c8ddabea4277a6b26b0e)
 # 🐬[AQUA　VOYAGE　〜水族館めぐり〜](https://aqua-voyage.com/)🐋
