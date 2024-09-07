@@ -86,7 +86,7 @@ Figma:https://www.figma.com/design/9KOe99CAQy78HR7I4VEbbG/shino-omata's-team-lib
 [![Image from Gyazo](https://i.gyazo.com/728b3767262a41f72dec9432540b310b.png)](https://gyazo.com/728b3767262a41f72dec9432540b310b)
 https://drive.google.com/file/d/1r17ruJXx3ZinofIrMx_hzifHFkDK7_Pr/view?usp=sharing
 
-## 🐬実装機能
+## 🐬機能一覧
 * 会員登録（Google認証）
 * ログイン
 * 水族館検索・一覧
@@ -101,8 +101,4 @@ https://drive.google.com/file/d/1r17ruJXx3ZinofIrMx_hzifHFkDK7_Pr/view?usp=shari
   * 水族館写真・位置（GoogleMapAPIにて取得） 
 * ランキング機能（水族館・ユーザーレビュー数）
 * ローディング
-
-### 🐬今後追加予定の機能
-* おすすめの水族館表示（レコメンド）
-
 
