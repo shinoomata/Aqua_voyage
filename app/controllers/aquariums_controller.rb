@@ -20,9 +20,17 @@ class AquariumsController < ApplicationController
       @aquariums = @q.result(distinct: true)
     end
   
-    # タグでフィルタリングを適用（filter_aquariumsメソッドで）
-    @aquariums = filter_aquariums(@aquariums)
-  
+    # タグによるフィルタリング
+  if params[:tag].present?
+    # タグリンクからのフィルタリング
+    @aquariums = Aquarium.tagged_with(params[:tag])
+  elsif params[:tagged_with].present?
+    # 検索フォームからのフィルタリング
+    @aquariums = Aquarium.tagged_with(params[:tagged_with])
+  else
+    @aquariums = @q.result(distinct: true)
+  end
+
     # 検索条件を保存
     save_search_conditions
   
@@ -139,8 +147,8 @@ class AquariumsController < ApplicationController
   end
 
   def filter_aquariums(aquariums)
-    if params[:tagged_with].present?
-      aquariums.tagged_with(params[:tagged_with])
+    if params[:tag].present?
+      aquariums.tagged_with(params[:tag])
     else
       aquariums
     end
@@ -149,7 +157,7 @@ class AquariumsController < ApplicationController
   def save_search_conditions
     @search_keyword = params.dig(:q, :name_or_location_or_description_cont)
     @selected_region = params.dig(:q, :region_eq)
-    @selected_tag = params.dig(:q, :tagged_with)
+    @selected_tag = params[:tag] || params.dig(:q, :tagged_with)
     @review_content = params.dig(:q, :reviews_content_cont)
   end
 
