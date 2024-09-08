@@ -14,10 +14,9 @@
       <h1 class="font-bold text-3xl text-center"><%= @aquarium.name %></h1>
 
       <div id="loading-spinner" class="fixed inset-0 flex flex-col items-center justify-center bg-white z-50 hidden">
-      <!-- カスタムイラスト -->
       <img src="<%= asset_path('Aqua-voyage.png') %>" alt="Loading illustration" class="mb-4" />
     
-      <!-- スピナー -->
+
       <span class="loading loading-spinner text-info"></span>
     </div>
     
@@ -69,7 +68,7 @@
       <p class="text-center">No photos available.</p>
     <% end %>
 
-    <!-- タグを表示する -->
+
     <% if @aquarium.tag_list.any? %>
       <div class="mt-4">
         <h2 class="font-bold text-lg">タグ:</h2>
