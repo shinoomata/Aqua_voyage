@@ -22,5 +22,18 @@ module AppName
     config.secret_key_base = ENV['SECRET_KEY_BASE']
     # Active Job のキューアダプタとして Sidekiq を使用
     # config.active_job.queue_adapter = :sidekiq
+    config.generators do |g|
+      g.test_framework :rspec,
+                       fixtures: true,
+                       view_specs: false,
+                       helper_specs: false,
+                       routing_specs: false,
+                       controller_specs: true,
+                       request_specs: false
+      g.fixture_replacement :factory_bot, dir: "spec/factories"  # FactoryBotを使う場合
+      
+      # Minitestの生成を無効化する
+      g.test_framework nil
+    end
   end
 end

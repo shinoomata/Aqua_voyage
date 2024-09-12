@@ -4,33 +4,27 @@
       <div class="flex flex-wrap -mx-2 mb-4">
       <!-- キーワード検索 -->
       <div class="w-full sm:w-1/2 px-2" data-controller="autocomplete" data-autocomplete-url-value="/autocomplete">
-        <div class="form-control">
           <div class="label">
             <%= f.label :name_or_location_or_description_cont, "キーワード", class: "label-text" %>
           </div>
           <%= f.search_field :name_or_location_or_description_cont, placeholder: "見たい生き物・所在地", class: "input input-bordered w-full", data: { autocomplete_target: "input" } %>
           <ul data-autocomplete-target="list" class="autocomplete-list"></ul>
         </div>
-      </div>
 
       <!-- 地域選択 -->
       <div class="w-full sm:w-1/4 px-2">
-        <div class="form-control">
           <div class="label">
             <%= f.label :region_eq, "地域", class: "label-text" %>
           </div>
           <%= f.select :region_eq, options_for_select(@regions), { include_blank: '選択してください' }, class: "select select-bordered w-full" %>
-        </div>
       </div>
 
       <!-- タグ選択 -->
       <div class="w-full sm:w-1/4 px-2">
-        <div class="form-control">
           <div class="label">
             <%= label_tag :tagged_with, "タグ", class: "label-text" %>
           </div>
           <%= select_tag :tagged_with, options_for_select(@tags || [], @selected_tag), include_blank: '選択してください', class: "select select-bordered w-full" %>
-        </div>
       </div>
       </div>
 
