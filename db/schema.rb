@@ -10,8 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_13_085337) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_16_053804) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "cube"
+  enable_extension "earthdistance"
   enable_extension "plpgsql"
 
   create_table "aquaria", force: :cascade do |t|
@@ -31,6 +33,26 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_13_085337) do
     t.string "highlight_kind"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "like_aquaria", id: :bigint, default: -> { "nextval('like_aquarias_id_seq'::regclass)" }, force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "aquarium_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["aquarium_id"], name: "index_like_aquarias_on_aquarium_id"
+    t.index ["user_id", "aquarium_id"], name: "index_like_aquarias_on_user_id_and_aquarium_id", unique: true
+    t.index ["user_id"], name: "index_like_aquarias_on_user_id"
+  end
+
+  create_table "replies", force: :cascade do |t|
+    t.text "content", null: false
+    t.bigint "review_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_replies_on_review_id"
+    t.index ["user_id"], name: "index_replies_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -110,6 +132,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_13_085337) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "like_aquaria", "aquaria"
+  add_foreign_key "like_aquaria", "users"
+  add_foreign_key "replies", "reviews"
+  add_foreign_key "replies", "users"
   add_foreign_key "reviews", "aquaria", column: "aquaria_id"
   add_foreign_key "reviews", "highlights"
   add_foreign_key "reviews", "size_ratings"

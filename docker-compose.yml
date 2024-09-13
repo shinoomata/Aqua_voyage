@@ -11,13 +11,13 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: aqua_voyage_production # データベース名を明示的に指定
+      POSTGRES_DB: aqua_voyage_production 
 
   web:
     build: 
       context: .
       args:
-        SECRET_KEY_BASE: ${SECRET_KEY_BASE} # これでDockerfileに引数を渡す
+        SECRET_KEY_BASE: ${SECRET_KEY_BASE} 
     command: /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -b '0.0.0.0'"
     volumes:
       - .:/app_name

@@ -73,8 +73,6 @@ group :development, :test do
   gem 'rubocop-capybara', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
-  gem 'rspec-rails', '~> 5.0'
-  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -107,4 +105,3 @@ gem 'google_places'
 gem 'ransack', '~> 4.2.0'
 
 gem 'carrierwave'
-gem 'sidekiq'
