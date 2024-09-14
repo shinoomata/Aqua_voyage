@@ -14,6 +14,6 @@ class Aquarium < ApplicationRecord
   end
 
   def self.ransackable_associations(_auth_object = nil)
-    []  # 必要に応じて関連付けを追加します
+    []
   end
 end
