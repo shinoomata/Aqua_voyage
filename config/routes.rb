@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'reviews/new'
   get 'reviews/create'
   get 'reviews/latest', to: 'reviews#latest', as: 'latest_reviews'
-  get 'top/index'
+  get 'top/index', as: :tops
   get 'terms', to: 'pages#terms'
   get 'tags/:tag', to: 'aquariums#index', as: :tagged
   get 'autocomplete', to: 'aquariums#autocomplete'

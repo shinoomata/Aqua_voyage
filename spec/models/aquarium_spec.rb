@@ -108,7 +108,6 @@ RSpec.describe Aquarium, type: :model do
 
   expect(aquarium.reviews).to include(review)
 
-  # ここで `LikeAquarium` に依存関係を持つテストを行う
   like = LikeAquarium.create!(user: user, aquarium: aquarium)
   expect { aquarium.destroy }.to change { LikeAquarium.count }.by(-1)
   end
