@@ -44,35 +44,35 @@ RSpec.describe Aquarium, type: :model do
 
   describe "アソシエーション" do
     it "like_aquariaを持ち、削除時に依存関係も削除される" do
-       # aquariumがbeforeブロックで作成されるので、ここで参照可能
-       review = aquarium.reviews.create!(
-        user: user,
+      # aquariumがbeforeブロックで作成されるので、ここで参照可能
+      review = aquarium.reviews.create!(
+        user:,
         content: "Great aquarium!",
         target_audience_id: target_audience.id,
         size_rating_id: size_rating.id,
-        highlight_id: highlight.id,
+        highlight_id: highlight.id
       )
 
       expect(aquarium.reviews).to include(review)
-      
+
       # 削除時に依存関係も削除されるか確認
       expect { aquarium.destroy }.to change { Review.count }.by(-1)
     end
 
     it "like_aquariaを介してliked_by_usersを持つ" do
       user = FactoryBot.create(:user)
-      aquarium.like_aquaria.create!(user: user)
+      aquarium.like_aquaria.create!(user:)
 
       expect(aquarium.liked_by_users).to include(user)
     end
 
     it "reviewsを持ち、削除時に依存関係も削除される" do
       review = aquarium.reviews.create!(
-        user: user,
+        user:,
         content: "Great aquarium!",
-        target_audience: target_audience,
-        size_rating: size_rating,
-        highlight: highlight,
+        target_audience:,
+        size_rating:,
+        highlight:
       )
 
       expect(aquarium.reviews).to include(review)
@@ -97,19 +97,19 @@ RSpec.describe Aquarium, type: :model do
   it "削除されると関連するlike_aquariaも削除される" do
     aquarium = Aquarium.create!(name: "Test Aquarium", location: "Test Location")
 
-  review = Review.create!(
-    user: user,
-    aquaria_id: aquarium.id, 
-    content: "Great aquarium!",
-    target_audience_id: target_audience.id, 
-    size_rating_id: size_rating.id,
-    highlight_id: highlight.id,
-  )
+    review = Review.create!(
+      user:,
+      aquaria_id: aquarium.id,
+      content: "Great aquarium!",
+      target_audience_id: target_audience.id,
+      size_rating_id: size_rating.id,
+      highlight_id: highlight.id
+    )
 
-  expect(aquarium.reviews).to include(review)
+    expect(aquarium.reviews).to include(review)
 
-  like = LikeAquarium.create!(user: user, aquarium: aquarium)
-  expect { aquarium.destroy }.to change { LikeAquarium.count }.by(-1)
+    LikeAquarium.create!(user:, aquarium:)
+    expect { aquarium.destroy }.to change { LikeAquarium.count }.by(-1)
   end
 
   it "削除されると関連するreviewsも削除される" do
@@ -118,12 +118,12 @@ RSpec.describe Aquarium, type: :model do
     size_rating = SizeRating.create!(size: "どっちも")
     highlight = Highlight.create!(highlight_kind: "どっちも")
 
-    review = aquarium.reviews.create!(
+    aquarium.reviews.create!(
       user: FactoryBot.create(:user),
       content: "Great aquarium!",
-      target_audience: target_audience,
-      size_rating: size_rating,
-      highlight: highlight
+      target_audience:,
+      size_rating:,
+      highlight:
     )
 
     expect { aquarium.destroy }.to change { Review.count }.by(-1)

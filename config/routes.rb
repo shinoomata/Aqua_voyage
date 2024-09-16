@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   get 'autocomplete', to: 'aquariums#autocomplete'
   get '/autocomplete_reviews', to: 'aquariums#autocomplete_reviews'
 
-
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks'
   }

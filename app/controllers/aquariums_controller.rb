@@ -6,39 +6,38 @@ class AquariumsController < ApplicationController
   def index
     # 検索オブジェクトを作成
     @q = Aquarium.left_joins(:reviews).ransack(params[:q])
-  
+
     # 地域やタグのデータを取得
     @regions = sorted_regions
     @tags = Aquarium.tag_counts_on(:tags).pluck(:name)
-  
+
     # レビュー内容でフィルタリング
-    if params[:q].present? && params[:q][:reviews_content_cont].present?
-      @aquariums = Aquarium.left_joins(:reviews)
-                           .where('reviews.content LIKE ?', "%#{params[:q][:reviews_content_cont]}%")
-                           .distinct
-    else
-      @aquariums = @q.result(distinct: true)
-    end
-  
+    @aquariums = if params[:q].present? && params[:q][:reviews_content_cont].present?
+                   Aquarium.left_joins(:reviews).
+                     where('reviews.content LIKE ?', "%#{params[:q][:reviews_content_cont]}%").
+                     distinct
+                 else
+                   @q.result(distinct: true)
+                 end
+
     # タグによるフィルタリング
-  if params[:tag].present?
-    # タグリンクからのフィルタリング
-    @aquariums = Aquarium.tagged_with(params[:tag])
-  elsif params[:tagged_with].present?
-    # 検索フォームからのフィルタリング
-    @aquariums = Aquarium.tagged_with(params[:tagged_with])
-  else
-    @aquariums = @q.result(distinct: true)
-  end
+    @aquariums = if params[:tag].present?
+                   # タグリンクからのフィルタリング
+                   Aquarium.tagged_with(params[:tag])
+                 elsif params[:tagged_with].present?
+                   # 検索フォームからのフィルタリング
+                   Aquarium.tagged_with(params[:tagged_with])
+                 else
+                   @q.result(distinct: true)
+                 end
 
     # 検索条件を保存
     save_search_conditions
-  
+
     # デバッグ用SQLログ
     Rails.logger.debug "Generated SQL: #{@aquariums.to_sql}"
     Rails.logger.debug "Index action completed"
   end
-  
 
   def show
     @aquarium = find_aquarium
@@ -63,7 +62,7 @@ class AquariumsController < ApplicationController
     query = params[:q]
     results = Review.where("content LIKE ?", "%#{query}%").limit(10).pluck(:content)
     render json: results.map { |content| { label: content, value: content } }
-  end  
+  end
 
   def nearby
     latitude = params[:lat].to_f
