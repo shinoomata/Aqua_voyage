@@ -4,31 +4,13 @@ class AquariumsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show nearby]
 
   def index
-    @q = Aquarium.left_joins(:reviews).ransack(params[:q])
+    @aquariums = AquariumFilterService.new(params).filter
 
+    @q = Aquarium.left_joins(:reviews).ransack(params[:q])
     @regions = sorted_regions
     @tags = Aquarium.tag_counts_on(:tags).pluck(:name)
 
-    @aquariums = if params[:q].present? && params[:q][:reviews_content_cont].present?
-                   Aquarium.left_joins(:reviews).
-                     where('reviews.content LIKE ?', "%#{params[:q][:reviews_content_cont]}%").
-                     distinct
-                 else
-                   @q.result(distinct: true)
-                 end
-
-    @aquariums = if params[:tag].present?
-                   Aquarium.tagged_with(params[:tag])
-                 elsif params[:tagged_with].present?
-                   Aquarium.tagged_with(params[:tagged_with])
-                 else
-                   @q.result(distinct: true)
-                 end
-
     save_search_conditions
-
-    Rails.logger.debug "Generated SQL: #{@aquariums.to_sql}"
-    Rails.logger.debug "Index action completed"
   end
 
   def show
