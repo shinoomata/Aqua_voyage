@@ -60,7 +60,7 @@ Rails.application.configure do
   config.assets.quiet = true
 
   config.web_console.allowed_ips = '0.0.0.0/0'
-  
+
   config.assets.debug = false
   config.assets.compile = true
   config.assets.digest = true

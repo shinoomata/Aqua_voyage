@@ -31,7 +31,7 @@ module AppName
                        controller_specs: true,
                        request_specs: false
       g.fixture_replacement :factory_bot, dir: "spec/factories"  # FactoryBotを使う場合
-      
+
       # Minitestの生成を無効化する
       g.test_framework nil
     end
