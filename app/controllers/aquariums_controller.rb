@@ -4,14 +4,11 @@ class AquariumsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show nearby]
 
   def index
-    # 検索オブジェクトを作成
     @q = Aquarium.left_joins(:reviews).ransack(params[:q])
 
-    # 地域やタグのデータを取得
     @regions = sorted_regions
     @tags = Aquarium.tag_counts_on(:tags).pluck(:name)
 
-    # レビュー内容でフィルタリング
     @aquariums = if params[:q].present? && params[:q][:reviews_content_cont].present?
                    Aquarium.left_joins(:reviews).
                      where('reviews.content LIKE ?', "%#{params[:q][:reviews_content_cont]}%").
@@ -20,21 +17,16 @@ class AquariumsController < ApplicationController
                    @q.result(distinct: true)
                  end
 
-    # タグによるフィルタリング
     @aquariums = if params[:tag].present?
-                   # タグリンクからのフィルタリング
                    Aquarium.tagged_with(params[:tag])
                  elsif params[:tagged_with].present?
-                   # 検索フォームからのフィルタリング
                    Aquarium.tagged_with(params[:tagged_with])
                  else
                    @q.result(distinct: true)
                  end
 
-    # 検索条件を保存
     save_search_conditions
 
-    # デバッグ用SQLログ
     Rails.logger.debug "Generated SQL: #{@aquariums.to_sql}"
     Rails.logger.debug "Index action completed"
   end
@@ -45,7 +37,7 @@ class AquariumsController < ApplicationController
       GenerateAquariumDetailJob.perform_later(@aquarium.id)
       prepare_reviews_and_data
       prepare_photo_urls
-      @tags = @aquarium.tag_list # タグ情報を準備
+      @tags = @aquarium.tag_list
       log_aquarium_info
     else
       handle_aquarium_not_found
@@ -69,15 +61,12 @@ class AquariumsController < ApplicationController
     longitude = params[:lng].to_f
 
     unless latitude.present? && longitude.present?
-      # エラーハンドリング（例: フラッシュメッセージを表示し、一覧ページにリダイレクトする）
       redirect_to aquariums_path, alert: "現在地が取得できませんでした。" and return
     end
 
     @q = Aquarium.ransack(params[:q])
 
-    # すべての地域を取得して一意にし、nilを除外
     @regions = Aquarium.distinct.pluck(:region).compact
-    # 北から南の順にソート
     region_order = %w[北海道 東北 関東 東海 北陸 近畿 中国 四国 九州 沖縄]
     @regions = @regions.sort_by { |region| region_order.index(region) || Float::INFINITY }
 
@@ -90,7 +79,6 @@ class AquariumsController < ApplicationController
 
     render :index
 
-    # 位置情報がない場合の処理
     unless latitude.present? && longitude.present?
       flash[:alert] = "位置情報が提供されていません。"
       redirect_to aquariums_path and return
