@@ -19,6 +19,7 @@ module AppName
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     config.hosts << "aqua-voyage.com"
+    config.hosts << '.example.com'
     config.secret_key_base = ENV['SECRET_KEY_BASE']
     # Active Job のキューアダプタとして Sidekiq を使用
     # config.active_job.queue_adapter = :sidekiq

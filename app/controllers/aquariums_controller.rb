@@ -1,51 +1,33 @@
 require 'google_places'
 
 class AquariumsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index show nearby]
+  skip_before_action :authenticate_user!, only: %i[index show nearby autocomplete autocomplete_reviews]
 
   def index
-    # 検索オブジェクトを作成
-    @q = Aquarium.left_joins(:reviews).ransack(params[:q])
+    @aquariums = AquariumFilterService.new(params).filter
 
-    # 地域やタグのデータを取得
+    @q = Aquarium.left_joins(:reviews).ransack(params[:q])
     @regions = sorted_regions
     @tags = Aquarium.tag_counts_on(:tags).pluck(:name)
 
-    # レビュー内容でフィルタリング
-    @aquariums = if params[:q].present? && params[:q][:reviews_content_cont].present?
-                   Aquarium.left_joins(:reviews).
-                     where('reviews.content LIKE ?', "%#{params[:q][:reviews_content_cont]}%").
-                     distinct
-                 else
-                   @q.result(distinct: true)
-                 end
-
-    # タグによるフィルタリング
-    @aquariums = if params[:tag].present?
-                   # タグリンクからのフィルタリング
-                   Aquarium.tagged_with(params[:tag])
-                 elsif params[:tagged_with].present?
-                   # 検索フォームからのフィルタリング
-                   Aquarium.tagged_with(params[:tagged_with])
-                 else
-                   @q.result(distinct: true)
-                 end
-
-    # 検索条件を保存
     save_search_conditions
-
-    # デバッグ用SQLログ
-    Rails.logger.debug "Generated SQL: #{@aquariums.to_sql}"
-    Rails.logger.debug "Index action completed"
   end
 
   def show
     @aquarium = find_aquarium
     if @aquarium
       GenerateAquariumDetailJob.perform_later(@aquarium.id)
-      prepare_reviews_and_data
-      prepare_photo_urls
-      @tags = @aquarium.tag_list # タグ情報を準備
+      detail_service = AquariumDetailService.new(@aquarium, current_user)
+      
+      @reviews = detail_service.reviews_with_associations
+      @user_has_reviewed = detail_service.user_has_reviewed?
+      @photo_urls = detail_service.photo_urls
+      @tags = @aquarium.tag_list
+  
+      @target_audience_data = @reviews.group(:target_audience_id).count
+      @size_rating_data = @reviews.group(:size_rating_id).count
+      @highlight_data = @reviews.group(:highlight_id).count
+      
       log_aquarium_info
     else
       handle_aquarium_not_found
@@ -60,40 +42,20 @@ class AquariumsController < ApplicationController
 
   def autocomplete_reviews
     query = params[:q]
-    results = Review.where("content LIKE ?", "%#{query}%").limit(10).pluck(:content)
+    results = Review.where("content LIKE ?", "%#{query}%").distinct.limit(10).pluck(:content)
     render json: results.map { |content| { label: content, value: content } }
   end
 
   def nearby
-    latitude = params[:lat].to_f
-    longitude = params[:lng].to_f
-
-    unless latitude.present? && longitude.present?
-      # エラーハンドリング（例: フラッシュメッセージを表示し、一覧ページにリダイレクトする）
-      redirect_to aquariums_path, alert: "現在地が取得できませんでした。" and return
-    end
-
-    @q = Aquarium.ransack(params[:q])
-
-    # すべての地域を取得して一意にし、nilを除外
-    @regions = Aquarium.distinct.pluck(:region).compact
-    # 北から南の順にソート
-    region_order = %w[北海道 東北 関東 東海 北陸 近畿 中国 四国 九州 沖縄]
-    @regions = @regions.sort_by { |region| region_order.index(region) || Float::INFINITY }
-
-    user_lat = params[:lat].to_f
-    user_lng = params[:lng].to_f
-
-    @aquariums = Aquarium.
-                 select("*, earth_distance(ll_to_earth(latitude, longitude), ll_to_earth(#{user_lat}, #{user_lng})) AS distance").
-                 order("distance ASC")
-
-    render :index
-
-    # 位置情報がない場合の処理
-    unless latitude.present? && longitude.present?
-      flash[:alert] = "位置情報が提供されていません。"
-      redirect_to aquariums_path and return
+    if params[:lat].blank? || params[:lng].blank?
+      redirect_to aquariums_path, alert: "位置情報が提供されていません。"
+    else
+      latitude = params[:lat].to_f
+      longitude = params[:lng].to_f
+      @q = Aquarium.ransack(params[:q])
+      @regions = sorted_regions
+      @aquariums = NearbyAquariumsService.new(latitude, longitude).fetch_nearby_aquariums
+      render :index
     end
   end
 
@@ -105,30 +67,14 @@ class AquariumsController < ApplicationController
     end
   end
 
-  def prepare_reviews_and_data
-    @reviews = @aquarium.reviews.includes(:user, :target_audience, :size_rating, :highlight)
-    Rails.logger.debug "SQL: #{@reviews.to_sql}"
-    @target_audience_data = @reviews.group(:target_audience_id).count
-    @size_rating_data = @reviews.group(:size_rating_id).count
-    @highlight_data = @reviews.group(:highlight_id).count
-
-    if user_signed_in?
-      @user_has_reviewed = @reviews.exists?(user_id: current_user.id)
-    else
-      store_location_for(:user, request.fullpath)
-    end
-  end
-
-  def prepare_photo_urls
-    client = GooglePlaces::Client.new(ENV['GOOGLE_MAPS_API_KEY'])
-    place = client.spots_by_query(@aquarium.name).first
-
-    @photo_urls = if place&.photos&.any?
-                    place.photos.map { |photo| photo.fetch_url(800) }
-                  else
-                    []
-                  end
-  end
+  def setup_aquarium_details
+  detail_service = AquariumDetailService.new(@aquarium, current_user)
+  @reviews = detail_service.fetch_reviews
+  @user_has_reviewed = detail_service.user_has_reviewed?
+  @photo_urls = detail_service.fetch_photo_urls
+  @tags = @aquarium.tag_list
+  log_aquarium_info
+end
 
   def log_aquarium_info
     Rails.logger.debug "Aquarium found: #{@aquarium.inspect}"
@@ -145,19 +91,10 @@ class AquariumsController < ApplicationController
     Aquarium.distinct.pluck(:region).compact.sort_by { |region| region_order.index(region) || Float::INFINITY }
   end
 
-  def filter_aquariums(aquariums)
-    if params[:tag].present?
-      aquariums.tagged_with(params[:tag])
-    else
-      aquariums
-    end
-  end
-
   def save_search_conditions
     @search_keyword = params.dig(:q, :name_or_location_or_description_cont)
     @selected_region = params.dig(:q, :region_eq)
     @selected_tag = params[:tag] || params.dig(:q, :tagged_with)
     @review_content = params.dig(:q, :reviews_content_cont)
   end
-
 end

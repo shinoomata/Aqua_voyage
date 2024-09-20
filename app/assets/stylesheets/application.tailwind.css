@@ -38,7 +38,7 @@
       left: 0;
       width: 100%;
       z-index: 1000;
-      border-radius: 4px; /* 角を丸める場合 */
+      border-radius: 4px; 
     }
 
     .autocomplete-item {

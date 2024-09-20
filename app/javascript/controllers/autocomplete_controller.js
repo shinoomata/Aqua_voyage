@@ -1,4 +1,3 @@
-// app/javascript/controllers/autocomplete_controller.js
 import { Controller } from "stimulus";
 import axios from "axios";
 
@@ -24,7 +23,8 @@ export default class extends Controller {
 
     axios.get(this.data.get("urlValue"), { params: { q: query } })
       .then((response) => {
-        this.listTarget.innerHTML = "";
+
+        this.clearList();
 
         response.data.forEach((result) => {
           const item = document.createElement("li");
@@ -41,5 +41,16 @@ export default class extends Controller {
       .catch((error) => {
         console.error("There was an error fetching autocomplete results:", error);
       });
+  }
+
+  clearList() {
+    this.listTarget.innerHTML = ""; // リストのクリア
+  }
+
+  // ここでEnterキーのイベントをキャンセルすることで、サジェストのリストが増え続けるのを防ぎます
+  preventEnterKey(e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+    }
   }
 }

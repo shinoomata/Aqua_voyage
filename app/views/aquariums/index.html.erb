@@ -3,7 +3,7 @@
     <%= search_form_for @q, url: aquariums_path, method: :get do |f| %>
       <div class="flex flex-wrap -mx-2 mb-4">
       <!-- キーワード検索 -->
-      <div class="w-full sm:w-1/2 px-2" data-controller="autocomplete" data-autocomplete-url-value="/autocomplete">
+      <div class="w-full sm:w-1/2 px-2 relative" data-controller="autocomplete" data-autocomplete-url-value="/autocomplete">
           <div class="label">
             <%= f.label :name_or_location_or_description_cont, "キーワード", class: "label-text" %>
           </div>
@@ -29,7 +29,7 @@
       </div>
 
       <!-- レビュー内容の検索 -->
-      <div class="w-full sm:w-full px-2 mb-4" data-controller="autocomplete" data-autocomplete-url-value="/autocomplete_reviews">
+      <div class="w-full sm:w-full px-2 mb-4 relative" data-controller="autocomplete" data-autocomplete-url-value="/autocomplete_reviews">
         <div class="form-control">
           <div class="label">
             <%= f.label :reviews_content_cont, "レビュー内容", class: "label-text" %>
