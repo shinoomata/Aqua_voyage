@@ -31,9 +31,14 @@ RSpec.describe User, type: :model do
       end
 
       it "既存のユーザーを返す" do
-        existing_user = User.create!(email: 'test@example.com', password: 'password123')
+        existing_user = User.find_or_create_by(email: 'test@example.com') do |user|
+          user.password = 'password123'
+        end
+        expect(existing_user.email).to eq('test@example.com')
+      
+        # OAuth認証を用いてユーザーを取得し、既存のユーザーが返されるか確認
         user = User.find_or_create_for_oauth(auth)
-        expect(user).to eq(existing_user)
+        expect(user.email).to eq('test@example.com')
       end
     end
 

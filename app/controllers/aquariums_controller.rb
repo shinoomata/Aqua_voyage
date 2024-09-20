@@ -47,17 +47,16 @@ class AquariumsController < ApplicationController
   end
 
   def nearby
-    latitude = params[:lat].to_f
-  longitude = params[:lng].to_f
-
-  if latitude.present? && longitude.present?
-    @q = Aquarium.ransack(params[:q])
-    @regions = sorted_regions
-    @aquariums = NearbyAquariumsService.new(latitude, longitude).fetch_nearby_aquariums
-    render :index
-  else
-    redirect_to aquariums_path, alert: "位置情報が提供されていません。"
-  end
+    if params[:lat].blank? || params[:lng].blank?
+      redirect_to aquariums_path, alert: "位置情報が提供されていません。"
+    else
+      latitude = params[:lat].to_f
+      longitude = params[:lng].to_f
+      @q = Aquarium.ransack(params[:q])
+      @regions = sorted_regions
+      @aquariums = NearbyAquariumsService.new(latitude, longitude).fetch_nearby_aquariums
+      render :index
+    end
   end
 
   private

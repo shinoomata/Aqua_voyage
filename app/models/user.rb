@@ -7,15 +7,16 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
 
-  def self.find_or_create_for_oauth(auth)
-    find_or_create_by!(email: auth.info.email) do |user|
-      user.password = Devise.friendly_token[0, 20]
-      user.name = auth.info.name
-      user.image = auth.info.image
-      user.provider = auth.provider
-      user.uid = auth.uid
-    end
-  end
+         def self.find_or_create_for_oauth(auth)
+          find_or_initialize_by(email: auth.info.email).tap do |user|
+            user.password = Devise.friendly_token[0, 20] if user.new_record?
+            user.name = auth.info.name
+            user.image = auth.info.image
+            user.provider = auth.provider
+            user.uid = auth.uid
+            user.save!
+          end
+        end
 
   def admin?
     admin
