@@ -25,7 +25,6 @@ WORKDIR /app_name
 COPY Gemfile /app_name/Gemfile
 COPY Gemfile.lock /app_name/Gemfile.lock
 
-# gemインストール
 RUN bundle install
 
 # ソースコードをコピー
