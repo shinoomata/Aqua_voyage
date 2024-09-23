@@ -13,7 +13,7 @@
       <img src="./assets/0.13.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2024-09-23T18:09:14+09:00">2024-09-23T18:09:14+09:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2024-09-23T20:26:02+09:00">2024-09-23T20:26:02+09:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -545,7 +545,7 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#0f9ca64ff4e468f1005aceda13358211a80db6e6" class="src_link" title="app/services/aquarium_detail_service.rb">app/services/aquarium_detail_service.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">23</td>
+            <td class="cell--number">21</td>
             <td class="cell--number">12</td>
             <td class="cell--number">12</td>
             <td class="cell--number">0</td>
@@ -567,7 +567,7 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#817bbcc982ac627e5e4bf41a01146b8809a0ea90" class="src_link" title="app/services/nearby_aquariums_service.rb">app/services/nearby_aquariums_service.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">13</td>
+            <td class="cell--number">12</td>
             <td class="cell--number">6</td>
             <td class="cell--number">6</td>
             <td class="cell--number">0</td>
@@ -1527,7 +1527,7 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#0f9ca64ff4e468f1005aceda13358211a80db6e6" class="src_link" title="app/services/aquarium_detail_service.rb">app/services/aquarium_detail_service.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">23</td>
+            <td class="cell--number">21</td>
             <td class="cell--number">12</td>
             <td class="cell--number">12</td>
             <td class="cell--number">0</td>
@@ -1549,7 +1549,7 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#817bbcc982ac627e5e4bf41a01146b8809a0ea90" class="src_link" title="app/services/nearby_aquariums_service.rb">app/services/nearby_aquariums_service.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">13</td>
+            <td class="cell--number">12</td>
             <td class="cell--number">6</td>
             <td class="cell--number">6</td>
             <td class="cell--number">0</td>
@@ -2622,7 +2622,7 @@
 
             
 
-            <code class="ruby">      </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -2680,7 +2680,7 @@
 
             
 
-            <code class="ruby">  </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -2726,7 +2726,7 @@
 
             
 
-            <code class="ruby">      </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -3172,7 +3172,7 @@
 
             
 
-            <code class="ruby">  detail_service = AquariumDetailService.new(@aquarium, current_user)</code>
+            <code class="ruby">    detail_service = AquariumDetailService.new(@aquarium, current_user)</code>
           </li>
         </div>
       
@@ -3182,7 +3182,7 @@
 
             
 
-            <code class="ruby">  @reviews = detail_service.fetch_reviews</code>
+            <code class="ruby">    @reviews = detail_service.fetch_reviews</code>
           </li>
         </div>
       
@@ -3192,7 +3192,7 @@
 
             
 
-            <code class="ruby">  @user_has_reviewed = detail_service.user_has_reviewed?</code>
+            <code class="ruby">    @user_has_reviewed = detail_service.user_has_reviewed?</code>
           </li>
         </div>
       
@@ -3202,7 +3202,7 @@
 
             
 
-            <code class="ruby">  @photo_urls = detail_service.fetch_photo_urls</code>
+            <code class="ruby">    @photo_urls = detail_service.fetch_photo_urls</code>
           </li>
         </div>
       
@@ -3212,7 +3212,7 @@
 
             
 
-            <code class="ruby">  @tags = @aquarium.tag_list</code>
+            <code class="ruby">    @tags = @aquarium.tag_list</code>
           </li>
         </div>
       
@@ -3222,7 +3222,7 @@
 
             
 
-            <code class="ruby">  log_aquarium_info</code>
+            <code class="ruby">    log_aquarium_info</code>
           </li>
         </div>
       
@@ -3232,7 +3232,7 @@
 
             
 
-            <code class="ruby">end</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -10436,7 +10436,7 @@
 
             
 
-            <code class="ruby">         def self.find_or_create_for_oauth(auth)</code>
+            <code class="ruby">  def self.find_or_create_for_oauth(auth)</code>
           </li>
         </div>
       
@@ -10448,7 +10448,7 @@
 
             
 
-            <code class="ruby">          find_or_initialize_by(email: auth.info.email).tap do |user|</code>
+            <code class="ruby">    find_or_initialize_by(email: auth.info.email).tap do |user|</code>
           </li>
         </div>
       
@@ -10460,7 +10460,7 @@
 
             
 
-            <code class="ruby">            user.password = Devise.friendly_token[0, 20] if user.new_record?</code>
+            <code class="ruby">      user.password = Devise.friendly_token[0, 20] if user.new_record?</code>
           </li>
         </div>
       
@@ -10472,7 +10472,7 @@
 
             
 
-            <code class="ruby">            user.name = auth.info.name</code>
+            <code class="ruby">      user.name = auth.info.name</code>
           </li>
         </div>
       
@@ -10484,7 +10484,7 @@
 
             
 
-            <code class="ruby">            user.image = auth.info.image</code>
+            <code class="ruby">      user.image = auth.info.image</code>
           </li>
         </div>
       
@@ -10496,7 +10496,7 @@
 
             
 
-            <code class="ruby">            user.provider = auth.provider</code>
+            <code class="ruby">      user.provider = auth.provider</code>
           </li>
         </div>
       
@@ -10508,7 +10508,7 @@
 
             
 
-            <code class="ruby">            user.uid = auth.uid</code>
+            <code class="ruby">      user.uid = auth.uid</code>
           </li>
         </div>
       
@@ -10520,7 +10520,7 @@
 
             
 
-            <code class="ruby">            user.save!</code>
+            <code class="ruby">      user.save!</code>
           </li>
         </div>
       
@@ -10530,7 +10530,7 @@
 
             
 
-            <code class="ruby">          end</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -10540,7 +10540,7 @@
 
             
 
-            <code class="ruby">        end</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -10659,7 +10659,7 @@
 
             
 
-            <code class="ruby">    def initialize(aquarium, user = nil)</code>
+            <code class="ruby">  def initialize(aquarium, user = nil)</code>
           </li>
         </div>
       
@@ -10671,7 +10671,7 @@
 
             
 
-            <code class="ruby">      @aquarium = aquarium</code>
+            <code class="ruby">    @aquarium = aquarium</code>
           </li>
         </div>
       
@@ -10683,7 +10683,7 @@
 
             
 
-            <code class="ruby">      @user = user</code>
+            <code class="ruby">    @user = user</code>
           </li>
         </div>
       
@@ -10693,7 +10693,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -10703,7 +10703,7 @@
 
             
 
-            <code class="ruby">  </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -10715,7 +10715,7 @@
 
             
 
-            <code class="ruby">    def reviews_with_associations</code>
+            <code class="ruby">  def reviews_with_associations</code>
           </li>
         </div>
       
@@ -10727,7 +10727,7 @@
 
             
 
-            <code class="ruby">        @aquarium.reviews.includes(:user, :target_audience, :size_rating, :highlight)</code>
+            <code class="ruby">    @aquarium.reviews.includes(:user, :target_audience, :size_rating, :highlight)</code>
           </li>
         </div>
       
@@ -10737,7 +10737,7 @@
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -10747,17 +10747,19 @@
 
             
 
-            <code class="ruby">    </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="12">
+          <li class="covered" data-hits="1" data-linenumber="12">
+            
+              <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  </code>
+            <code class="ruby">  def user_has_reviewed?</code>
           </li>
         </div>
       
@@ -10769,19 +10771,17 @@
 
             
 
-            <code class="ruby">    def user_has_reviewed?</code>
+            <code class="ruby">    @user &amp;&amp; @aquarium.reviews.exists?(user_id: @user.id)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="14">
-            
-              <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="14">
             
 
             
 
-            <code class="ruby">      @user &amp;&amp; @aquarium.reviews.exists?(user_id: @user.id)</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -10791,17 +10791,19 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="16">
+          <li class="covered" data-hits="1" data-linenumber="16">
+            
+              <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  </code>
+            <code class="ruby">  def photo_urls</code>
           </li>
         </div>
       
@@ -10813,7 +10815,7 @@
 
             
 
-            <code class="ruby">    def photo_urls</code>
+            <code class="ruby">    client = GooglePlaces::Client.new(ENV[&#39;GOOGLE_MAPS_API_KEY&#39;])</code>
           </li>
         </div>
       
@@ -10825,7 +10827,7 @@
 
             
 
-            <code class="ruby">        client = GooglePlaces::Client.new(ENV[&#39;GOOGLE_MAPS_API_KEY&#39;])</code>
+            <code class="ruby">    place = client.spots_by_query(@aquarium.name).first</code>
           </li>
         </div>
       
@@ -10837,34 +10839,12 @@
 
             
 
-            <code class="ruby">        place = client.spots_by_query(@aquarium.name).first</code>
+            <code class="ruby">    place&amp;.photos&amp;.any? ? place.photos.map { |photo| photo.fetch_url(800) } : []</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="20">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        place&amp;.photos&amp;.any? ? place.photos.map { |photo| photo.fetch_url(800) } : []</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="21">
-            
-
-            
-
-            <code class="ruby">      end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="22">
+          <li class="never" data-hits="" data-linenumber="20">
             
 
             
@@ -10874,12 +10854,12 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="23">
+          <li class="never" data-hits="" data-linenumber="21">
             
 
             
 
-            <code class="ruby">  </code>
+            <code class="ruby">end</code>
           </li>
         </div>
       
@@ -10934,7 +10914,7 @@
 
             
 
-            <code class="ruby">    def initialize(params)</code>
+            <code class="ruby">  def initialize(params)</code>
           </li>
         </div>
       
@@ -10946,7 +10926,7 @@
 
             
 
-            <code class="ruby">      @params = params</code>
+            <code class="ruby">    @params = params</code>
           </li>
         </div>
       
@@ -10956,7 +10936,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -10966,7 +10946,7 @@
 
             
 
-            <code class="ruby">  </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -10978,7 +10958,7 @@
 
             
 
-            <code class="ruby">    def filter</code>
+            <code class="ruby">  def filter</code>
           </li>
         </div>
       
@@ -10990,7 +10970,7 @@
 
             
 
-            <code class="ruby">      query = Aquarium.left_joins(:reviews).ransack(@params[:q])</code>
+            <code class="ruby">    query = Aquarium.left_joins(:reviews).ransack(@params[:q])</code>
           </li>
         </div>
       
@@ -11000,7 +10980,7 @@
 
             
 
-            <code class="ruby">  </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -11012,7 +10992,7 @@
 
             
 
-            <code class="ruby">      if @params[:q].present? &amp;&amp; @params[:q][:reviews_content_cont].present?</code>
+            <code class="ruby">    if @params[:q].present? &amp;&amp; @params[:q][:reviews_content_cont].present?</code>
           </li>
         </div>
       
@@ -11022,7 +11002,7 @@
 
             
 
-            <code class="ruby">        query.result(distinct: true).where(&#39;reviews.content LIKE ?&#39;, &quot;%#{@params[:q][:reviews_content_cont]}%&quot;)</code>
+            <code class="ruby">      query.result(distinct: true).where(&#39;reviews.content LIKE ?&#39;, &quot;%#{@params[:q][:reviews_content_cont]}%&quot;)</code>
           </li>
         </div>
       
@@ -11034,7 +11014,7 @@
 
             
 
-            <code class="ruby">      elsif @params[:tag].present?</code>
+            <code class="ruby">    elsif @params[:tag].present?</code>
           </li>
         </div>
       
@@ -11044,7 +11024,7 @@
 
             
 
-            <code class="ruby">        Aquarium.tagged_with(@params[:tag])</code>
+            <code class="ruby">      Aquarium.tagged_with(@params[:tag])</code>
           </li>
         </div>
       
@@ -11056,7 +11036,7 @@
 
             
 
-            <code class="ruby">      elsif @params[:tagged_with].present?</code>
+            <code class="ruby">    elsif @params[:tagged_with].present?</code>
           </li>
         </div>
       
@@ -11066,7 +11046,7 @@
 
             
 
-            <code class="ruby">        Aquarium.tagged_with(@params[:tagged_with])</code>
+            <code class="ruby">      Aquarium.tagged_with(@params[:tagged_with])</code>
           </li>
         </div>
       
@@ -11076,7 +11056,7 @@
 
             
 
-            <code class="ruby">      else</code>
+            <code class="ruby">    else</code>
           </li>
         </div>
       
@@ -11088,7 +11068,7 @@
 
             
 
-            <code class="ruby">        query.result(distinct: true)</code>
+            <code class="ruby">      query.result(distinct: true)</code>
           </li>
         </div>
       
@@ -11098,7 +11078,7 @@
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -11108,7 +11088,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -11118,7 +11098,7 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">end</code>
           </li>
         </div>
       
@@ -11173,7 +11153,7 @@
 
             
 
-            <code class="ruby">    def initialize(latitude, longitude)</code>
+            <code class="ruby">  def initialize(latitude, longitude)</code>
           </li>
         </div>
       
@@ -11185,7 +11165,7 @@
 
             
 
-            <code class="ruby">      @latitude = latitude</code>
+            <code class="ruby">    @latitude = latitude</code>
           </li>
         </div>
       
@@ -11197,7 +11177,7 @@
 
             
 
-            <code class="ruby">      @longitude = longitude</code>
+            <code class="ruby">    @longitude = longitude</code>
           </li>
         </div>
       
@@ -11207,7 +11187,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -11217,7 +11197,7 @@
 
             
 
-            <code class="ruby">  </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -11229,7 +11209,7 @@
 
             
 
-            <code class="ruby">    def fetch_nearby_aquariums</code>
+            <code class="ruby">  def fetch_nearby_aquariums</code>
           </li>
         </div>
       
@@ -11241,7 +11221,7 @@
 
             
 
-            <code class="ruby">      Aquarium.</code>
+            <code class="ruby">    Aquarium.</code>
           </li>
         </div>
       
@@ -11251,7 +11231,7 @@
 
             
 
-            <code class="ruby">        select(&quot;*, earth_distance(ll_to_earth(latitude, longitude), ll_to_earth(#{@latitude}, #{@longitude})) AS distance&quot;).</code>
+            <code class="ruby">      select(&quot;*, earth_distance(ll_to_earth(latitude, longitude), ll_to_earth(#{@latitude}, #{@longitude})) AS distance&quot;).</code>
           </li>
         </div>
       
@@ -11261,7 +11241,7 @@
 
             
 
-            <code class="ruby">        order(&quot;distance ASC&quot;)</code>
+            <code class="ruby">      order(&quot;distance ASC&quot;)</code>
           </li>
         </div>
       
@@ -11271,7 +11251,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -11281,17 +11261,7 @@
 
             
 
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="13">
-            
-
-            
-
-            <code class="ruby">  </code>
+            <code class="ruby">end</code>
           </li>
         </div>
       

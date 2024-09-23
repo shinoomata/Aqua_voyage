@@ -9,7 +9,6 @@ require 'devise'
 require 'dotenv'
 Dotenv.load('.env.test')
 
-
 begin
   # Uncomment this if you have pending migrations and want to raise an error
   # ActiveRecord::Migration.maintain_test_schema!
@@ -32,7 +31,7 @@ RSpec.configure do |config|
       credentials: {
         token: 'mock_token',
         refresh_token: 'mock_refresh_token',
-        expires_at: Time.now + 1.week
+        expires_at: Time.zone.now + 1.week
       }
     })
 

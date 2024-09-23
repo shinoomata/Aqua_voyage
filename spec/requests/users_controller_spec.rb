@@ -10,7 +10,7 @@ RSpec.describe UsersController, type: :request do
       user.password = 'password123'
       user.username = 'testuser'
     end
-    
+
     sign_in @user
   end
 
@@ -18,7 +18,7 @@ RSpec.describe UsersController, type: :request do
     it 'ユーザーがログインしている場合、ユーザーの詳細が表示されること' do
       get user_path
       expect(response).to have_http_status(:success)
-      expect(response.body).to include(@user.email)  
+      expect(response.body).to include(@user.email)
     end
 
     it 'ログインしていない場合、ログインページにリダイレクトされること' do
@@ -72,8 +72,6 @@ RSpec.describe UsersController, type: :request do
         expect(User.exists?(user.id)).to be_falsey
       end
     end
-    
-  
 
     context '非管理者ユーザーの場合' do
       before do

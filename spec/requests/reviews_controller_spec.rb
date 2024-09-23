@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ReviewsController, type: :request do
   let(:aquarium) { create(:aquarium) }
   let(:user) { create(:user) }
-  let(:review) { create(:review, aquarium: aquarium, user: user) }
+  let(:review) { create(:review, aquarium:, user:) }
   let(:other_user) { create(:user) }
 
   describe 'GET #new' do
@@ -15,7 +15,7 @@ RSpec.describe ReviewsController, type: :request do
       it '新しいレビュー作成ページが表示されること' do
         get new_aquarium_review_path(aquarium)
         expect(response).to have_http_status(:success)
-        expect(response.body).to include('レビューを投稿') 
+        expect(response.body).to include('レビューを投稿')
       end
     end
 
@@ -40,12 +40,12 @@ RSpec.describe ReviewsController, type: :request do
 
       context '有効なパラメータの場合' do
         it 'レビューが作成されること' do
-          expect {
-            post aquarium_reviews_path(aquarium), params: { 
+          expect do
+            post aquarium_reviews_path(aquarium), params: {
               review: { content: '素晴らしい水族館です！', target_audience_id: 1, size_rating_id: 1, highlight_id: 1 },
-              aquarium: { tag_list: '新しいタグ1,新しいタグ2' } 
+              aquarium: { tag_list: '新しいタグ1,新しいタグ2' }
             }
-          }.to change(Review, :count).by(1)
+          end.to change(Review, :count).by(1)
           expect(response).to redirect_to(aquarium)
           expect(flash[:notice]).to eq('レビューが正常に投稿されました。')
         end
@@ -53,11 +53,11 @@ RSpec.describe ReviewsController, type: :request do
 
       context '無効なパラメータの場合' do
         it 'レビュー作成に失敗し、新規作成ページが再表示されること' do
-          post aquarium_reviews_path(aquarium), params: { 
+          post aquarium_reviews_path(aquarium), params: {
             review: { content: '', target_audience_id: '', size_rating_id: '', highlight_id: '' }
           }
           expect(response).to have_http_status(:ok)
-          expect(response.body).to include('全ての項目を選択してください') 
+          expect(response.body).to include('全ての項目を選択してください')
         end
       end
     end
@@ -84,7 +84,7 @@ RSpec.describe ReviewsController, type: :request do
       it 'レビュー編集ページが表示されること' do
         get edit_aquarium_review_path(aquarium, review)
         expect(response).to have_http_status(:success)
-        expect(response.body).to include('編集') 
+        expect(response.body).to include('編集')
       end
     end
 

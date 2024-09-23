@@ -18,16 +18,16 @@ class AquariumsController < ApplicationController
     if @aquarium
       GenerateAquariumDetailJob.perform_later(@aquarium.id)
       detail_service = AquariumDetailService.new(@aquarium, current_user)
-      
+
       @reviews = detail_service.reviews_with_associations
       @user_has_reviewed = detail_service.user_has_reviewed?
       @photo_urls = detail_service.photo_urls
       @tags = @aquarium.tag_list
-  
+
       @target_audience_data = @reviews.group(:target_audience_id).count
       @size_rating_data = @reviews.group(:size_rating_id).count
       @highlight_data = @reviews.group(:highlight_id).count
-      
+
       log_aquarium_info
     else
       handle_aquarium_not_found
@@ -68,13 +68,13 @@ class AquariumsController < ApplicationController
   end
 
   def setup_aquarium_details
-  detail_service = AquariumDetailService.new(@aquarium, current_user)
-  @reviews = detail_service.fetch_reviews
-  @user_has_reviewed = detail_service.user_has_reviewed?
-  @photo_urls = detail_service.fetch_photo_urls
-  @tags = @aquarium.tag_list
-  log_aquarium_info
-end
+    detail_service = AquariumDetailService.new(@aquarium, current_user)
+    @reviews = detail_service.fetch_reviews
+    @user_has_reviewed = detail_service.user_has_reviewed?
+    @photo_urls = detail_service.fetch_photo_urls
+    @tags = @aquarium.tag_list
+    log_aquarium_info
+  end
 
   def log_aquarium_info
     Rails.logger.debug "Aquarium found: #{@aquarium.inspect}"
