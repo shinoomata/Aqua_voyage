@@ -21,7 +21,6 @@ class ReviewsController < ApplicationController
     @review.user = current_user
 
     if @review.save
-      # 水族館にタグを追加
       if params[:aquarium][:tag_list].present?
         @aquarium.tag_list = params[:aquarium][:tag_list]
         @aquarium.save
@@ -42,8 +41,7 @@ class ReviewsController < ApplicationController
 
   def update
     if @review.update(review_params)
-      # タグの更新
-      if params[:aquarium][:tag_list].present?
+      if params[:aquarium].present? && params[:aquarium][:tag_list].present?
         @aquarium.tag_list = params[:aquarium][:tag_list]
         @aquarium.save
         Rails.logger.debug "Updated tags: #{@aquarium.tag_list}"
@@ -53,7 +51,7 @@ class ReviewsController < ApplicationController
     else
       load_review_resources
       flash.now[:alert] = "全ての項目を選択してください"
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
