@@ -35,7 +35,7 @@ RSpec.describe User, type: :model do
           user.password = 'password123'
         end
         expect(existing_user.email).to eq('test@example.com')
-      
+
         # OAuth認証を用いてユーザーを取得し、既存のユーザーが返されるか確認
         user = User.find_or_create_for_oauth(auth)
         expect(user.email).to eq('test@example.com')
