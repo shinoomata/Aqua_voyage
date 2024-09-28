@@ -44,10 +44,9 @@ export default class extends Controller {
   }
 
   clearList() {
-    this.listTarget.innerHTML = ""; // リストのクリア
+    this.listTarget.innerHTML = "";
   }
 
-  // ここでEnterキーのイベントをキャンセルすることで、サジェストのリストが増え続けるのを防ぎます
   preventEnterKey(e) {
     if (e.key === "Enter") {
       e.preventDefault();

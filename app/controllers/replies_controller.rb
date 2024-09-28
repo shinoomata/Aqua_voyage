@@ -14,7 +14,6 @@ class RepliesController < ApplicationController
   end
 
   def edit
-    # 編集ビューを表示
   end
 
   def update
