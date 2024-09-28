@@ -1,18 +1,15 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: %i[show edit update]  # ログインが必要
+  before_action :authenticate_user!, only: %i[show edit update]
   before_action :set_user, only: %i[update show edit]
   before_action :check_admin, only: [:destroy]
 
   def show
     @user = current_user
-    # 必要に応じて、レビューやその他のユーザー関連情報を取得
     @reviews = @user.reviews.includes(:aquarium).order(created_at: :desc)
-    # お気に入りの水族館を取得
     @liked_aquariums = @user.liked_aquariums.includes(:reviews)
   end
 
   def edit
-    # @userはset_userで設定されるので、特に何もする必要はありません
   end
 
   def update
