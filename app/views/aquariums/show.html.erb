@@ -88,7 +88,6 @@
     <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
       <p class="mb-4 mt-8"><%= @aquarium.description %></p>
       <p class="mb-4">公式サイト: <%= link_to @aquarium.website, @aquarium.website, target: '_blank', class: 'link link-primary' %></p>
-      <div id="map" style="height: 400px; width: 100%; margin-top: 10px;"></div>
       <p class="mb-4">住所: <%= @aquarium.location %></p>
       <p>地域: <%= @aquarium.region %></p>
     </div>
@@ -167,8 +166,6 @@
   </div>
 </div>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&libraries=places&callback=initMap&v=weekly" async defer></script>
-  <script>  
   document.addEventListener('turbo:before-visit', function() {
   const spinner = document.getElementById('loading-spinner');
   if (spinner) {
@@ -183,37 +180,8 @@ document.addEventListener('turbo:load', function() {
   }
 });
 
-    function initMap() {
-      const spinner = document.getElementById('loading-spinner');
-  if (spinner) {
-    spinner.classList.remove('hidden'); // スピナーを表示
-  }
-
-      const address = "<%= @aquarium.location %>";
-
-      const geocoder = new google.maps.Geocoder();
-
-      geocoder.geocode({ 'address': address }, function(results, status) {
-        if (status === 'OK') {
-            const map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 15,
-                center: results[0].geometry.location
-            });
-
-          new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location
-          });
-        } else {
-          alert('Geocode was not successful for the following reason: ' + status);
-        }
-
-        if (spinner) {
-      spinner.classList.add('hidden'); // マップの読み込み完了後にスピナーを非表示
-    }
-      });
-    }
-  </script>
+    
+       
 </body>
 </html>
 
