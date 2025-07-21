@@ -14,8 +14,7 @@ class AquariumDetailService
   end
 
   def photo_urls
-    client = GooglePlaces::Client.new(ENV['GOOGLE_MAPS_API_KEY'])
-    place = client.spots_by_query(@aquarium.name).first
-    place&.photos&.any? ? place.photos.map { |photo| photo.fetch_url(800) } : []
+    # Google API 使用をやめ、レビューに添付された画像のみ返す
+    @aquarium.reviews.where.not(image_url: [nil, '']).pluck(:image_url)
   end
 end
