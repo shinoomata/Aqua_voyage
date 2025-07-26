@@ -103,7 +103,7 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 
 gem 'acts-as-taggable-on'
-gem 'google_places'
+// gem 'google_places'
 gem 'ransack', '~> 4.2.0'
 
 gem 'carrierwave'
